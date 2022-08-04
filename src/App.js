@@ -9,8 +9,6 @@ const App = () => {
 	// if (!authStore.logined) {
 	// 	return <Login />;
 	// }
-
-	console.log("routes", routes);
 	return (
 		<>
 			<Layout>
