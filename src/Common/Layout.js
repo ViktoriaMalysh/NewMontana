@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 const Layout = ({ children }) => {
 	const location = useLocation();
