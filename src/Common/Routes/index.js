@@ -1,5 +1,6 @@
 import Login from "../../Pages/Login";
 import Home from "../../Pages/Home";
+import Register from "../../Pages/Register";
 
 export const links = [
 	{
@@ -32,6 +33,10 @@ export const routes = [
 	{
 		path: "/login",
 		component: <Login />,
+	},
+	{
+		path: "/register",
+		component: <Register />,
 	},
 	// {
 	//   path: "/user/:id",

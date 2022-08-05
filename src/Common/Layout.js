@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 	}, [location]);
 
 	const mainStyle = {
-		background: "#e5e5e5",
+		// background: "#e5e5e5",
 	};
 
 	const loginStyle = {
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 	return (
 		<div>
 			<div style={{ background: "#fff" }}>
-				{currentPath !== "/login" && <Header />}
+				{currentPath !== "/login" && currentPath !== "/register" && <Header />}
 			</div>
 			<div style={currentPath !== "/login" ? mainStyle : loginStyle}>
 				{children}
