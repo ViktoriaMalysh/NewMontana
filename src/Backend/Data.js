@@ -30,3 +30,11 @@ export const termsOfService = [
 		text: "Donec facilisis consequat nisi. Vivamus euismod at ipsum a gravida. Quisque vitae augue maximus elit iaculis tincidunt. Quisque dapibus dui non justo iaculis volutpat. Phasellus vulputate tempus lorem vitae vehicula. Maecenas interdum venenatis ante, scelerisque porta nibh mollis vitae. Curabitur in erat porttitor, imperdiet lectus non, porttitor odio. Donec efficitur efficitur dapibus. Aenean sit amet tortor id lorem ultricies rhoncus. Etiam ornare eros eu commodo vehicula. Curabitur vel enim eget velit tincidunt viverra eu in risus. Aliquam suscipit tellus eu fermentum facilisis. Pellentesque volutpat posuere ligula. Fusce et consequat mi.",
 	},
 ];
+
+export const itemsHeader = [
+	{ id: "home", item: "Home", path: "/" },
+	{ id: "rooms", item: "Rooms", path: "/rooms" },
+	{ id: "about", item: "About", path: "/about" },
+	{ id: "blog", item: "Blog", path: "/blog" },
+	{ id: "contact", item: "Contact", path: "/contact" },
+];
