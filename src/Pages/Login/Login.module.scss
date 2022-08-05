@@ -13,7 +13,7 @@ $primary-color-hover: #ffdd00;
 		border: 1px solid #fff;
 		border-radius: 10px;
 		box-shadow: 0 0 40px 5px rgb(0 0 0 / 5%);
-		height: 620px;
+		height: max-content;
 		width: 483px;
 
 		.loginHeader {
@@ -45,6 +45,11 @@ $primary-color-hover: #ffdd00;
 				box-shadow: none;
 				transition: 0.5s;
 				height: 50px;
+
+				&:focus {
+					border: 1px solid #fca702;
+				}
+
 				&::placeholder {
 					font-weight: 400;
 					font-family: "Roboto";
@@ -71,6 +76,11 @@ $primary-color-hover: #ffdd00;
 				font-size: 16px;
 				line-height: 1.8;
 				margin-top: 15px;
+				transition: background-color 0.5s linear;
+
+				&:hover {
+					background: #051242;
+				}
 
 				.loginIcon {
 					color: #ffffff;
@@ -85,10 +95,11 @@ $primary-color-hover: #ffdd00;
 
 			.loginLink {
 				color: #fca702;
+				transition: color 0.5s linear;
 
-        &:hover{
-          color: #14212b;
-        }
+				&:hover {
+					color: #14212b;
+				}
 			}
 		}
 	}
