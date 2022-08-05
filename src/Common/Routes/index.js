@@ -1,6 +1,7 @@
 import Login from "../../Pages/Login";
 import Home from "../../Pages/Home";
 import Register from "../../Pages/Register";
+import TermsOfService from "../../Pages/Terms Of Service/TermsOfService";
 
 export const links = [
 	{
@@ -37,6 +38,10 @@ export const routes = [
 	{
 		path: "/register",
 		component: <Register />,
+	},
+	{
+		path: "/terms-of-service",
+		component: <TermsOfService />,
 	},
 	// {
 	//   path: "/user/:id",
