@@ -7,8 +7,8 @@ $primary-color-hover: #ffdd00;
 
 :global(#app) {
 	.headerMenu {
-		padding-left: 40vh;
-		padding-right: 40vh;
+		padding-left: 36vh;
+		padding-right: 37vh;
 		padding-top: 10px;
 		padding-bottom: 10px;
 
@@ -16,10 +16,53 @@ $primary-color-hover: #ffdd00;
 			width: 220px;
 		}
 
-    .headerItems{
-      vertical-align: middle;
-      height: 80px;
-      background-color: red;
-    }
+		.headerItems {
+			vertical-align: middle;
+			height: 80px;
+			font-family: "Roboto", sans-serif;
+			font-style: normal;
+			font-size: 15px;
+			font-weight: 700;
+			color: #051c55;
+			line-height: 1.8;
+			margin-right: 25px;
+			text-transform: uppercase;
+
+			&:hover {
+				color: #fca702;
+			}
+		}
+
+		button {
+			color: #ffffff;
+			font-size: 15px;
+			padding: 15px 15px;
+			line-height: 1;
+			-webkit-transition: all 0.5s;
+			transition: all 0.5s;
+			position: relative;
+			cursor: pointer;
+			border-radius: 8px;
+			text-align: center;
+			z-index: 1;
+			background-color: #fca702;
+			border: 2px solid transparent;
+			box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+			width: 156px;
+			height: 49px;
+			margin-left: 30px;
+			margin-top: auto;
+			margin-bottom: auto;
+			text-transform: uppercase;
+			font-weight: 400;
+
+			&:hover{
+				background: #051242;
+			}
+
+			.headerIcon {
+				color: #ffffff;
+			}
+		}
 	}
 }
