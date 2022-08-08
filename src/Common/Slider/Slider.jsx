@@ -4,6 +4,7 @@ import { StyleRoot } from "radium";
 import styles from "./Slider.module.scss";
 import "react-multi-carousel/lib/styles.css";
 import { images, responsive } from "../../Backend/Data";
+import { Button } from "semantic-ui-react";
 
 const Slider = () => {
 	return (
@@ -26,13 +27,8 @@ const Slider = () => {
 							have suffered alteration in some form by injected humour or
 							randomised words.
 						</p>
-
-						{/* <h1 className="h-slider-title" style={stylesAnimation.fadeInDown2s}>
-							Montana Resort
-						</h1>
-						<p className="p-slider-title" style={stylesAnimation.fadeInDown3s}>
-							Unlock to enjoy the view of Montana
-						</p>{" "} */}
+						<Button className={styles.carouselBlockButtonLeft}>Contact us</Button>
+						<Button className={styles.carouselBlockButtonRight}>About us</Button>
 					</div>
 				</div>
 			))}

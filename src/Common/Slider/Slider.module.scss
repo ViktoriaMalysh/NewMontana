@@ -6,19 +6,10 @@ $primary-color: #fafe28;
 $primary-color-hover: #ffdd00;
 
 :global(#app) {
-  // react-multiple-carousel__arrow 
-// .react-multi-carousel-list{
-//   .react-multiple-carousel__arrow--left{
-//     background-color: red;
-//   }
-// }
-
-
 	.divCarouselItem {
 		background-size: 100% 100vh;
-		height: 80vh;
+		height: 85vh;
 		width: 100%;
-
 		padding-top: 300px;
 		padding-bottom: 180px;
 		background-position: center center !important;
@@ -42,9 +33,9 @@ $primary-color-hover: #ffdd00;
 		}
 
 		.carouselBlock {
+      margin-top: -50px;
 			margin-left: 38.5vh;
 			margin-right: 90vh;
-			// background-color: red;
 			z-index: 3;
 
 			h6 {
@@ -74,6 +65,47 @@ $primary-color-hover: #ffdd00;
 				line-height: 30px;
 				font-weight: 400;
 				margin-bottom: 20px;
+			}
+
+			.carouselBlockButtonLeft,
+			.carouselBlockButtonRight {
+				font-size: 16px;
+				color: #ffffff;
+				padding: 15px 25px;
+				line-height: 1;
+				transition: all 0.5s;
+				text-transform: capitalize;
+				position: relative;
+				border-radius: 8px;
+				text-align: center;
+				overflow: hidden;
+				z-index: 1;
+				box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+				font-family: "Roboto", sans-serif;
+				font-style: normal;
+				font-size: 16px;
+				font-weight: 400;
+			}
+
+			.carouselBlockButtonLeft {
+				background-color: #fca702;
+				border: 2px solid transparent;
+				margin-right: 30px;
+
+				&:hover {
+					color: #fff;
+					background: #061847;
+				}
+			}
+
+			.carouselBlockButtonRight {
+				background-color: transparent;
+				border: 2px solid #fca702;
+
+				&:hover {
+					color: #fff;
+					background: #061847;
+				}
 			}
 		}
 	}
