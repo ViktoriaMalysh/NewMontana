@@ -1,3 +1,7 @@
+import imgSlider1 from "../assets/slider-1.jpg";
+import imgSlider2 from "../assets/slider-2.jpg";
+import imgSlider3 from "../assets/slider-3.jpg";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -37,4 +41,40 @@ export const itemsHeader = [
 	{ id: "about", item: "About", path: "/about" },
 	{ id: "blog", item: "Blog", path: "/blog" },
 	{ id: "contact", item: "Contact", path: "/contact" },
+];
+
+export const responsive = {
+	superLargeDesktop: {
+		breakpoint: { max: 4000, min: 3000 },
+		items: 1,
+	},
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 1,
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 476 },
+		items: 1,
+	},
+	mobile: {
+		breakpoint: { max: 476, min: 0 },
+		items: 1,
+	},
+};
+
+export const images = [
+	{ id: 1, src: imgSlider1 },
+	{ id: 2, src: imgSlider2 },
+	{ id: 3, src: imgSlider3 },
+];
+
+export const lang = [
+	{ key: "eng", text: "eng" },
+	{ key: "rus", text: "rus" },
+	{ key: "ukr", text: "ukr" },
+];
+export const currency = [
+	{ key: "usd", text: "usd" },
+	{ key: "eur", text: "eur" },
+	{ key: "uan", text: "uan" },
 ];
