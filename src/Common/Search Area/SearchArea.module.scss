@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #ffdd00;
+
+:global(#app) {
+	.searchAreaSegment {
+		margin-top: -70px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1161px;
+		height: 154px;
+		background: #fff;
+		border-radius: 10px;
+		padding: 40px 30px;
+		box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+		border: none;
+
+		.searchAreaInput {
+			font-family: "Roboto", sans-serif;
+			padding: 10px 10px 10px 35px;
+			border-radius: 8px;
+			color: #6c7592;
+			box-shadow: none;
+			background-color: #fff;
+			border: 1px solid #6c7592;
+			font-weight: 400;
+			width: 257px;
+			height: 46px;
+
+      label{
+        color: #6c7592;
+
+      }
+
+			&::placeholder {
+				font-family: "Roboto", sans-serif;
+				color: #6c7592;
+				font-size: 16px;
+			}
+		}
+	}
+
+	.react-datepicker-wrapper {
+		background-color: red;
+	}
+}
