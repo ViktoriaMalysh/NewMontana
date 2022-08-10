@@ -73,6 +73,7 @@ export const lang = [
 	{ key: "rus", text: "rus" },
 	{ key: "ukr", text: "ukr" },
 ];
+
 export const currency = [
 	{ key: "usd", text: "usd" },
 	{ key: "eur", text: "eur" },
@@ -89,5 +90,23 @@ export const calendarItems = [
 		key: "check-out",
 		label: "Check Out",
 		placeholder: "check-out",
+	},
+];
+
+export const homeBlok1Items = [
+	{
+		icon: "users",
+		title: "5000+ Our Local Guides",
+		text: "Lorem ipsum dolor sit amet, contur selisica do mod tempor incidunt ut labet aliqua at quis sit ipsum suspensse dolor.",
+	},
+	{
+		icon: "check circle outline",
+		title: "100% Trusted Agency",
+		text: "Lorem ipsum dolor sit amet, contur selisica do mod tempor incidunt ut labet aliqua at quis sit ipsum suspensse dolor.",
+	},
+	{
+		icon: "heart",
+		title: "28+ Years of Experience",
+		text: "Lorem ipsum dolor sit amet, contur selisica do mod tempor incidunt ut labet aliqua at quis sit ipsum suspensse dolor.",
 	},
 ];
