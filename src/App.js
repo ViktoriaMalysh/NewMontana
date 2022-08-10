@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
-import Login from "./Pages/Login/Login";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+// import Login from "./Pages/Login";
 import { routes } from "./Common/Routes";
 import Layout from "./Common/Layout";
 import "./App.css";
@@ -14,7 +14,7 @@ const App = () => {
 			<Layout>
 				<Routes>
 					{routes.map((route, index) => (
-						<Route path={route.path} key={index} />
+						<Route path={route.path} element={route.component} key={index} />
 					))}
 				</Routes>
 			</Layout>

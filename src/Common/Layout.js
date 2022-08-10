@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 const Layout = ({ children }) => {
 	const location = useLocation();
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 	}, [location]);
 
 	const mainStyle = {
-		background: "#e5e5e5",
+		// background: "#e5e5e5",
 	};
 
 	const loginStyle = {
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 	return (
 		<div>
 			<div style={{ background: "#fff" }}>
-				{currentPath !== "/login" && <Header />}
+				{currentPath !== "/login" && currentPath !== "/register" && <Header />}
 			</div>
 			<div style={currentPath !== "/login" ? mainStyle : loginStyle}>
 				{children}
