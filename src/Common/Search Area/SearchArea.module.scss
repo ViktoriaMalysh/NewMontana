@@ -19,23 +19,27 @@ $primary-color-hover: #ffdd00;
 		border: none;
 
 		.searchAreaGroup {
-			background-color: red;
-
-			.searchAreaButton{
+			.searchAreaButton {
 				width: 163px;
 				height: 46px;
 				border: none;
-				background: #FCA702;
+				background: #fca702;
 				color: #fff;
 				border-radius: 8px;
 				padding: 9px 0;
-				transition: all .5s ease-in-out;
+				transition: all 0.5s ease-in-out;
 				font-weight: 500;
 				font-family: "Roboto", sans-serif;
 				font-style: normal;
 				font-size: 16px;
 				text-transform: capitalize;
 				margin-top: 33px;
+
+				&:hover {
+					color: #fff;
+					background: #061847;
+					border: 2px solid transparent;
+				}
 			}
 
 			div {
@@ -51,6 +55,21 @@ $primary-color-hover: #ffdd00;
 					width: 163px;
 					height: 46px;
 					margin-top: 4px;
+
+					&::placeholder {
+						font-family: "Roboto", sans-serif;
+						color: #6c7592;
+						font-size: 16px;
+					}
+				}
+				.searchAreaIconCalendar {
+					color: #6c7592;
+					font-size: 18px;
+					margin-left: 7px;
+					margin-top: 9px;
+					position: absolute;
+					z-index: 1;
+					float: left;
 				}
 			}
 
@@ -79,6 +98,7 @@ $primary-color-hover: #ffdd00;
 				font-weight: 400;
 				width: 257px;
 				height: 46px;
+				margin-right: 8px;
 
 				&::placeholder {
 					font-family: "Roboto", sans-serif;
@@ -95,6 +115,24 @@ $primary-color-hover: #ffdd00;
 				position: absolute;
 				z-index: 1;
 				float: left;
+			}
+
+			.searchAreaSelect {
+				width: 257px;
+				height: 45px;
+				line-height: 20px;
+				border-radius: 8px;
+				border-color: #6c7592;
+				padding-left: 35px;
+				font-size: 1rem;
+				font-weight: 400;
+				color: #6c7592;
+				background-color: #fff;
+				float: left;
+				padding-right: 30px;
+				text-align: left !important;
+				transition: all 0.2s ease-in-out;
+				margin-right: 10px;
 			}
 		}
 	}

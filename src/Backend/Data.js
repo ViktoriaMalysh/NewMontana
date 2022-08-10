@@ -78,3 +78,16 @@ export const currency = [
 	{ key: "eur", text: "eur" },
 	{ key: "uan", text: "uan" },
 ];
+
+export const calendarItems = [
+	{
+		key: "check-in",
+		label: "Check In",
+		placeholder: "check-in",
+	},
+	{
+		key: "check-out",
+		label: "Check Out",
+		placeholder: "check-out",
+	},
+];

@@ -1,28 +1,40 @@
 import { Segment, Form, Icon, Input, Select, Button } from "semantic-ui-react";
 import styles from "./SearchArea.module.scss";
 import { useState } from "react";
-import "react-calendar/dist/Calendar.css";
-import Calendar from "react-calendar";
-import "./Calendar.scss";
+import CalendarContainer from "../Calendar/Calendar";
+import "../Calendar/Calendar.scss";
+import { calendarItems } from "../../Backend/Data";
 
 const SearchArea = () => {
-	const [startDate, setStartDate] = useState(new Date());
 	const [openCalendar, setOpenCalendar] = useState([
-		{ key: "check-in", open: false },
-		{ key: "check-out", open: false },
+		{ key: "check-in", open: false, date: new Date() },
+		{ key: "check-out", open: false, date: new Date() },
 	]);
+
+
 
 	const handleClose = (key) => {
 		setOpenCalendar(
 			openCalendar.map((item) => {
-				if (item.key === key) item.open = true;
+				if (item.key === key) {
+					item.open = !item.open;
+				}
 				return item;
 			})
 		);
 	};
 
-	const formatShortWeekday = (locale, date) =>
-		["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"][date.getDay()];
+	const handleSetDate = (key, date) => {
+		console.log(date);
+		setOpenCalendar(
+			openCalendar.map((item) => {
+				if (item.key === key) {
+					item.date = date;
+				}
+				return item;
+			})
+		);
+	};
 
 	return (
 		<Segment className={styles.searchAreaSegment}>
@@ -42,69 +54,50 @@ const SearchArea = () => {
 							/>
 						</div>
 					</Form.Field>
-					<Form.Field>
-						<div>
-							<label>Check In</label>
-							{openCalendar && (
-								<div className={styles.searchAreaCalendar}>
-									<Calendar
-										formatShortWeekday={formatShortWeekday}
-										next2Label={<Icon name="angle double right" />}
-										prev2Label={<Icon name="angle double left" />}
-										calendarType="US"
-										name="check-in"
-										showNeighboringMonth={false}
-										// locale="uk"
-										onClickDay={(value, event) => {
-											handleClose('check-in');
-										}}
+					{calendarItems.map((item) => (
+						<Form.Field>
+							<div>
+								<label>{item.label}</label>
+								{openCalendar.map(
+									(block) =>
+										block.key === item.key &&
+										block.open &&
+										(console.log(block.key === item.key && block.open),
+										(
+											<CalendarContainer
+												onClickDay={(value, event) => {
+													handleSetDate(item.key, value);
+													handleClose(item.key);
+												}}
+												calendarType="US"
+												// locale="uk"
+											/>
+										))
+								)}
+
+								<div>
+									<Icon
+										name="map marker alternate"
+										className={styles.searchAreaIconCalendar}
+									/>
+									<input
+										onClick={() => handleClose(item.key)}
+										className={styles.searchAreaInputCalendar}
+										placeholder={item.placeholder}
 									/>
 								</div>
-							)}
-
-							<input
-								onClick={() => setOpenCalendar(true)}
-								className={styles.searchAreaInputCalendar}
-							/>
-						</div>
-					</Form.Field>
+							</div>
+						</Form.Field>
+					))}
 					<Form.Field>
-						<div>
-							<label>Check Out</label>
-							{openCalendar && (
-								<div className={styles.searchAreaCalendar}>
-									<Calendar
-										formatShortWeekday={formatShortWeekday}
-										next2Label={<Icon name="angle double right" />}
-										prev2Label={<Icon name="angle double left" />}
-										calendarType="US"
-										// name="check-out"
-										showNeighboringMonth={false}
-										// locale="uk"
-										onClickDay={(value, event) => {
-											handleClose(event.target.name);
-										}}
-									/>
-								</div>
-							)}
-
-							<input
-								onClick={() => setOpenCalendar(true)}
-								className={styles.searchAreaInputCalendar}
-							/>
-						</div>
-					</Form.Field>
-					<Form.Field>
-						<Form.Select
-							fluid
+						<label>Travel Type</label>
+						<Icon name="globe" className={styles.searchAreaIcon} />
+						<Select
 							label="Travel Type"
-							// icon="globe"
-							// iconPosition="left"
 							// options={options}
 							placeholder="Travel Type"
-						>
-							<Icon name="globe" />
-						</Form.Select>
+							className={styles.searchAreaSelect}
+						/>
 					</Form.Field>
 
 					<Form.Field>
