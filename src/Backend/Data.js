@@ -110,3 +110,24 @@ export const homeBlok1Items = [
 		text: "Lorem ipsum dolor sit amet, contur selisica do mod tempor incidunt ut labet aliqua at quis sit ipsum suspensse dolor.",
 	},
 ];
+
+export const homeAbout = [
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/about/1.jpg",
+		label: "ABOUT US",
+		title: "WORLD BEST TRAVEL AGENCY COMPANY FOR YOU",
+		text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don`t look even.",
+		items: [
+			{
+				text: "Take a look at our round up of the best shows",
+			},
+			{
+				text: "It has survived not only five centuries",
+			},
+			{
+				text: "Lorem Ipsum has been the ndustry standard dummy text",
+			},
+		],
+		buttonName: "Discover More",
+	},
+];

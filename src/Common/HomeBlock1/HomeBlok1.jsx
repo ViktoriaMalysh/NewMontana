@@ -18,7 +18,7 @@ const HomeBlock1 = () => {
 						</Segment>
 					</Grid.Column>
 				))}
-			</Grid.Row>{" "}
+			</Grid.Row>
 		</Grid>
 	);
 };
