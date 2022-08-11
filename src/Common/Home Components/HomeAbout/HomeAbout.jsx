@@ -9,10 +9,10 @@ const HomeAbout = () => {
 				<>
 					<div className={styles.homeAboutDivLeft}>
 						<img src={item.imgUrl} className={styles.homeAboutImg} />
-            <div>
-              <h5>25+</h5>
-              <span>Years Of Experience</span>
-            </div>
+						<div>
+							<h5>25+</h5>
+							<span>Years Of Experience</span>
+						</div>
 					</div>
 					<div className={styles.homeAboutDivRight}>
 						<span className={styles.homeAboutSpan}>{item.label}</span>

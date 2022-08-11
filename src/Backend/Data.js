@@ -131,3 +131,42 @@ export const homeAbout = [
 		buttonName: "Discover More",
 	},
 ];
+
+export const destinations = [
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/1.jpg",
+		country: "New York",
+		price: "1500",
+		width: 8,
+	},
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/2.jpg",
+		country: "Paris",
+		price: "1500",
+		width: 4,
+	},
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/3.jpg",
+		country: "London",
+		price: "1500",
+		width: 4,
+	},
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/4.jpg",
+		country: "Grand Cayon",
+		price: "1500",
+		width: 4,
+	},
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/5.jpg",
+		country: "Sydney",
+		price: "1500",
+		width: 4,
+	},
+	{
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/6.jpg",
+		country: "Glacier Park",
+		price: "1500",
+		width: 8,
+	},
+];

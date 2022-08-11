@@ -1,3 +1,4 @@
+import Destinations from "../../Common/Home Components/HomeAbout/Destinations/Destinations";
 import HomeAbout from "../../Common/Home Components/HomeAbout/HomeAbout";
 import HomeBlock1 from "../../Common/HomeBlock1/HomeBlok1";
 import SearchArea from "../../Common/Search Area/SearchArea";
@@ -12,6 +13,8 @@ const Home = () => {
 			<HomeBlock1 />
 
 			<HomeAbout />
+
+			<Destinations/>
 
 			<h1>fbfgbgb</h1>
 

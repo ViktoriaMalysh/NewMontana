@@ -26,14 +26,14 @@ $primary-color-hover: #ffdd00;
 				position: absolute;
 				margin-top: -150px;
 				margin-left: 20px;
-				z-index: 500;
+				z-index: 100;
 				background: #fca702;
-				padding: 20px;
+				// padding: 20px;
 				border-radius: 15px;
 				text-align: center;
 				width: 194px;
 				height: 122px;
-        padding-top: 23px;
+				padding-top: 23px;
 
 				h5 {
 					color: #fff;
@@ -46,18 +46,16 @@ $primary-color-hover: #ffdd00;
 				span {
 					font-weight: 600;
 					color: #051242;
-					text-align: center;
-          line-height: 0.5;
+					line-height: 0.5;
+					text-transform: none;
 				}
 			}
 		}
 
 		.homeAboutDivRight {
-			// float: right;
 			position: relative;
 			display: block;
 			padding: 10px 30px;
-			// background-color: red;
 
 			span {
 				text-transform: uppercase;
