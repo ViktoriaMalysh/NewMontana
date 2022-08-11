@@ -2,6 +2,10 @@ import imgSlider1 from "../assets/slider-1.jpg";
 import imgSlider2 from "../assets/slider-2.jpg";
 import imgSlider3 from "../assets/slider-3.jpg";
 
+import imgTopTour1 from "../assets/top-tour-1.jpg";
+import imgTopTour2 from "../assets/top-tour-2.jpg";
+import imgTopTour3 from "../assets/top-tour-3.jpg";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -168,5 +172,41 @@ export const destinations = [
 		country: "Glacier Park",
 		price: "1500",
 		width: 8,
+	},
+];
+
+export const topTour = [
+	{
+		imgUrl: imgTopTour1,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
 	},
 ];

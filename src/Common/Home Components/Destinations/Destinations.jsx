@@ -1,5 +1,5 @@
 import { Button, Grid, Icon, Image } from "semantic-ui-react";
-import { destinations } from "../../../../Backend/Data";
+import { destinations } from "../../../Backend/Data";
 import styles from "./Destinations.module.scss";
 
 const Destinations = () => {
