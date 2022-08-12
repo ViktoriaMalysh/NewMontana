@@ -1,3 +1,4 @@
+import Counter from "../../Common/Counter/Counter";
 import Destinations from "../../Common/Home Components/Destinations/Destinations";
 import HomeAbout from "../../Common/Home Components/HomeAbout/HomeAbout";
 import TopTour from "../../Common/Home Components/Top Tour/TopTour";
@@ -18,6 +19,8 @@ const Home = () => {
 			<Destinations/>
 
 			<TopTour/>
+
+			<Counter/>
 
 			<h1>fbfgbgb</h1>
 

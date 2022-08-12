@@ -210,3 +210,26 @@ export const topTour = [
 		country: "Paris",
 	},
 ];
+
+export const counterItems = [
+	{
+		icon: "users",
+		count: 30,
+		title: "Tour Guides",
+	},
+	{
+		icon: "",
+		count: 600,
+		title: "Tour Completed",
+	},
+	{
+		icon: "heart outline",
+		count: 25,
+		title: "Travel Experience",
+	},
+	{
+		icon: "",
+		count: 50,
+		title: "Win Awards",
+	},
+];
