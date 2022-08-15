@@ -5,6 +5,7 @@ import IntroVideo from "../../Common/Home Components/Intro Video/IntroVideo";
 import TopTour from "../../Common/Home Components/Top Tour/TopTour";
 import TourGuides from "../../Common/Home Components/Tour Guides/TourGuides";
 import HomeBlock1 from "../../Common/HomeBlock1/HomeBlok1";
+import HomeBlock2 from "../../Common/HomeBlock2/HomeBlock2";
 import SearchArea from "../../Common/Search Area/SearchArea";
 import Slider from "../../Common/Slider/Slider";
 
@@ -27,6 +28,8 @@ const Home = () => {
 			<IntroVideo />
 
 			<TourGuides />
+
+			<HomeBlock2 />
 
 			<h1>fbfgbgb</h1>
 
