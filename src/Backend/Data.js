@@ -6,6 +6,11 @@ import imgTopTour1 from "../assets/top-tour-1.jpg";
 import imgTopTour2 from "../assets/top-tour-2.jpg";
 import imgTopTour3 from "../assets/top-tour-3.jpg";
 
+import teamImg1 from "../assets/team-1.jpg";
+import teamImg2 from "../assets/team-2.jpg";
+import teamImg3 from "../assets/team-3.jpg";
+import teamImg4 from "../assets/team-4.jpg";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -231,5 +236,24 @@ export const counterItems = [
 		icon: "",
 		count: 50,
 		title: "Win Awards",
+	},
+];
+
+export const tourGuides = [
+	{
+		avatar: teamImg1,
+		name: "Malissa Fierro",
+	},
+	{
+		avatar: teamImg2,
+		name: "Florence Long",
+	},
+	{
+		avatar: teamImg3,
+		name: "Melvin Castillo",
+	},
+	{
+		avatar: teamImg4,
+		name: "John Welsh",
 	},
 ];
