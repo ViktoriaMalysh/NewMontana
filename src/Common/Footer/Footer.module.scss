@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #ffdd00;
+
+:global(#app) {
+  .footer {
+    height: 526px;
+    margin-top: 100px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+
+    background-color: #071c55;
+    background-image: url("../../assets/footer-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    .footerRow {
+      margin-left: 41.5vh;
+      margin-right: 41vh;
+
+      .footerColumn {
+        border: 1px solid red;
+
+        img {
+          padding-bottom: 25px;
+        }
+
+        p {
+          color: #fff;
+          padding-right: 18px;
+          margin-bottom: 20px;
+          font-family: "Roboto", sans-serif;
+          font-style: normal;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.8;
+        }
+
+        h4 {
+          color: #fff;
+          position: relative;
+          padding-bottom: 20px;
+          margin-bottom: 30px;
+          z-index: 1;
+          font-size: 24px;
+          margin: 0px;
+          font-weight: 600;
+          font-family: "Poppins", sans-serif;
+          line-height: 1.2;
+        }
+
+        ul{
+          li{
+            list-style: none;
+            text-decoration: none;
+            color: #fff;
+            transition: all .5s ease-in-out;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+          }
+        }
+
+        .footerDivIcon {
+          display: inline-block;
+          margin-top: 15px;
+
+          .footerIcon {
+            height: 40px;
+            width: 40px;
+            line-height: 35px;
+            text-align: center;
+            border: 2px solid #fca702;
+            color: #fff;
+            border-radius: 50%;
+            transition: all 0.5s ease-in-out;
+            margin-right: 15px;
+
+            &:hover {
+              background: #fca702;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

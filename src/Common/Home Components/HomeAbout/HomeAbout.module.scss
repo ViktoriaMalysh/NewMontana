@@ -8,8 +8,8 @@ $primary-color-hover: #ffdd00;
 :global(#app) {
 	.homeAboutDiv {
 		margin-top: 110px;
-		margin-left: 39.5vh;
-		margin-right: 39.5vh;
+		margin-left: 40.5vh;
+		margin-right: 39vh;
 
 		.homeAboutDivLeft {
 			float: left;
@@ -28,7 +28,6 @@ $primary-color-hover: #ffdd00;
 				margin-left: 20px;
 				z-index: 100;
 				background: #fca702;
-				// padding: 20px;
 				border-radius: 15px;
 				text-align: center;
 				width: 194px;
