@@ -16,6 +16,12 @@ import avatar2 from "../assets/avatar2.jpg";
 import avatar3 from "../assets/avatar3.jpg";
 import avatar4 from "../assets/avatar4.jpg";
 
+import logo1 from "../assets/logo1.png";
+import logo2 from "../assets/logo2.png";
+import logo3 from "../assets/logo3.png";
+import logo4 from "../assets/logo4.png";
+import logo5 from "../assets/logo5.png";
+import logo6 from "../assets/logo6.png";
 
 export const termsOfService = [
 	{
@@ -315,5 +321,26 @@ export const testimonials = [
 		comment:
 			"There are many variations of passages available but the majority have suffered alteration in some form.",
 		rate: 4,
+	},
+];
+
+export const partners = [
+	{
+		logo: logo1,
+	},
+	{
+		logo: logo2,
+	},
+	{
+		logo: logo3,
+	},
+	{
+		logo: logo4,
+	},
+	{
+		logo: logo5,
+	},
+	{
+		logo: logo6,
 	},
 ];

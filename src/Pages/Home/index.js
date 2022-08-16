@@ -2,6 +2,7 @@ import Counter from "../../Common/Home Components/Counter/Counter";
 import Destinations from "../../Common/Home Components/Destinations/Destinations";
 import HomeAbout from "../../Common/Home Components/HomeAbout/HomeAbout";
 import IntroVideo from "../../Common/Home Components/Intro Video/IntroVideo";
+import Partners from "../../Common/Home Components/Partners/Partners";
 import Testimonials from "../../Common/Home Components/Testimonials/Testimonials";
 import TopTour from "../../Common/Home Components/Top Tour/TopTour";
 import TourGuides from "../../Common/Home Components/Tour Guides/TourGuides";
@@ -33,6 +34,8 @@ const Home = () => {
 			<HomeBlock2 />
 
 			<Testimonials />
+
+			<Partners />
 
 			<h1>fbfgbgb</h1>
 
