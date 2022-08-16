@@ -11,6 +11,12 @@ import teamImg2 from "../assets/team-2.jpg";
 import teamImg3 from "../assets/team-3.jpg";
 import teamImg4 from "../assets/team-4.jpg";
 
+import avatar1 from "../assets/avatar1.jpg";
+import avatar2 from "../assets/avatar2.jpg";
+import avatar3 from "../assets/avatar3.jpg";
+import avatar4 from "../assets/avatar4.jpg";
+
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -68,6 +74,25 @@ export const responsive = {
 	mobile: {
 		breakpoint: { max: 476, min: 0 },
 		items: 1,
+	},
+};
+
+export const responsiveTestimonials = {
+	superLargeDesktop: {
+		breakpoint: { max: 4000, min: 3000 },
+		items: 3,
+	},
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 3,
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 476 },
+		items: 3,
+	},
+	mobile: {
+		breakpoint: { max: 476, min: 0 },
+		items: 3,
 	},
 };
 
@@ -255,5 +280,40 @@ export const tourGuides = [
 	{
 		avatar: teamImg4,
 		name: "John Welsh",
+	},
+];
+
+export const testimonials = [
+	{
+		name: "Sylvia H Green",
+		status: "Traveller",
+		avatar: avatar1,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 5,
+	},
+	{
+		name: "Gordon D Novak",
+		status: "Traveller",
+		avatar: avatar2,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 4,
+	},
+	{
+		name: "Reid E Butt",
+		status: "Traveller",
+		avatar: avatar3,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 5,
+	},
+	{
+		name: "Parker Jimenez",
+		status: "Traveller",
+		avatar: avatar4,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 4,
 	},
 ];
