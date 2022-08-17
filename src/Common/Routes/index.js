@@ -4,6 +4,7 @@ import Register from "../../Pages/Register";
 import TermsOfService from "../../Pages/Terms Of Service/TermsOfService";
 import Destinations from "../../Pages/Destinations/Destinations";
 import DestinationsPage from "../../Pages/Destinations/Destinations";
+import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingle";
 
 export const links = [
   {
@@ -64,12 +65,16 @@ export const routes = [
   {
     path: "/contact",
     // component: <Contact />,
-	},
+  },
 
-	{
+  {
     path: "/destinations",
     component: <DestinationsPage />,
-	},
+  },
+  {
+    path: "/destinations/1",
+    component: <DestinationsSingle />,
+  },
   {
     path: "/",
     component: <Home />,

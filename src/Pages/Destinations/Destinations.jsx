@@ -1,4 +1,3 @@
-import { Image } from "semantic-ui-react";
 import DestinationsComponent from "../../Common/DestinationsComponent/DestinationsComponent";
 import styles from "./Destinations.module.scss";
 import Footer from "../../Common/Footer/Footer";
@@ -8,9 +7,8 @@ const DestinationsPage = () => {
   return (
     <div>
       <Breadcrumb
-        titleB={"destinations"}
-        refB={"/destinations"}
-        linkB={"destinations"}
+        title={"destinations"}
+        link={"destinations"}
       />
       <div className={styles.destPage}>
         <DestinationsComponent />
