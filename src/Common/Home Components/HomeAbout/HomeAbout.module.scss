@@ -14,15 +14,30 @@ $primary-color-hover: #ffdd00;
 		.homeAboutDivLeft {
 			float: left;
 
-			.homeAboutImg {
+			.homeAboutDivImg {
+				border-radius: 15px;
+				overflow: hidden;
+				position: relative;
+				transition: all 0.5s;
 				width: 498.5px;
 				height: 498.5px;
-				transition: all 0.3s ease-out 0s;
-				border-radius: 15px;
 				margin-inline-end: 90px;
+
+				img {
+					width: 498.5px;
+					height: 498.5px;
+					border-radius: 15px;
+					position: relative;
+					transition: all 0.5s;
+					z-index: 100;
+
+					&:hover {
+						transform: scale(1.1);
+					}
+				}
 			}
 
-			div {
+			.homeAboutDivBlock {
 				position: absolute;
 				margin-top: -150px;
 				margin-left: 20px;

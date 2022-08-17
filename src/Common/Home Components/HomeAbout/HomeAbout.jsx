@@ -8,8 +8,10 @@ const HomeAbout = () => {
 			{homeAbout.map((item) => (
 				<>
 					<div className={styles.homeAboutDivLeft}>
-						<img src={item.imgUrl} className={styles.homeAboutImg} />
-						<div>
+						<div className={styles.homeAboutDivImg}>
+							<img src={item.imgUrl} />
+						</div>
+						<div className={styles.homeAboutDivBlock}>
 							<h5>25+</h5>
 							<span>Years Of Experience</span>
 						</div>

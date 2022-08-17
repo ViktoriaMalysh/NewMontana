@@ -38,6 +38,7 @@ const Testimonials = () => {
 					<Segment raised className={styles.testimonialsItem}>
 						<Icon name="quote right" className={styles.testimonialsItemIcon} />
 						<Rating
+							disabled
 							icon="star"
 							defaultRating={item.rate}
 							maxRating={5}

@@ -23,6 +23,12 @@ import logo4 from "../assets/logo4.png";
 import logo5 from "../assets/logo5.png";
 import logo6 from "../assets/logo6.png";
 
+import blog1 from "../assets/blog1.jpg";
+import blog2 from "../assets/blog2.jpg";
+import blog3 from "../assets/blog3.jpg";
+
+import dayjs from "dayjs";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -342,5 +348,26 @@ export const partners = [
 	},
 	{
 		logo: logo6,
+	},
+];
+
+export const ourBlog = [
+	{
+		imgUrl: blog1,
+		user: "Nancy Castdo",
+		date: "2018, 8, 18",
+		title: "There Are Many Variations Of Passages Available",
+	},
+	{
+		imgUrl: blog2,
+		user: "Nancy Castdo",
+		date: "2018, 8, 18",
+		title: "There Are Many Variations Of Passages Available",
+	},
+	{
+		imgUrl: blog3,
+		user: "Nancy Castdo",
+		date: "2018, 8, 18",
+		title: "There Are Many Variations Of Passages Available",
 	},
 ];

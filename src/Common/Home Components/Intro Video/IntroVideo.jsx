@@ -17,9 +17,11 @@ const IntroVideo = () => {
 			</p>
 			<div>
 				<Image src={seaImg} />
-				<Button onClick={() => setOpen(true)}>
-					<Icon name="play" className={styles.introVideoIcon} />
-				</Button>
+				<div className={styles.introVideoDivButton}>
+					<Button onClick={() => setOpen(true)}>
+						<Icon name="play" className={styles.introVideoIcon} />
+					</Button>
+				</div>
 			</div>
 
 			<Modal open={open} onClose={() => setOpen(false)}>
@@ -27,6 +29,7 @@ const IntroVideo = () => {
 					url="https://www.youtube.com/watch?v=LdsTydS4eww"
 					width
 					height="500px"
+					playing={true}
 				/>
 			</Modal>
 		</div>

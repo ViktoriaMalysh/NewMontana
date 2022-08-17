@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import "~video-react/styles/scss/video-react";
 
 /* COLORS */
 $primary-color: #fafe28;
@@ -21,6 +20,21 @@ $primary-color-hover: #ffdd00;
 			margin: 11.5px;
 			display: inline-flex;
 			align-items: center;
+
+			.partnersDivImg {
+				border-radius: 15px;
+				position: relative;
+				transition: all 0.5s;
+
+				img {
+					position: relative;
+					transition: all 0.5s;
+
+					&:hover {
+						transform: scale(1.1);
+					}
+				}
+			}
 		}
 	}
 }

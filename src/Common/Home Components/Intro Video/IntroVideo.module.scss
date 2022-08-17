@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import "~video-react/styles/scss/video-react";
 
 /* COLORS */
 $primary-color: #fafe28;
@@ -22,33 +21,38 @@ $primary-color-hover: #ffdd00;
 			border-radius: 5px;
 			z-index: 100;
 
-			button {
-				display: inline-block;
-				padding: 0;
-				height: 75px;
-				width: 75px;
-				text-align: center;
-				background: #fff;
-				position: absolute;
-				border-radius: 50%;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				z-index: 100;
+			.introVideoDivButton{
+				z-index: 101;
 
-				.introVideoIcon {
+
+				button {
 					display: inline-block;
+					padding: 0;
 					height: 75px;
 					width: 75px;
-					font-size: 20px;
-					color: #fca702;
+					text-align: center;
+					background: #fff;
 					position: absolute;
-					top: 40%;
-					left: 8%;
-					transition: all 0.5s ease-in-out;
-
-					&:hover {
-						color: #051242;
+					border-radius: 50%;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					z-index: 100;
+	
+					.introVideoIcon {
+						display: inline-block;
+						height: 75px;
+						width: 75px;
+						font-size: 20px;
+						color: #fca702;
+						position: absolute;
+						top: 40%;
+						left: 8%;
+						transition: all 0.5s ease-in-out;
+	
+						&:hover {
+							color: #051242;
+						}
 					}
 				}
 			}

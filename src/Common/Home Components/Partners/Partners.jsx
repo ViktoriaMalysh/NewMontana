@@ -9,7 +9,9 @@ const Partners = () => {
 				<Grid.Row columns={6}>
 					{partners.map((partner) => (
 						<Grid.Column className={styles.partnersColumn}>
-							<Image src={partner.logo} />
+							<div className={styles.partnersDivImg}>
+								<Image src={partner.logo} />
+							</div>
 						</Grid.Column>
 					))}
 				</Grid.Row>
