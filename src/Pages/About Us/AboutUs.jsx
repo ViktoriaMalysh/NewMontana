@@ -1,4 +1,3 @@
-import styles from "./AboutUs.module.scss";
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
 import HomeAbout from "../../Common/Home Components/HomeAbout/HomeAbout";
@@ -10,12 +9,10 @@ const AboutUsPage = () => {
 	return (
 		<>
 			<Breadcrumb title="About us" link="about us" />
-
-      <HomeAbout />
-      <Testimonials/>
-      <Counter/>
-      <TourGuides title="team" text="meet our team" />
-
+			<HomeAbout />
+			<Testimonials />
+			<Counter />
+			<TourGuides title="team" text="meet our team" />
 			<Footer />
 		</>
 	);

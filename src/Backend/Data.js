@@ -27,8 +27,6 @@ import blog1 from "../assets/blog1.jpg";
 import blog2 from "../assets/blog2.jpg";
 import blog3 from "../assets/blog3.jpg";
 
-import dayjs from "dayjs";
-
 export const termsOfService = [
 	{
 		id: 1,
