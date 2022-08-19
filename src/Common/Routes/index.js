@@ -5,6 +5,7 @@ import TermsOfService from "../../Pages/Terms Of Service/TermsOfService";
 import Destinations from "../../Pages/Destinations/Destinations";
 import DestinationsPage from "../../Pages/Destinations/Destinations";
 import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingle";
+import AboutUsPage from "../../Pages/About Us/AboutUs";
 
 export const links = [
   {
@@ -74,6 +75,10 @@ export const routes = [
   {
     path: "/destinations/1",
     component: <DestinationsSingle />,
+  },
+  {
+    path: "/about-us",
+    component: <AboutUsPage />,
   },
   {
     path: "/",

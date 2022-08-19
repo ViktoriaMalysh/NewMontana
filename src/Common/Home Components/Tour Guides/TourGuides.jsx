@@ -3,11 +3,11 @@ import styles from "./TourGuides.module.scss";
 import { Link } from "react-router-dom";
 import { tourGuides } from "../../../Backend/Data";
 
-const TourGuides = () => {
+const TourGuides = ({title, text}) => {
 	return (
 		<div className={styles.tourGuidesDiv}>
-			<span className={styles.tourGuidesSpanTitle}>Tour guides</span>
-			<h2>Meet our tour guides</h2>
+			<span className={styles.tourGuidesSpanTitle}>{title}</span>
+			<h2>{text}</h2>
 			<p>
 				It is a long established fact that a reader will be distracted by the
 				readable content of a page when looking at its layout.

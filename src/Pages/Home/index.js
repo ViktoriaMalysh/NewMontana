@@ -14,37 +14,36 @@ import SearchArea from "../../Common/Search Area/SearchArea";
 import Slider from "../../Common/Slider/Slider";
 
 const Home = () => {
-  return (
-    <div>
-      <Slider />
-      <SearchArea />
+	return (
+		<div>
+			<Slider />
+			<SearchArea />
 
-      <HomeBlock1 />
+			<HomeBlock1 />
 
-      <HomeAbout />
+			<HomeAbout />
 
-      <Destinations />
+			<Destinations />
 
-      <TopTour />
+			<TopTour />
 
-      <Counter />
+			<Counter />
 
-      <IntroVideo />
+			<IntroVideo />
 
-      <TourGuides />
+			<TourGuides title="Tour guides" text="Meet our tour guides" />
 
-      <HomeBlock2 />
+			<HomeBlock2 />
 
-      <Testimonials />
+			<Testimonials />
 
-      <Partners />
+			<Partners />
 
 			<OurBlog />
 
-
-      <Footer />
-    </div>
-  );
+			<Footer />
+		</div>
+	);
 };
 
 export default Home;
