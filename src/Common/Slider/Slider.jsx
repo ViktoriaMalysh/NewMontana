@@ -1,6 +1,5 @@
 import Carousel from "react-multi-carousel";
-import { styles as stylesAnimation } from "../../Helpers/Animation/styles";
-import { StyleRoot } from "radium";
+// import { styles as stylesAnimation } from "../../Helpers/Animation/styles";
 import styles from "./Slider.module.scss";
 import "react-multi-carousel/lib/styles.css";
 import { images, responsive } from "../../Backend/Data";
@@ -14,7 +13,7 @@ const Slider = () => {
 			draggable={true}
 			autoPlay={true}
 		>
-			{images.map((item) => (
+			{images.map((item) => (  
 				<div
 					className={styles.divCarouselItem}
 					style={{ backgroundImage: `url(${item.src})` }}
@@ -27,8 +26,12 @@ const Slider = () => {
 							have suffered alteration in some form by injected humour or
 							randomised words.
 						</p>
-						<Button className={styles.carouselBlockButtonLeft}>Contact us</Button>
-						<Button className={styles.carouselBlockButtonRight}>About us</Button>
+						<Button className={styles.carouselBlockButtonLeft}>
+							Contact us
+						</Button>
+						<Button className={styles.carouselBlockButtonRight}>
+							About us
+						</Button>
 					</div>
 				</div>
 			))}
