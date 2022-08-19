@@ -9,6 +9,9 @@ const CustomPagination = ({ handlePageClick, pageCount }) => {
 			className={styles.paginate}
       pageClassName={styles.pageClassName}
       nextClassName={styles.nextClassName}
+      previousClassName={styles.prevClassName}
+      activeClassName={styles.activeClassName}
+      activeLinkClassName={styles.activeLinkClassName}
 
 			breakLabel="..."
 			onPageChange={handlePageClick}
