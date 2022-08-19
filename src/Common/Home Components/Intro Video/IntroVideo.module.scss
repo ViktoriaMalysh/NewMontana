@@ -14,16 +14,15 @@ $primary-color-hover: #ffdd00;
 			width: 500px;
 			height: 300px;
 		}
-		div {
+		.introVideoDivBlock {
 			position: relative;
 			display: flex;
 			justify-content: center;
 			border-radius: 5px;
 			z-index: 100;
 
-			.introVideoDivButton{
+			.introVideoDivButton {
 				z-index: 101;
-
 
 				button {
 					display: inline-block;
@@ -38,7 +37,7 @@ $primary-color-hover: #ffdd00;
 					left: 50%;
 					transform: translate(-50%, -50%);
 					z-index: 100;
-	
+
 					.introVideoIcon {
 						display: inline-block;
 						height: 75px;
@@ -49,7 +48,7 @@ $primary-color-hover: #ffdd00;
 						top: 40%;
 						left: 8%;
 						transition: all 0.5s ease-in-out;
-	
+
 						&:hover {
 							color: #051242;
 						}

@@ -1,6 +1,8 @@
-import { Grid, Icon, Input } from "semantic-ui-react";
+import { Button, Divider, Grid, Icon, Input } from "semantic-ui-react";
 import styles from "./Footer.module.scss";
 import logoWhite from "../../assets/logo_white.png";
+import { itemsHeader } from "../../Backend/Data";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
@@ -8,7 +10,9 @@ const Footer = () => {
 			<Grid>
 				<Grid.Row columns={4} className={styles.footerRow}>
 					<Grid.Column className={styles.footerColumn}>
-						<img alt="logo" src={logoWhite} />
+						<Link to={"/"}>
+							<img alt="logo" src={logoWhite} />
+						</Link>
 						<p>
 							There are many variations of the passages available the majority
 							have suffered alteration in some form by injected humour.
@@ -33,11 +37,11 @@ const Footer = () => {
 					<Grid.Column className={styles.footerColumnContact}>
 						<h4>Contact Us</h4>
 						<ul>
-							<li>
+							<li className={styles.footerLiText}>
 								<Icon
 									name="map marker alternate"
 									className={styles.footerIcon}
-								/>{" "}
+								/>
 								15/B Road, New York, USA
 							</li>
 							<li>
@@ -48,7 +52,7 @@ const Footer = () => {
 								<Icon name="mail" className={styles.footerIcon} />
 								info@example.com
 							</li>
-							<li>
+							<li className={styles.footerLiText}>
 								<Icon name="clock" className={styles.footerIcon} />
 								Sun - Fri (10AM - 08PM)
 							</li>
@@ -57,7 +61,29 @@ const Footer = () => {
 					<Grid.Column className={styles.footerColumnContact}>
 						<h4>Newsletter</h4>
 						<p>Subscribe our newsletter to get latest update and news</p>
-            <Input className={styles.footerInput} placeholder="Your Email" />
+						<Input className={styles.footerInput} placeholder="Your Email" />
+						<Button className={styles.footerButton}>
+							<Icon name="paper plane outline" />
+							Subscribe now
+						</Button>
+					</Grid.Column>
+				</Grid.Row>
+				<Divider />
+				<Grid.Row className={styles.footerRowEnd}>
+					<Grid.Column floated="left">
+						{itemsHeader.map((item) => (
+							<Link to={item.path} className={styles.footerLink}>
+								{item.item}
+							</Link>
+						))}
+
+						<p className={styles.footerP}>
+							© Copyright 2022{" "}
+							<Link to={"/"} className={styles.footerLinkTravelox}>
+								Travelox
+							</Link>{" "}
+							All Rights Reserved.
+						</p>
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>
