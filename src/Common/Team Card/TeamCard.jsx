@@ -2,6 +2,7 @@ import { Grid, Icon, Image } from "semantic-ui-react";
 import styles from "./TeamCard.module.scss";
 import { Link } from "react-router-dom";
 
+
 const TeamCard = ({ guide }) => {
   console.log(guide)
 	return (

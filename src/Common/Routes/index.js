@@ -2,11 +2,11 @@ import Login from "../../Pages/Login";
 import Home from "../../Pages/Home";
 import Register from "../../Pages/Register";
 import TermsOfService from "../../Pages/Terms Of Service/TermsOfService";
-import Destinations from "../../Pages/Destinations/Destinations";
 import DestinationsPage from "../../Pages/Destinations/Destinations";
 import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingle";
 import AboutUsPage from "../../Pages/About Us/AboutUs";
 import Team from "../../Pages/Team/Team";
+import TestimonialsPage from "../../Pages/Testimonials Page/Testimonials";
 
 export const links = [
 	{
@@ -84,6 +84,10 @@ export const routes = [
 	{
 		path: "/team",
 		component: <Team />,
+	},
+  {
+		path: "/testimonials",
+		component: <TestimonialsPage />,
 	},
 	{
 		path: "/",

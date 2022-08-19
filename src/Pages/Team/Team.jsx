@@ -9,28 +9,22 @@ const Team = () => {
 	return (
 		<>
 			<Breadcrumb title="Team" link="team" />
-			<div className={styles.teamDiv}>
-				<Grid>
-					<Grid.Row columns={4}>
-						{tourGuides.map((guide) => (
-							<Grid.Column>
-								<TeamCard guide={guide} />
-							</Grid.Column>
-						))}
-					</Grid.Row>
-					<Grid.Row columns={4}>
-						{tourGuides.map((guide) => (
-							<Grid.Column>
-								<TeamCard guide={guide} />
-							</Grid.Column>
-						))}
-					</Grid.Row>
-				</Grid>
-
-				{/* {tourGuides.map((guide) => (
-					<TeamCard guide={guide} />
-				))} */}
-			</div>
+			<Grid className={styles.teamGrid}>
+				<Grid.Row columns={4}>
+					{tourGuides.map((guide) => (
+						<Grid.Column>
+							<TeamCard guide={guide} />
+						</Grid.Column>
+					))}
+				</Grid.Row>
+				<Grid.Row columns={4}>
+					{tourGuides.map((guide) => (
+						<Grid.Column>
+							<TeamCard guide={guide} />
+						</Grid.Column>
+					))}
+				</Grid.Row>
+			</Grid>
 			<Footer />
 		</>
 	);

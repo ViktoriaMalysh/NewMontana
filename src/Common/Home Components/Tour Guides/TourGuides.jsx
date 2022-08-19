@@ -1,6 +1,5 @@
-import { Grid, Icon, Image } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import styles from "./TourGuides.module.scss";
-import { Link } from "react-router-dom";
 import { tourGuides } from "../../../Backend/Data";
 import TeamCard from "../../Team Card/TeamCard";
 

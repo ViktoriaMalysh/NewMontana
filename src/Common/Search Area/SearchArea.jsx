@@ -1,4 +1,4 @@
-import { Segment, Form, Icon, Input, Select, Button } from "semantic-ui-react";
+import { Segment, Form, Icon, Select, Button } from "semantic-ui-react";
 import styles from "./SearchArea.module.scss";
 import { useState } from "react";
 import CalendarContainer from "../Calendar/Calendar";
@@ -10,8 +10,6 @@ const SearchArea = () => {
 		{ key: "check-in", open: false, date: new Date() },
 		{ key: "check-out", open: false, date: new Date() },
 	]);
-
-
 
 	const handleClose = (key) => {
 		setOpenCalendar(

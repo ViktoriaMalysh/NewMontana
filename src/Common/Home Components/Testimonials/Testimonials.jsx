@@ -1,8 +1,8 @@
-import { Icon, Image, Rating, Segment } from "semantic-ui-react";
 import { responsiveTestimonials, testimonials } from "../../../Backend/Data";
 import styles from "./Testimonials.module.scss";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import TestimonialsCard from "../../Testimonials Card/TestimonialsCard";
 
 const Testimonials = () => {
 	const CustomDot = ({ onMove, index, onClick, active }) => {
@@ -35,24 +35,7 @@ const Testimonials = () => {
 				customDot={<CustomDot />}
 			>
 				{testimonials.map((item) => (
-					<Segment raised className={styles.testimonialsItem}>
-						<Icon name="quote right" className={styles.testimonialsItemIcon} />
-						<Rating
-							disabled
-							icon="star"
-							defaultRating={item.rate}
-							maxRating={5}
-							className={styles.testimonialsItemRating}
-						/>
-						<span className={styles.testimonialsItemSpan}>{item.comment}</span>
-						<div className={styles.testimonialsItemUser}>
-							<Image src={item.avatar} />
-							<div className={styles.testimonialsItemBlock}>
-								<h4>{item.name}</h4>
-								<span>{item.status}</span>
-							</div>
-						</div>
-					</Segment>
+					<TestimonialsCard item={item} />
 				))}
 			</Carousel>
 		</div>
