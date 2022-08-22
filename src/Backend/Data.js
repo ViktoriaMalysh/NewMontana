@@ -27,6 +27,13 @@ import blog1 from "../assets/blog1.jpg";
 import blog2 from "../assets/blog2.jpg";
 import blog3 from "../assets/blog3.jpg";
 
+import gallery1 from "../assets/gallery-1.jpg";
+import gallery2 from "../assets/gallery-2.jpg";
+import gallery3 from "../assets/gallery-3.jpg";
+import gallery4 from "../assets/gallery-4.jpg";
+import gallery5 from "../assets/gallery-5.jpg";
+import gallery6 from "../assets/gallery-6.jpg";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -433,4 +440,31 @@ export const ourBlog = [
 		date: "2018, 8, 18",
 		title: "There Are Many Variations Of Passages Available",
 	},
+];
+
+export const gallery = [
+	[
+		{
+			url: gallery1,
+		},
+		{
+			url: gallery4,
+		},
+	],
+	[
+		{
+			url: gallery2,
+		},
+		{
+			url: gallery6,
+		},
+	],
+	[
+		{
+			url: gallery3,
+		},
+		{
+			url: gallery5,
+		},
+	],
 ];

@@ -7,6 +7,7 @@ import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingl
 import AboutUsPage from "../../Pages/About Us/AboutUs";
 import Team from "../../Pages/Team/Team";
 import TestimonialsPage from "../../Pages/Testimonials Page/Testimonials";
+import Gallery from "../../Pages/Gallery/Gallery";
 
 export const links = [
 	{
@@ -88,6 +89,10 @@ export const routes = [
   {
 		path: "/testimonials",
 		component: <TestimonialsPage />,
+	},
+  {
+		path: "/gallery",
+		component: <Gallery />,
 	},
 	{
 		path: "/",
