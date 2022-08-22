@@ -15,6 +15,12 @@ $primary-color-hover: #ffdd00;
 		color: #fff;
 	}
 
+	.pageLinkClassName,
+	.previousLinkClassName,
+	.nextLinkClassName {
+		color: #fff;
+	}
+
 	.pageClassName {
 		cursor: pointer;
 		width: 40px;

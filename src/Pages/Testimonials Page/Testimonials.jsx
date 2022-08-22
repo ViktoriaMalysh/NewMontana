@@ -12,7 +12,7 @@ const TestimonialsPage = () => {
 	const [currentItems, setCurrentItems] = useState(null);
 	const [itemOffset, setItemOffset] = useState(0);
 
-	const itemsPerPage = 4;
+	const itemsPerPage = 6;
 
 	useEffect(() => {
 		const endOffset = itemOffset + itemsPerPage;

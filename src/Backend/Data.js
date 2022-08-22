@@ -342,6 +342,55 @@ export const testimonials = [
 			"There are many variations of passages available but the majority have suffered alteration in some form.",
 		rate: 5,
 	},
+	{
+		name: "Sylvia H Green",
+		status: "Traveller",
+		avatar: avatar1,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 5,
+	},
+	{
+		name: "Gordon D Novak",
+		status: "Traveller",
+		avatar: avatar2,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 4,
+	},
+	{
+		name: "Reid E Butt",
+		status: "Traveller",
+		avatar: avatar3,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 5,
+	},
+	{
+		name: "Parker Jimenez",
+		status: "Traveller",
+		avatar: avatar4,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 4,
+	},
+
+	{
+		name: "Reid E Butt",
+		status: "Traveller",
+		avatar: avatar3,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 5,
+	},
+	{
+		name: "Gordon D Novak",
+		status: "Traveller",
+		avatar: avatar2,
+		comment:
+			"There are many variations of passages available but the majority have suffered alteration in some form.",
+		rate: 4,
+	},
 ];
 
 export const partners = [
