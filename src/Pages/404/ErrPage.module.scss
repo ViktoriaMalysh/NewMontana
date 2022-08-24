@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #ffdd00;
+
+:global(#app) {
+  .errPage {
+    // padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
+    text-align: center;
+
+    img{
+      width: 580px;
+      height: 315px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2{
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 36px;
+      color: #1b1b1b;
+    margin: 0px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+    }
+
+    p{
+
+    }
+
+    button{
+
+    }
+  }
+}
