@@ -97,6 +97,8 @@ $primary-color-hover: #ffdd00;
 			padding-top: 10px;
 			padding-bottom: 10px;
 			background-color: transparent;
+			box-shadow: 0 0 15px rgb(0 0 0 / 17%);
+			animation: slide-down 0.7s;
 
 			img {
 				width: 220px;
