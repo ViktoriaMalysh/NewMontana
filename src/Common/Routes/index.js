@@ -12,7 +12,8 @@ import Faq from "../../Pages/Faq/Faq";
 import ForgotPassword from "../../Pages/Forgot Password/ForgotPassword";
 import ErrPage from "../../Pages/404/ErrPage";
 import TermsOfServiceANDPrivacyPolicy from "../../Pages/Terms Of Service/TermsOfServiceANDPrivacyPolicy";
-import { privacyPolicy, termsOfService } from "../../Backend/Data";
+import { privacyPolicy, termsOfService, tourOffer } from "../../Backend/Data";
+import TourOffer from "../../Pages/Tour Offer/TourOffer";
 
 export const links = [
 	{
@@ -83,8 +84,12 @@ export const routes = [
 	//   component: <User />,
 	// },
 	{
-		path: "/rooms",
+		path: "/tours",
 		// component: <Rooms />,
+	},
+	{
+		path: "/tour-offer",
+		component: <TourOffer data={tourOffer} />,
 	},
 	{
 		path: "/about",

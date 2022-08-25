@@ -38,17 +38,61 @@ export const termsOfService = [
 	{
 		id: 1,
 		title: "Our Performance",
-		text: "Sed ac sollicitudin ipsum. Vivamus vulputate, enim sit amet aliquet lacinia, ex mauris aliquam elit, vel pharetra augue arcu ultricies magna. Suspendisse justo erat, dignissim ut imperdiet ut, convallis vitae urna. Vivamus tincidunt lacinia metus sed suscipit. Phasellus luctus rhoncus mauris ut euismod. Aliquam elementum malesuada erat, vitae bibendum ex rutrum eget. Mauris sed nunc mauris. Curabitur semper sed justo a pellentesque. In hac habitasse platea dictumst. Mauris semper volutpat iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur consectetur dignissim nulla id ornare. Praesent placerat dolor vitae tellus lacinia, a malesuada est sodales. Praesent at consectetur sem, sed scelerisque arcu. Maecenas malesuada lorem id sagittis scelerisque. In hac habitasse platea dictumst.",
+		text: (
+			<p>
+				Sed ac sollicitudin ipsum. Vivamus vulputate, enim sit amet aliquet
+				lacinia, ex mauris aliquam elit, vel pharetra augue arcu ultricies
+				magna. Suspendisse justo erat, dignissim ut imperdiet ut, convallis
+				vitae urna. Vivamus tincidunt lacinia metus sed suscipit. Phasellus
+				luctus rhoncus mauris ut euismod. Aliquam elementum malesuada erat,
+				vitae bibendum ex rutrum eget. Mauris sed nunc mauris. Curabitur semper
+				sed justo a pellentesque. In hac habitasse platea dictumst. Mauris
+				semper volutpat iaculis. Vestibulum ante ipsum primis in faucibus orci
+				luctus et ultrices posuere cubilia curae; Curabitur consectetur
+				dignissim nulla id ornare. Praesent placerat dolor vitae tellus lacinia,
+				a malesuada est sodales. Praesent at consectetur sem, sed scelerisque
+				arcu. Maecenas malesuada lorem id sagittis scelerisque. In hac habitasse
+				platea dictumst.
+			</p>
+		),
 	},
 	{
 		id: 2,
 		title: "Cookie",
-		text: "Pellentesque sit amet nulla facilisis, lobortis ex at, consequat diam. Pellentesque sed dui lorem. Aliquam vel euismod nunc. Nulla facilisi. Donec consectetur faucibus rutrum. Pellentesque ac ultricies sapien, ac iaculis erat. Vivamus posuere eget nulla sit amet vehicula. Donec finibus maximus eros, at tincidunt ipsum vestibulum ac. Integer vel metus vehicula, consequat velit a, eleifend mi. Curabitur erat mauris, luctus non dictum vel, fringilla dignissim quam. Phasellus eleifend porta fermentum. Pellentesque posuere massa vitae odio pulvinar feugiat. Fusce a risus sodales, maximus sapien sit amet, pharetra ipsum. Vivamus varius eros ac sapien pulvinar, nec tincidunt dui bibendum. Proin consectetur nibh tortor, nec vulputate ex posuere eget.",
+		text: (
+			<p>
+				Pellentesque sit amet nulla facilisis, lobortis ex at, consequat diam.
+				Pellentesque sed dui lorem. Aliquam vel euismod nunc. Nulla facilisi.
+				Donec consectetur faucibus rutrum. Pellentesque ac ultricies sapien, ac
+				iaculis erat. Vivamus posuere eget nulla sit amet vehicula. Donec
+				finibus maximus eros, at tincidunt ipsum vestibulum ac. Integer vel
+				metus vehicula, consequat velit a, eleifend mi. Curabitur erat mauris,
+				luctus non dictum vel, fringilla dignissim quam. Phasellus eleifend
+				porta fermentum. Pellentesque posuere massa vitae odio pulvinar feugiat.
+				Fusce a risus sodales, maximus sapien sit amet, pharetra ipsum. Vivamus
+				varius eros ac sapien pulvinar, nec tincidunt dui bibendum. Proin
+				consectetur nibh tortor, nec vulputate ex posuere eget.
+			</p>
+		),
 	},
 	{
 		id: 3,
 		title: "Payments",
-		text: "Amet nulla facilisis, lobortis ex at, consequat diam. Pellentesque sed dui lorem. Aliquam vel euismod nunc. Nulla facilisi. Donec consectetur faucibus rutrum. Pellentesque ac ultricies sapien, ac iaculis erat. Vivamus posuere eget nulla sit amet vehicula. Donec finibus maximus eros, at tincidunt ipsum vestibulum ac. Integer vel metus vehicula, consequat velit a, eleifend mi. Curabitur erat mauris, luctus non dictum vel, fringilla dignissim quam. Phasellus eleifend porta fermentum. Pellentesque posuere massa vitae odio pulvinar feugiat. Fusce a risus sodales, maximus sapien sit amet, pharetra ipsum. Vivamus varius eros ac sapien pulvinar, nec tincidunt dui bibendum. Proin consectetur nibh tortor, nec vulputate ex posuere eget.",
+		text: (
+			<p>
+				Amet nulla facilisis, lobortis ex at, consequat diam. Pellentesque sed
+				dui lorem. Aliquam vel euismod nunc. Nulla facilisi. Donec consectetur
+				faucibus rutrum. Pellentesque ac ultricies sapien, ac iaculis erat.
+				Vivamus posuere eget nulla sit amet vehicula. Donec finibus maximus
+				eros, at tincidunt ipsum vestibulum ac. Integer vel metus vehicula,
+				consequat velit a, eleifend mi. Curabitur erat mauris, luctus non dictum
+				vel, fringilla dignissim quam. Phasellus eleifend porta fermentum.
+				Pellentesque posuere massa vitae odio pulvinar feugiat. Fusce a risus
+				sodales, maximus sapien sit amet, pharetra ipsum. Vivamus varius eros ac
+				sapien pulvinar, nec tincidunt dui bibendum. Proin consectetur nibh
+				tortor, nec vulputate ex posuere eget.
+			</p>
+		),
 	},
 	{
 		id: 4,
@@ -94,7 +138,20 @@ export const termsOfService = [
 	{
 		id: 6,
 		title: "Disclaimer",
-		text: "Donec facilisis consequat nisi. Vivamus euismod at ipsum a gravida. Quisque vitae augue maximus elit iaculis tincidunt. Quisque dapibus dui non justo iaculis volutpat. Phasellus vulputate tempus lorem vitae vehicula. Maecenas interdum venenatis ante, scelerisque porta nibh mollis vitae. Curabitur in erat porttitor, imperdiet lectus non, porttitor odio. Donec efficitur efficitur dapibus. Aenean sit amet tortor id lorem ultricies rhoncus. Etiam ornare eros eu commodo vehicula. Curabitur vel enim eget velit tincidunt viverra eu in risus. Aliquam suscipit tellus eu fermentum facilisis. Pellentesque volutpat posuere ligula. Fusce et consequat mi.",
+		text: (
+			<p>
+				Donec facilisis consequat nisi. Vivamus euismod at ipsum a gravida.
+				Quisque vitae augue maximus elit iaculis tincidunt. Quisque dapibus dui
+				non justo iaculis volutpat. Phasellus vulputate tempus lorem vitae
+				vehicula. Maecenas interdum venenatis ante, scelerisque porta nibh
+				mollis vitae. Curabitur in erat porttitor, imperdiet lectus non,
+				porttitor odio. Donec efficitur efficitur dapibus. Aenean sit amet
+				tortor id lorem ultricies rhoncus. Etiam ornare eros eu commodo
+				vehicula. Curabitur vel enim eget velit tincidunt viverra eu in risus.
+				Aliquam suscipit tellus eu fermentum facilisis. Pellentesque volutpat
+				posuere ligula. Fusce et consequat mi.
+			</p>
+		),
 	},
 ];
 
@@ -648,5 +705,80 @@ export const accordionItems = [
 		title: " What Payment Gateway You Support ?",
 		content:
 			"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness.",
+	},
+];
+
+export const tourOffer = [
+	{
+		imgUrl: imgTopTour1,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 1350,
+		discount: 15,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 1500,
+		discount: 25,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 900,
+		discount: 30,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour1,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 1700,
+		discount: 25,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 1300,
+		discount: 25,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		oldPrice: 1400,
+		discount: 35,
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
 	},
 ];

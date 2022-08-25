@@ -6,10 +6,61 @@ $primary-color: #fafe28;
 $primary-color-hover: #ffdd00;
 
 :global(#app) {
+	.topTourSale {
+		position: absolute;
+		height: 80px;
+		width: 80px;
+		left: -5px;
+		top: -5px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		border-radius: 50px;
+		background: #ff0143;
+		z-index: 300;
+
+		h6 {
+			color: #fff;
+			font-size: 22px;
+			font-weight: 700;
+			margin-top: -5px;
+		}
+
+		span {
+			margin-top: -60px;
+			color: #fff;
+			font-weight: 700;
+		}
+	}
+
+	.topTourAdd {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		right: 20px;
+		top: 30px;
+		border-radius: 50px;
+		background: #fca702;
+		color: #fff;
+		text-align: center;
+		transition: all 0.5s ease-in-out;
+		z-index: 300;
+		padding-left: 15px;
+		padding-top: 0px;
+
+		&:hover {
+			background: #fff;
+			color: #fca702;
+		}
+	}
+
 	.topTourSegment {
 		text-align: left;
-		width: 371px;
-		height: 465px;
+		width: 361px;
+		height: min-content;
 		background: #fff;
 		border-radius: 15px;
 		position: relative;
@@ -23,8 +74,7 @@ $primary-color-hover: #ffdd00;
 		img {
 			border-radius: 15px;
 			width: 371px;
-      height: 244px;
-      // width: 100%;
+			height: 244px;
 			transition: all 0.5s;
 
 			&:hover {
@@ -39,7 +89,7 @@ $primary-color-hover: #ffdd00;
 
 		.topTourSegmentBlock {
 			background-color: #fca702;
-			margin-bottom: 25px;
+			margin-bottom: 5px;
 			margin-left: 10px;
 			border-radius: 8px;
 			text-align: center;
@@ -59,16 +109,13 @@ $primary-color-hover: #ffdd00;
 			color: #051242;
 			margin-bottom: 10px;
 			transition: all 0.5s ease-in-out;
-			margin-top: -22px;
 
 			&:hover {
 				color: #fca702;
 			}
 		}
 
-		.topTourSegmentDivRate {
-			margin-bottom: 15px;
-
+		.topTourSegmentDiv {
 			.topTourSegmentRating {
 				padding-top: 7px;
 				margin-inline-end: 15px;
@@ -84,30 +131,40 @@ $primary-color-hover: #ffdd00;
 			}
 		}
 
-		div {
-			button {
-				float: right;
-				border: 2px solid #fca702;
-				border-radius: 50px;
-				padding: 4px 20px;
-				color: #232323;
-				transition: all 0.5s ease-in-out;
-				background-color: #ffffff;
-				text-decoration: none;
+		.topTourSegmentDivOffer {
+			margin-bottom: 15px;
+
+			.topTourSegmentOfferSpanOldPrice {
+				font-size: 20px;
+				margin-right: 10px;
+				font-weight: 700;
+				color: #ff0143;
+				text-decoration: line-through;
+			}
+
+			.topTourSegmentOfferSpanNewPrice {
+				font-size: 25px;
+				margin-right: 5px;
+				font-weight: 700;
+				color: #ff0143;
+			}
+
+			.topTourSegmentRatingOffer {
+				padding-top: 0px;
+				margin-inline-end: 15px;
+			}
+
+			span {
 				font-family: "Roboto", sans-serif;
 				font-style: normal;
 				font-size: 16px;
 				font-weight: 400;
+				color: #14212b;
 				line-height: 1.8;
-				margin-top: 5px;
-				margin-bottom: 5px;
-
-				&:hover {
-					background: #fca702;
-					color: #fff;
-				}
 			}
+		}
 
+		div {
 			.topTourSegmentDiv {
 				font-size: 25px;
 				font-weight: 700;
@@ -129,6 +186,37 @@ $primary-color-hover: #ffdd00;
 			width: 371px;
 			margin-left: -20px;
 			margin-top: 22px;
+		}
+
+		.topTourButton,
+		.topTourButtonOffer {
+			border: 2px solid #fca702;
+			border-radius: 50px;
+			padding: 4px 20px;
+			color: #232323;
+			transition: all 0.5s ease-in-out;
+			background-color: #ffffff;
+			text-decoration: none;
+			font-family: "Roboto", sans-serif;
+			font-style: normal;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1.8;
+			margin-top: 5px;
+			margin-bottom: 5px;
+
+			&:hover {
+				background: #fca702;
+				color: #fff;
+			}
+		}
+
+		.topTourButton {
+			float: right;
+		}
+
+		.topTourButtonOffer {
+			float: left;
 		}
 	}
 }
