@@ -14,11 +14,12 @@ const TourCard = ({ item, onChange, offer }) => {
 
 	return (
 		<>
-			<div className={styles.topTourSale}>
-				<h6>{item.discount}%</h6>
-				<span>Off</span>
-			</div>
-
+			{offer && (
+				<div className={styles.topTourSale}>
+					<h6>{item.discount}%</h6>
+					<span>Off</span>
+				</div>
+			)}
 			<Button className={styles.topTourAdd}>
 				<Icon name="heart" />
 			</Button>

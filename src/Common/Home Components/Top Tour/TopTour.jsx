@@ -20,7 +20,7 @@ const TopTour = () => {
 				<Grid.Row columns={3} className={styles.topTourRow}>
 					{topTour.map((item) => (
 						<GridColumn>
-							<TourCard item={item} onChange={handleChange} />
+							<TourCard item={item} onChange={handleChange} offer={false} />
 						</GridColumn>
 					))}
 				</Grid.Row>
