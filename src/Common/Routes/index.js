@@ -17,9 +17,11 @@ import {
 	tourCart,
 	tourCartHeader,
 	tourOffer,
+	tourBooking,
 } from "../../Backend/Data";
 import TourOffer from "../../Pages/Tour Offer/TourOffer";
 import TourCart from "../../Pages/Tour Cart/TourCart";
+import TourBooking from "../../Pages/Tour Booking/TourBooking";
 
 export const links = [
 	{
@@ -85,10 +87,6 @@ export const routes = [
 			/>
 		),
 	},
-	// {
-	//   path: "/user/:id",
-	//   component: <User />,
-	// },
 	{
 		path: "/tours",
 		// component: <Rooms />,
@@ -102,8 +100,8 @@ export const routes = [
 		component: <TourCart tourCartHeader={tourCartHeader} data={tourCart} />,
 	},
 	{
-		path: "/about",
-		// component: <About />,
+		path: "/tour-booking",
+		component: <TourBooking data={tourBooking} />,
 	},
 	{
 		path: "/blog",

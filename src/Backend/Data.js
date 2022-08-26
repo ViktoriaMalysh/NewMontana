@@ -819,3 +819,12 @@ export const tourCart = [
 		count: 1,
 	},
 ];
+
+export const tourBooking = {
+	"Packages Cost": 4500,
+	"Tour Guide": 25,
+	"Discount": 5,
+	"Vat": 20,
+	"Sub Total": 4540,
+	"Total": 4540,
+};
