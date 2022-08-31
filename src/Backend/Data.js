@@ -823,8 +823,40 @@ export const tourCart = [
 export const tourBooking = {
 	"Packages Cost": 4500,
 	"Tour Guide": 25,
-	"Discount": 5,
-	"Vat": 20,
+	Discount: 5,
+	Vat: 20,
 	"Sub Total": 4540,
-	"Total": 4540,
+	Total: 4540,
 };
+
+export const category = [
+	{ key: "adventure-tours", name: "adventure tours" },
+	{ key: "business-tours", name: "business tours" },
+	{ key: "group-tours", name: "group tours" },
+	{ key: "couple-tours", name: "couple tours" },
+	{ key: "city-tours", name: "city tours" },
+];
+
+export const durations = [
+	{ key: "0-24h", name: "0 - 24 Hours" },
+	{ key: "1-2d", name: "1 - 3 Days" },
+	{ key: "3-6d", name: "3 - 6 Days" },
+	{ key: "6-9d", name: "6 - 9 Days" },
+	{ key: "9-10d", name: "9 - 10 Days" },
+];
+
+export const rating = [
+	{ key: "5", rate: 5 },
+	{ key: "4", rate: 4 },
+	{ key: "3", rate: 3 },
+	{ key: "2", rate: 2 },
+	{ key: "1", rate: 1 },
+];
+
+export const sortOptions = [
+	{ key: "default", value: "default", text: "Sort By Default" },
+	{ key: "featured", value: "featured", text: "Sort By Featured" },
+	{ key: "latest", value: "latest", text: "Sort By Latest" },
+	{ key: "lowPrice", value: "lowPrice", text: "Sort By Low Price" },
+	{ key: "highPrice", value: "highPrice", text: "Sort By High Price" },
+];

@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #ffdd00;
+
+:global(#app) {
+	.tourPackage {
+		margin-left: 38vh;
+		margin-right: 38vh;
+		margin-top: 100px;
+		position: relative;
+		margin-bottom: 150px;
+
+		.tourPackageSegmentLeftImage {
+			border-radius: 15px;
+			max-height: 477px;
+			text-align: left;
+
+			img {
+				margin: -30px;
+				width: 361px;
+				height: 477px;
+				border-radius: 15px;
+			}
+
+			div {
+				// background-color: red;
+				max-width: 361px;
+				position: absolute;
+				left: 14px;
+				bottom: 20px;
+
+				span {
+					color: #fca702;
+				}
+
+				h2 {
+					color: #ffffff;
+					display: block;
+					padding: 20px;
+				}
+
+				h2,
+				span {
+					font-size: 35px;
+					line-height: 50px;
+					font-family: "Playfair Display", sans-serif;
+					font-weight: 900;
+					text-shadow: 5px 9px rgb(0 0 0 / 10%);
+				}
+			}
+		}
+
+		.tourPackageSegmentLeft {
+			background: #fff;
+			border-radius: 10px;
+			height: max-content;
+		}
+
+		.tourPackageSegmentLeft,
+		.tourPackageSegmentLeftImage {
+			display: block;
+			padding: 30px;
+			box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+			width: 361px;
+			float: left;
+			border: none;
+			text-transform: capitalize;
+			margin: 0;
+
+			.tourPackageImage {
+				width: 361px;
+			}
+
+			.tourPackageIcon {
+				i {
+					// needs improvement:
+
+					font-size: 18px;
+				}
+			}
+
+			.tourPackageCheckbox {
+				display: block;
+				margin-top: 20px;
+
+				// needs improvement:
+
+				// input[type=checkbox] {
+				// 	background: red;
+				// 	height: 20px;
+				// }
+
+				label {
+					color: #999;
+					font-weight: 400;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+				}
+			}
+
+			.tourPackageFormField {
+				.inputDatePicker {
+					background-color: red;
+				}
+
+				button {
+					width: 100%;
+					height: 46px;
+					border: none;
+					background: #fca702;
+					color: #fff;
+					border-radius: 8px;
+					padding: 9px 0;
+					transition: all 0.5s ease-in-out;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 1.8;
+					margin-top: 10px;
+
+					&:hover {
+						background: #102b3e;
+						color: #fff;
+					}
+				}
+
+				label {
+					color: #6c7592;
+					cursor: pointer;
+					font-weight: 400;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+					line-height: 1.8;
+				}
+
+				input {
+					padding: 10px 10px 10px 35px;
+					border-radius: 8px;
+					height: 46px;
+					color: #6c7592;
+					box-shadow: none;
+					display: block;
+					width: 100%;
+					font-weight: 400;
+					line-height: 1.5;
+					background-color: #fff;
+					background-clip: padding-box;
+					border: 1px solid #6c7592;
+					appearance: none;
+					transition: 0.5s;
+
+					&:focus {
+						border: 1px solid #fca702;
+					}
+
+					&::placeholder {
+						font-weight: 400;
+						font-family: "Roboto";
+						font-style: normal;
+						font-size: 16px;
+						line-height: 1.8;
+						color: #6c757d;
+					}
+				}
+			}
+
+			h4 {
+				color: #1b1b1b;
+				margin: 0px;
+				font-weight: 600;
+				font-family: "Poppins", sans-serif;
+				line-height: 1.2;
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+		}
+
+		.tourPackageSegmentRight {
+			float: right;
+			width: 790px;
+			height: px;
+			margin-top: 0;
+
+			h5 {
+				color: #1b1b1b;
+				margin: 0px;
+				font-weight: 600;
+				font-family: "Poppins", sans-serif;
+				line-height: 1.2;
+				font-size: 18px;
+			}
+
+			.tourPackageSelect {
+				border-radius: 8px;
+				border: 1px solid #e8e8e8;
+				display: block;
+				font-size: 14px;
+				font-weight: 400;
+				height: 42px;
+				line-height: 18px;
+				padding-left: 18px;
+				padding-right: 30px;
+				position: relative;
+				transition: all 0.2s ease-in-out;
+				min-width: 144px;
+
+				div {
+					.visible {
+						background-color: red;
+					}
+				}
+			}
+		}
+	}
+}

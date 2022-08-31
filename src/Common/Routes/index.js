@@ -22,6 +22,7 @@ import {
 import TourOffer from "../../Pages/Tour Offer/TourOffer";
 import TourCart from "../../Pages/Tour Cart/TourCart";
 import TourBooking from "../../Pages/Tour Booking/TourBooking";
+import TourPackage from "../../Pages/Tour Package/TourPackage";
 
 export const links = [
 	{
@@ -88,8 +89,8 @@ export const routes = [
 		),
 	},
 	{
-		path: "/tours",
-		// component: <Rooms />,
+		path: "/tour-package",
+		component: <TourPackage />,
 	},
 	{
 		path: "/tour-offer",
