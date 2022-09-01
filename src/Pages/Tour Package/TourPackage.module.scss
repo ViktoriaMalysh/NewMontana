@@ -7,8 +7,8 @@ $primary-color-hover: #ffdd00;
 
 :global(#app) {
 	.tourPackage {
-		margin-left: 38vh;
-		margin-right: 38vh;
+		margin-left: 39.5vh;
+		margin-right: 39vh;
 		margin-top: 100px;
 		position: relative;
 		margin-bottom: 150px;
@@ -17,6 +17,7 @@ $primary-color-hover: #ffdd00;
 			border-radius: 15px;
 			max-height: 477px;
 			text-align: left;
+			padding: 30px;
 
 			img {
 				margin: -30px;
@@ -26,11 +27,10 @@ $primary-color-hover: #ffdd00;
 			}
 
 			div {
-				// background-color: red;
 				max-width: 361px;
-				position: absolute;
-				left: 14px;
-				bottom: 20px;
+				margin-top: -140px;
+				margin-left: -20px;
+				margin-right: -20px;
 
 				span {
 					color: #fca702;
@@ -57,18 +57,19 @@ $primary-color-hover: #ffdd00;
 			background: #fff;
 			border-radius: 10px;
 			height: max-content;
+			padding: 35px 30px;
 		}
 
 		.tourPackageSegmentLeft,
 		.tourPackageSegmentLeftImage {
 			display: block;
-			padding: 30px;
 			box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
 			width: 361px;
 			float: left;
 			border: none;
 			text-transform: capitalize;
 			margin: 0;
+			margin-top: 0px;
 
 			.tourPackageImage {
 				width: 361px;
@@ -181,13 +182,14 @@ $primary-color-hover: #ffdd00;
 			}
 		}
 
-		.tourPackageSegmentRight {
+		.topToursPagination {
 			float: right;
-			width: 790px;
-			height: px;
-			margin-top: 0;
+		}
 
-			h5 {
+		.tourPackageSegmentRight {
+			// margin-top: 30px;
+
+			.topToursH5 {
 				color: #1b1b1b;
 				margin: 0px;
 				font-weight: 600;
@@ -209,6 +211,7 @@ $primary-color-hover: #ffdd00;
 				position: relative;
 				transition: all 0.2s ease-in-out;
 				min-width: 144px;
+				margin-bottom: -20px;
 
 				div {
 					.visible {
