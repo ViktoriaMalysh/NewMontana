@@ -973,3 +973,20 @@ export const sortOptions = [
 	{ key: "lowPrice", value: "lowPrice", text: "Sort By Low Price" },
 	{ key: "highPrice", value: "highPrice", text: "Sort By High Price" },
 ];
+
+export const confirmData = {
+	bookingId: "TRSD-WEDV-ASE",
+	firstName: "Marvin",
+	lastName: "Pricel",
+	email: "info@example.com",
+	phone: "+2-123-4567-7894",
+	cardNumber: "521-8547-32-11",
+	city: "New York",
+	address: "45 Robson Lane, Saint Clairs, Ohio",
+	card: "master",
+	bookingLink: "https://www.example.com/booking-234",
+	packagesPost: 4500,
+	tourGuide: 25,
+	discount: 5,
+	vat: 20,
+};

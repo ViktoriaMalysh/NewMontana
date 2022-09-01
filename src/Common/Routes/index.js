@@ -18,11 +18,13 @@ import {
 	tourCartHeader,
 	tourOffer,
 	tourBooking,
+	confirmData,
 } from "../../Backend/Data";
 import TourOffer from "../../Pages/Tour Offer/TourOffer";
 import TourCart from "../../Pages/Tour Cart/TourCart";
 import TourBooking from "../../Pages/Tour Booking/TourBooking";
 import TourPackage from "../../Pages/Tour Package/TourPackage";
+import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
 
 export const links = [
 	{
@@ -103,6 +105,10 @@ export const routes = [
 	{
 		path: "/tour-booking",
 		component: <TourBooking data={tourBooking} />,
+	},
+	{
+		path: "/booking-confirm",
+		component: <BookingConfirm data={confirmData} />,
 	},
 	{
 		path: "/blog",
