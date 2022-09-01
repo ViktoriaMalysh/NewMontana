@@ -19,12 +19,14 @@ import {
 	tourOffer,
 	tourBooking,
 	confirmData,
+	tourSingle,
 } from "../../Backend/Data";
 import TourOffer from "../../Pages/Tour Offer/TourOffer";
 import TourCart from "../../Pages/Tour Cart/TourCart";
 import TourBooking from "../../Pages/Tour Booking/TourBooking";
 import TourPackage from "../../Pages/Tour Package/TourPackage";
 import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
+import TourSingle from "../../Pages/Tour Single/TourSingle";
 
 export const links = [
 	{
@@ -93,6 +95,10 @@ export const routes = [
 	{
 		path: "/tour-package",
 		component: <TourPackage />,
+	},
+	{
+		path: "/tour-package/:id",
+		component: <TourSingle data={tourSingle} />,
 	},
 	{
 		path: "/tour-offer",

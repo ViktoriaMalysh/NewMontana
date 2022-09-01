@@ -38,6 +38,9 @@ import tourCart1 from "../assets/tourCart1.jpg";
 import tourCart2 from "../assets/tourCart2.jpg";
 import tourCart3 from "../assets/tourCart3.jpg";
 
+import single from "../assets/single.jpg";
+import { Icon } from "semantic-ui-react";
+
 export const termsOfService = [
 	{
 		id: 1,
@@ -261,7 +264,7 @@ export const privacyPolicy = [
 
 export const itemsHeader = [
 	{ id: "home", item: "Home", path: "/" },
-	{ id: "tours", item: "Tours", path: "/tours" },
+	{ id: "tours", item: "Tours", path: "/tour-package" },
 	{ id: "about", item: "About", path: "/about-us" },
 	{ id: "blog", item: "Blog", path: "/blog" },
 	{ id: "contact", item: "Contact", path: "/contact" },
@@ -990,3 +993,82 @@ export const confirmData = {
 	discount: 5,
 	vat: 20,
 };
+
+export const tourSingle = {
+	imgUrl: single,
+	name: "Norway Lake Tour",
+	rate: 4,
+	countReviews: 25,
+	price: 1500,
+	days: 3,
+	nights: 2,
+	persons: 15,
+	type: "Adventure",
+	city: "Norway Lake",
+	tourOverview:
+		"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+	includedAndExcluded:
+		"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+	tourPlan:
+		"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+	tourGallery: ["", "", "", "", ""],
+	included: [
+		{
+			type: true,
+		},
+		{
+			type: true,
+		},
+		{
+			type: false,
+		},
+		{
+			type: false,
+		},
+	],
+	mapLocation: "",
+	reviews: [
+		{
+			user: "Kristin Alvarado",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 5,
+		},
+		{
+			user: "Dannie Wilcox",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 5,
+		},
+		{
+			user: "Roxanna Graham",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 4,
+		},
+	],
+};
+
+export const tourPlans = [
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 01 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 02 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 03 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+];

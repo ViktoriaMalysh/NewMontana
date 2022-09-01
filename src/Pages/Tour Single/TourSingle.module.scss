@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #fca702;
+
+:global(#app) {
+	.tourSingle {
+		margin-left: 39.5vh;
+		margin-right: 39vh;
+		margin-top: 100px;
+		position: relative;
+		margin-bottom: 150px;
+
+		table {
+			border-radius: 15px;
+
+			.tourSingleTableCellLeft {
+				width: 300px;
+				padding-left: 30px;
+			}
+
+			.tourSingleTableCellRight {
+				padding-left: 45px;
+				position: relative;
+				display: block;
+				font-size: 17px;
+				font-weight: 500;
+				color: #888888;
+			}
+
+			.tourSingleIconTrue {
+				color: #198754 !important;
+				padding-right: 25px;
+			}
+
+			.tourSingleIconFalse {
+				color: #dc3545 !important;
+				padding-right: 25px;
+			}
+		}
+
+		.tourSingleDiv2 {
+			margin-top: 80px;
+			margin-bottom: 50px;
+
+			.tourSingleDiv2BlockEnd {
+				position: relative;
+				padding-left: 110px;
+				padding-bottom: 20px;
+
+				&::before {
+					position: absolute;
+					content: "";
+					width: 1px;
+					border-left: none;
+					height: 100%;
+					left: 35px;
+					top: 10px;
+					z-index: -1;
+				}
+			}
+
+			.tourSingleDiv2Block {
+				position: relative;
+				padding-left: 110px;
+				padding-bottom: 20px;
+
+				&::before {
+					position: absolute;
+					content: "";
+					width: 1px;
+					border-left: 2px dashed #fca702;
+					height: 100%;
+					left: 35px;
+					top: 10px;
+					z-index: -1;
+				}
+			}
+
+			h4 {
+				display: block;
+				font-size: 20px;
+				line-height: 28px;
+				font-weight: 600;
+				margin-bottom: 5px;
+				color: #fca702;
+				font-family: "Poppins", sans-serif;
+			}
+
+			h3 {
+				display: block;
+				font-size: 24px;
+				line-height: 34px;
+				font-weight: 600;
+				margin-bottom: 10px;
+				color: #1b1b1b;
+				margin: 0px;
+				font-family: "Poppins", sans-serif;
+			}
+
+			ul {
+				display: block;
+
+				li {
+					.tourPlansIconBlock {
+						margin-right: 10px;
+						color: #fca702;
+					}
+				}
+			}
+
+			.tourSingleSpanBlock {
+				position: absolute;
+				display: inline-block;
+				left: 5px;
+				top: 3px;
+				width: 60px;
+				height: 60px;
+				line-height: 60px;
+				font-size: 22px;
+				color: #ffffff;
+				background: #fca702;
+				font-weight: 600;
+				text-align: center;
+				border-radius: 10px;
+
+				&::before {
+					position: absolute;
+					content: "";
+					background: #ffffff;
+					width: calc(100% + 10px);
+					height: calc(100% + 10px);
+					left: -5px;
+					top: -5px;
+					border-radius: 50%;
+					box-shadow: 0px 10px 40px 0px rgb(0 0 0 / 20%);
+					z-index: -1;
+				}
+			}
+		}
+
+		h3 {
+			color: #1b1b1b;
+			font-weight: 600;
+			font-family: "Poppins", sans-serif;
+			line-height: 1.2;
+			font-size: 30px;
+			margin-top: 30px;
+		}
+
+		p {
+			margin-top: 10px;
+			font-family: "Roboto", sans-serif;
+			font-style: normal;
+			font-size: 16px;
+			font-weight: 400;
+			color: #14212b;
+			line-height: 1.8;
+		}
+
+		.tourSingleAvatar {
+			border-radius: 15px;
+			width: 766px;
+			height: 426px;
+		}
+
+		.tourSingleDivider {
+			margin-top: 115px;
+			margin-bottom: 15px;
+		}
+
+		ul {
+			display: flex;
+			text-decoration: none;
+			list-style: none;
+			// background: red;
+			margin-left: -55px;
+
+			li {
+				margin-left: 15px;
+
+				.tourSingleIcon {
+					color: #fca702;
+				}
+			}
+		}
+
+		.tourSingleDiv {
+			margin: 20px 0;
+
+			.tourSingleDiv1Left {
+				float: left;
+
+				h3 {
+					font-size: 30px;
+					color: #1b1b1b;
+					margin: 0px;
+					font-weight: 600;
+					font-family: "Poppins", sans-serif;
+					line-height: 1.2;
+					margin-bottom: 10px;
+				}
+			}
+
+			.tourSingleDiv1Right {
+				float: right;
+				text-align: right;
+
+				.tourSingleSpanPrice {
+					color: #ff0143;
+					font-size: 28px;
+					font-weight: 700;
+				}
+
+				p {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
