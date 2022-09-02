@@ -39,7 +39,16 @@ import tourCart2 from "../assets/tourCart2.jpg";
 import tourCart3 from "../assets/tourCart3.jpg";
 
 import single from "../assets/single.jpg";
-import { Icon } from "semantic-ui-react";
+
+import gallerySingle1 from "../assets/single-tour1.jpg";
+import gallerySingle2 from "../assets/single-tour2.jpg";
+import gallerySingle3 from "../assets/single-tour3.jpg";
+import gallerySingle4 from "../assets/single-tour4.jpg";
+import gallerySingle5 from "../assets/single-tour5.jpg";
+
+import user1 from "../assets/user1.jpg";
+import user2 from "../assets/user2.jpg";
+import user3 from "../assets/user3.jpg";
 
 export const termsOfService = [
 	{
@@ -1027,8 +1036,10 @@ export const tourSingle = {
 		},
 	],
 	mapLocation: "",
+	reviewsCount: 20,
 	reviews: [
 		{
+			avatar: user1,
 			user: "Kristin Alvarado",
 			date: "20 August, 2021",
 			comment:
@@ -1036,6 +1047,7 @@ export const tourSingle = {
 			rate: 5,
 		},
 		{
+			avatar: user2,
 			user: "Dannie Wilcox",
 			date: "20 August, 2021",
 			comment:
@@ -1043,6 +1055,7 @@ export const tourSingle = {
 			rate: 5,
 		},
 		{
+			avatar: user3,
 			user: "Roxanna Graham",
 			date: "20 August, 2021",
 			comment:
@@ -1070,5 +1083,57 @@ export const tourPlans = [
 		title: "DAY 03 - Norway City Visit",
 		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
 		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+];
+
+export const gallerySingleTour = [
+	[
+		{
+			id: 1,
+			url: gallerySingle1,
+		},
+		{
+			id: 4,
+			url: gallerySingle4,
+		},
+	],
+	[
+		{
+			id: 2,
+			url: gallerySingle4,
+		},
+		{
+			id: 6,
+			url: gallerySingle1,
+		},
+	],
+	[
+		{
+			id: 3,
+			url: gallerySingle1,
+		},
+		{
+			id: 5,
+			url: gallerySingle4,
+		},
+	],
+];
+
+export const additionalService = [
+	{
+		key: "tour-guide",
+		value: "tour guide",
+	},
+	{
+		key: "insurance",
+		value: "insurance",
+	},
+	{
+		key: "dinner",
+		value: "dinner",
+	},
+	{
+		key: "car-rent",
+		value: "car rent",
 	},
 ];

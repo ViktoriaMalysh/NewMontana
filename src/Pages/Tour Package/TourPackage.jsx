@@ -19,12 +19,13 @@ import {
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
 import PriceRange from "../../Common/Price Range/PriceRange";
-import banner from "../../assets/banner.jpg";
+// import banner from "../../assets/banner.jpg";
 
 import styles from "./TourPackage.module.scss";
 import TourCard from "../../Common/Tour Card/TourCard";
 import CustomPagination from "../../Common/Pagination/Pagination";
 import { useEffect, useState } from "react";
+import Banner from "../../Common/Banner/Banner";
 
 const TourPackage = () => {
 	const [pageCount, setPageCount] = useState(0);
@@ -152,7 +153,7 @@ const TourPackage = () => {
 
 							<Grid.Row>
 								<Grid.Column width={16}>
-									<Grid.Row floated="left">
+									{/* <Grid.Row floated="left">
 										<Grid.Column>
 											<div className={styles.tourPackageSegmentLeftImage}>
 												<img src={banner} />
@@ -163,9 +164,13 @@ const TourPackage = () => {
 												</div>
 											</div>
 										</Grid.Column>
-									</Grid.Row>
+									</Grid.Row> */}
+
+									<Banner />
 								</Grid.Column>
 							</Grid.Row>
+
+
 						</Grid>
 					</Grid.Column>
 					<Grid.Column

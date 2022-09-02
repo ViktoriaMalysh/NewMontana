@@ -13,6 +13,116 @@ $primary-color-hover: #fca702;
 		position: relative;
 		margin-bottom: 150px;
 
+		.tourSingleSegment {
+			background: #fff;
+			border-radius: 10px;
+			height: max-content;
+			padding: 35px 30px;
+			display: block;
+			box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+			width: 361px;
+			float: left;
+			border: none;
+			text-transform: capitalize;
+			margin: 0;
+			margin-top: 0px;
+
+			h5 {
+				color: #1b1b1b;
+				font-weight: 600;
+				font-family: "Poppins", sans-serif;
+				line-height: 1.2;
+				font-size: 18px;
+				padding-top: 20px;
+				padding-bottom: 10px;
+			}
+
+			.tourSingleCheckbox {
+				display: block;
+				margin-bottom: 20px;
+				color: #1b1b1b;
+				font-weight: 600;
+				font-family: "Poppins", sans-serif;
+				line-height: 1.2;
+			}
+
+			label {
+				color: #999;
+				font-weight: 400;
+				font-family: "Roboto", sans-serif;
+				font-style: normal;
+				font-size: 16px;
+			}
+
+			.tourPackageFormField {
+				.inputDatePicker {
+					background-color: red;
+				}
+
+				button {
+					width: 100%;
+					height: 46px;
+					border: none;
+					background: #fca702;
+					color: #fff;
+					border-radius: 8px;
+					padding: 9px 0;
+					transition: all 0.5s ease-in-out;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 1.8;
+					margin-top: 10px;
+
+					&:hover {
+						background: #102b3e;
+						color: #fff;
+					}
+				}
+
+				label {
+					color: #6c7592;
+					cursor: pointer;
+					font-weight: 400;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+					line-height: 1.8;
+				}
+
+				input {
+					padding: 10px 10px 10px 35px;
+					border-radius: 8px;
+					height: 46px;
+					color: #6c7592;
+					box-shadow: none;
+					display: block;
+					width: 100%;
+					font-weight: 400;
+					line-height: 1.5;
+					background-color: #fff;
+					background-clip: padding-box;
+					border: 1px solid #6c7592;
+					appearance: none;
+					transition: 0.5s;
+
+					&:focus {
+						border: 1px solid #fca702;
+					}
+
+					&::placeholder {
+						font-weight: 400;
+						font-family: "Roboto";
+						font-style: normal;
+						font-size: 16px;
+						line-height: 1.8;
+						color: #6c757d;
+					}
+				}
+			}
+		}
+
 		table {
 			border-radius: 15px;
 
@@ -160,10 +270,151 @@ $primary-color-hover: #fca702;
 			line-height: 1.8;
 		}
 
-		.tourSingleAvatar {
-			border-radius: 15px;
-			width: 766px;
-			height: 426px;
+		h4 {
+			font-size: 24px;
+			color: #1b1b1b;
+			margin: 0px;
+			font-weight: 600;
+			font-family: "Poppins", sans-serif;
+			line-height: 1.2;
+		}
+
+		.tourSingleForm {
+			margin-top: -40px;
+
+			span {
+				font-family: "Roboto", sans-serif;
+				font-style: normal;
+				font-size: 16px;
+				font-weight: 400;
+				color: #14212b;
+				line-height: 1.8;
+			}
+
+			textArea {
+				padding: 10px 20px;
+				border-radius: 8px;
+				box-shadow: none;
+				transition: all 0.5s ease-in-out;
+				height: 142px;
+
+				&:focus {
+					border: 1px solid #fca702;
+				}
+
+				&::placeholder {
+					font-weight: 400;
+					font-family: "Roboto";
+					font-style: normal;
+					font-size: 16px;
+					line-height: 1.8;
+					color: #6c757d;
+				}
+			}
+
+			button {
+				background: #fca702;
+				color: #fff;
+				border: none;
+				border-radius: 10px;
+				padding: 10px 25px;
+				transition: all 0.5s ease-in-out;
+				font-family: "Roboto", sans-serif;
+				font-style: normal;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 1.8;
+				margin-top: 5px;
+
+				&:hover {
+					background: #051c55;
+					color: #fff;
+				}
+			}
+
+			input {
+				padding: 10px 20px;
+				border-radius: 8px;
+				box-shadow: none;
+				transition: all 0.5s ease-in-out;
+				height: 46px;
+
+				&:focus {
+					border: 1px solid #fca702;
+				}
+
+				&::placeholder {
+					font-weight: 400;
+					font-family: "Roboto";
+					font-style: normal;
+					font-size: 16px;
+					line-height: 1.8;
+					color: #6c757d;
+				}
+			}
+		}
+
+		.tourSingleGrid {
+			margin-bottom: 20px;
+
+			.tourSingleGridRowReviews {
+				margin-bottom: 30px;
+
+				img {
+					border-radius: 50%;
+				}
+
+				h5 {
+					font-size: 18px;
+					color: #1b1b1b;
+					margin: 0px;
+					font-weight: 600;
+					font-family: "Poppins", sans-serif;
+					line-height: 1.2;
+				}
+
+				span {
+					font-size: 14px;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-weight: 400;
+					color: #14212b;
+					line-height: 1.8;
+				}
+
+				p {
+					margin: 0px;
+					font-family: "Roboto", sans-serif;
+					font-style: normal;
+					font-size: 16px;
+					font-weight: 400;
+					color: #14212b;
+					line-height: 1.8;
+					margin-bottom: 5px;
+				}
+			}
+
+			.tourSingleButtonComment {
+				background-color: transparent;
+				font-weight: 600;
+				margin-top: 5px;
+				transition: all 0.3s ease-in-out;
+				color: #14212b;
+				display: block;
+				font-size: 17px;
+				width: max-content;
+				text-align: left;
+
+				&:hover {
+					color: #fca702;
+				}
+			}
+
+			.tourSingleAvatar {
+				border-radius: 15px;
+				width: 766px;
+				height: 426px;
+			}
 		}
 
 		.tourSingleDivider {
@@ -175,7 +426,6 @@ $primary-color-hover: #fca702;
 			display: flex;
 			text-decoration: none;
 			list-style: none;
-			// background: red;
 			margin-left: -55px;
 
 			li {

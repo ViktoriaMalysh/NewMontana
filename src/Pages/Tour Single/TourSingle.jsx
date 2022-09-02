@@ -1,9 +1,26 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Divider, Grid, Icon, Image, Rating, Table } from "semantic-ui-react";
-import { tourPlans } from "../../Backend/Data";
+import { Link, useParams } from "react-router-dom";
+import {
+	Button,
+	Checkbox,
+	Divider,
+	Form,
+	Grid,
+	Icon,
+	Image,
+	Rating,
+	Segment,
+	Table,
+} from "semantic-ui-react";
+import {
+	additionalService,
+	gallerySingleTour,
+	tourPlans,
+} from "../../Backend/Data";
+import Banner from "../../Common/Banner/Banner";
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
+import GalleryComponent from "../Gallery/Gallery Component/GalleryComponent";
 import styles from "./TourSingle.module.scss";
 
 const TourSingle = ({ data }) => {
@@ -16,22 +33,22 @@ const TourSingle = ({ data }) => {
 		setProdId(params.id);
 		console.log("prodId", params.id);
 
-		const options = {
-			method: "GET",
-			url: "https://hotels4.p.rapidapi.com/properties/get-details",
-			params: {
-				id: params.id,
-				checkIn: "2020-01-08",
-				checkOut: "2020-01-15",
-				adults1: "1",
-				currency: "USD",
-				locale: "en_US",
-			},
-			headers: {
-				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
-				"X-RapidAPI-Key": "9dac91a6d8msha622f503c32b6abp134209jsnecbaf079fac6",
-			},
-		};
+		// const options = {
+		// 	method: "GET",
+		// 	url: "https://hotels4.p.rapidapi.com/properties/get-details",
+		// 	params: {
+		// 		id: params.id,
+		// 		checkIn: "2020-01-08",
+		// 		checkOut: "2020-01-15",
+		// 		adults1: "1",
+		// 		currency: "USD",
+		// 		locale: "en_US",
+		// 	},
+		// 	headers: {
+		// 		"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
+		// 		"X-RapidAPI-Key": "9dac91a6d8msha622f503c32b6abp134209jsnecbaf079fac6",
+		// 	},
+		// };
 	}, []);
 
 	return (
@@ -60,7 +77,7 @@ const TourSingle = ({ data }) => {
 								<span className={styles.tourSingleSpanPrice}>
 									${data.price}
 								</span>
-								<p>Per person</p>
+								<p style={{ marginTop: "0px" }}>Per person</p>
 							</div>
 						</div>
 						<Divider className={styles.tourSingleDivider} />
@@ -180,28 +197,131 @@ const TourSingle = ({ data }) => {
 						</p>
 
 						<Grid>
-							<Grid.Row>
-								<Grid.Column></Grid.Column>
+							<Grid.Row columns={3}>
+								<GalleryComponent data={gallerySingleTour} />
 							</Grid.Row>
 						</Grid>
 
+						<h3>Tour Map</h3>
+						<p>
+							On the other hand, we denounce with righteous indignation and
+							dislike men who are so beguiled and demoralized by the charms of
+							pleasure of the moment, so blinded by desire, that they cannot
+							foresee the pain and trouble that are bound to ensue; and equal
+							blame belongs to those who fail in their duty through weakness of
+							will, which is the same as saying through shrinking from toil and
+							pain.
+						</p>
 
+						{/* there should be a map (iframe)  */}
 
+						<h4 style={{ marginBottom: "60px" }}>
+							Reviews ({data.reviewsCount})
+						</h4>
+
+						<Grid className={styles.tourSingleGrid}>
+							{data.reviews.map((item, index) => (
+								<Grid.Row
+									columns={2}
+									className={styles.tourSingleGridRowReviews}
+									style={{ marginLeft: index % 2 !== 0 && "70px" }}
+								>
+									<Grid.Column width={3} floated="left">
+										<Image src={item.avatar} />
+									</Grid.Column>
+									<Grid.Column width={13}>
+										<h5>{item.user}</h5>
+										<span>{item.date}</span>
+										<p>{item.comment}</p>
+										<Rating
+											size="large"
+											icon="star"
+											defaultRating={item.rate}
+											maxRating={5}
+											disabled
+										/>
+										<Link to={"/"} className={styles.tourSingleButtonComment}>
+											<Icon name="reply" />
+											Reply
+										</Link>
+									</Grid.Column>
+								</Grid.Row>
+							))}
+						</Grid>
+
+						<h4 style={{ marginBottom: "60px" }}>Leave Your Review</h4>
+
+						<Form className={styles.tourSingleForm}>
+							<Form.Field>
+								<span>Your Rate : </span>
+								<Rating size="large" icon="star" maxRating={5} />
+							</Form.Field>
+							<Form.Group widths="equal">
+								<Form.Field>
+									<input placeholder="Your Name*" />
+								</Form.Field>
+								<Form.Field>
+									<input placeholder="Your Email*" />
+								</Form.Field>
+							</Form.Group>
+							<Form.TextArea placeholder="Your Review*" />
+
+							<Button type="submit">
+								<Icon name="paper plane outline" />
+								Submit Review
+							</Button>
+						</Form>
 					</Grid.Column>
-					<Grid.Column
-						width={5}
-						floated="right"
-						style={{ background: "green", width: "700px", height: "1000px" }}
-					>
+					<Grid.Column width={5} floated="right">
 						<Grid>
 							<Grid.Row>
-								<Grid.Column
-									style={{
-										background: "blue",
-										width: "600px",
-										height: "400px",
-									}}
-								></Grid.Column>
+								<Grid.Column>
+									<Segment raised className={styles.tourSingleSegment}>
+										<h4 style={{ marginBottom: "10px" }}>Book This Tour</h4>
+										<Form>
+											<Form.Field className={styles.tourPackageFormField}>
+												<label>First Name</label>
+												<input placeholder="First Name" />
+											</Form.Field>
+											<Form.Field className={styles.tourPackageFormField}>
+												<label>Last Name</label>
+												<input placeholder="Last Name" />
+											</Form.Field>
+											<Form.Field className={styles.tourPackageFormField}>
+												<label>Email</label>
+												<input placeholder="Your Email" />
+											</Form.Field>
+											<Form.Field className={styles.tourPackageFormField}>
+												<label>Phone</label>
+												<input placeholder="Your Phone" />
+											</Form.Field>
+											<Form.Field className={styles.tourPackageFormField}>
+												<label>Date</label>
+												<input placeholder="MM / DD / YY" />
+											</Form.Field>
+
+											<h5>Additional Service</h5>
+											{additionalService.map((item) => (
+												<Checkbox
+													label={item.value}
+													className={styles.tourSingleCheckbox}
+												/>
+											))}
+
+											<Form.Field className={styles.tourPackageFormField}>
+												<Button className={styles.tourPackageButton}>
+													<Icon name="check circle outline" />
+													Book now
+												</Button>
+											</Form.Field>
+										</Form>
+									</Segment>
+								</Grid.Column>
+							</Grid.Row>
+							<Grid.Row>
+								<Grid.Column>
+									<Banner />
+								</Grid.Column>
 							</Grid.Row>
 						</Grid>
 					</Grid.Column>
