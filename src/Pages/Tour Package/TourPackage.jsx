@@ -19,7 +19,6 @@ import {
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
 import PriceRange from "../../Common/Price Range/PriceRange";
-// import banner from "../../assets/banner.jpg";
 
 import styles from "./TourPackage.module.scss";
 import TourCard from "../../Common/Tour Card/TourCard";
@@ -153,24 +152,9 @@ const TourPackage = () => {
 
 							<Grid.Row>
 								<Grid.Column width={16}>
-									{/* <Grid.Row floated="left">
-										<Grid.Column>
-											<div className={styles.tourPackageSegmentLeftImage}>
-												<img src={banner} />
-												<div>
-													<h2>
-														Get <span>35% Off</span> On Norway Lake Tour
-													</h2>
-												</div>
-											</div>
-										</Grid.Column>
-									</Grid.Row> */}
-
 									<Banner />
 								</Grid.Column>
 							</Grid.Row>
-
-
 						</Grid>
 					</Grid.Column>
 					<Grid.Column

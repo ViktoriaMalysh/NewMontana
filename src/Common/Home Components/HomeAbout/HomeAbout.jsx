@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { Button, Icon } from "semantic-ui-react";
 import { homeAbout } from "../../../Backend/Data";
 import styles from "./HomeAbout.module.scss";
 
 const HomeAbout = () => {
+  let navigate = useNavigate();
+
 	return (
 		<div className={styles.homeAboutDiv}>
 			{homeAbout.map((item) => (
@@ -31,7 +34,7 @@ const HomeAbout = () => {
 								</li>
 							))}
 						</ul>
-						<Button>
+						<Button onClick={(e)=> navigate('/about-us')}>
 							{item.buttonName}
 							<Icon name="arrow right" />
 						</Button>

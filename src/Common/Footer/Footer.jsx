@@ -2,9 +2,11 @@ import { Button, Divider, Grid, Icon, Input } from "semantic-ui-react";
 import styles from "./Footer.module.scss";
 import logoWhite from "../../assets/logo_white.png";
 import { itemsHeader } from "../../Backend/Data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+	let navigate = useNavigate();
+
 	return (
 		<div className={styles.footer}>
 			<Grid>
@@ -18,20 +20,36 @@ const Footer = () => {
 							have suffered alteration in some form by injected humour.
 						</p>
 						<div className={styles.footerDivIcon}>
-							<Icon name="facebook f" className={styles.footerIcon} />
-							<Icon name="instagram" className={styles.footerIcon} />
-							<Icon name="twitter" className={styles.footerIcon} />
-							<Icon name="youtube" className={styles.footerIcon} />
+							<base target="_blank"></base>
+							<a href="https://uk-ua.facebook.com/">
+								<Icon name="facebook f" className={styles.footerIcon} />
+							</a>
+							<base target="_blank"></base>
+							<a href="https://www.instagram.com/">
+								<Icon name="instagram" className={styles.footerIcon} />
+							</a>
+							<base target="_blank"></base>
+							<a href="https://twitter.com/">
+								<Icon name="twitter" className={styles.footerIcon} />
+							</a>
+							<base target="_blank"></base>
+							<a href="https://www.youtube.com/">
+								<Icon name="youtube" className={styles.footerIcon} />
+							</a>
 						</div>
 					</Grid.Column>
 					<Grid.Column className={styles.footerColumn}>
 						<h4>Quick Links</h4>
 						<ul>
-							<li>About Us</li>
-							<li>FAQ's</li>
-							<li>Terms Of Service</li>
-							<li>Privacy policy</li>
-							<li>Our Services</li>
+							<li onClick={() => navigate("/about-us")}>About Us</li>
+							<li onClick={() => navigate("/faq")}>FAQ's</li>
+							<li onClick={() => navigate("/terms-of-service")}>
+								Terms Of Service
+							</li>
+							<li onClick={() => navigate("/privacy-policy")}>
+								Privacy policy
+							</li>
+							<li onClick={() => navigate("/")}>Our Services</li>
 						</ul>
 					</Grid.Column>
 					<Grid.Column className={styles.footerColumnContact}>
