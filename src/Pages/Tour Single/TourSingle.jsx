@@ -161,11 +161,6 @@ const TourSingle = ({ data }) => {
 											: styles.tourSingleDiv2BlockEnd
 									}
 								>
-									{console.log(
-										index === tourPlans.length,
-										index + 1,
-										tourPlans.length
-									)}
 									<span className={styles.tourSingleSpanBlock}>
 										0{index + 1}
 									</span>

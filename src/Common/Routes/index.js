@@ -2,7 +2,6 @@ import Login from "../../Pages/Login";
 import Home from "../../Pages/Home";
 import Register from "../../Pages/Register";
 import DestinationsPage from "../../Pages/Destinations/Destinations";
-import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingle";
 import AboutUsPage from "../../Pages/About Us/AboutUs";
 import Team from "../../Pages/Team/Team";
 import TestimonialsPage from "../../Pages/Testimonials Page/Testimonials";
@@ -27,6 +26,7 @@ import TourBooking from "../../Pages/Tour Booking/TourBooking";
 import TourPackage from "../../Pages/Tour Package/TourPackage";
 import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
 import TourSingle from "../../Pages/Tour Single/TourSingle";
+import DestinationSingle from "../../Pages/Destination Single/DestinationSingle";
 
 export const links = [
 	{
@@ -130,8 +130,8 @@ export const routes = [
 		component: <DestinationsPage />,
 	},
 	{
-		path: "/destinations/1",
-		component: <DestinationsSingle />,
+		path: "/destinations/:key",
+		component: <DestinationSingle />,
 	},
 	{
 		path: "/about-us",

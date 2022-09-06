@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { Grid, Icon, Button, Image } from "semantic-ui-react";
 import { destinations } from "../../Backend/Data";
 import styles from "./DestinationsComponent.module.scss";
 
 const DestinationsComponent = () => {
+	let navigate = useNavigate();
+
 	return (
 		<Grid className={styles.destinationsGrid}>
 			<Grid.Row columns={3}>
@@ -14,7 +17,10 @@ const DestinationsComponent = () => {
 						<div className={styles.destinationsGridColumnDivImg1}>
 							<div className={styles.destinationsGridColumnDivImg}>
 								<Image src={item.imgUrl} />
-								<Button className={styles.destinationsGridButton}>
+								<Button
+									className={styles.destinationsGridButton}
+									onClick={() => navigate(`/destinations/${item.key}`)}
+								>
 									<Icon name="arrow right" />
 								</Button>
 							</div>

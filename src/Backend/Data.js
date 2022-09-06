@@ -389,36 +389,42 @@ export const homeAbout = [
 
 export const destinations = [
 	{
+		key: "new-york",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/1.jpg",
 		country: "New York",
 		price: "1500",
 		width: 8,
 	},
 	{
+		key: "paris",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/2.jpg",
 		country: "Paris",
 		price: "1500",
 		width: 4,
 	},
 	{
+		key: "london",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/3.jpg",
 		country: "London",
 		price: "1500",
 		width: 4,
 	},
 	{
+		key: "grand-cayon",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/4.jpg",
 		country: "Grand Cayon",
 		price: "1500",
 		width: 4,
 	},
 	{
+		key: "sydney",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/5.jpg",
 		country: "Sydney",
 		price: "1500",
 		width: 4,
 	},
 	{
+		key: "glacier-park",
 		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/6.jpg",
 		country: "Glacier Park",
 		price: "1500",
@@ -1136,4 +1142,19 @@ export const additionalService = [
 		key: "car-rent",
 		value: "car rent",
 	},
+];
+
+export const destinationImages = [
+	gallerySingle4,
+	gallerySingle5,
+	gallerySingle3,
+];
+
+export const allCategoryMenu = [
+	{ name: "Best Package", key: "best-package" },
+	{ name: "Discount Package", key: "discount-package" },
+	{ name: "Low Price Package", key: "low-price-package" },
+	{ name: "High Price Package", key: "high-price-package" },
+	{ name: "Vip Package", key: "vip-package" },
+	{ name: "Regular Package", key: "regular-package" },
 ];
