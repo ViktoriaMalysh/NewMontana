@@ -606,18 +606,22 @@ export const counterItems = [
 
 export const tourGuides = [
 	{
+		id: 1,
 		avatar: teamImg1,
 		name: "Malissa Fierro",
 	},
 	{
+		id: 2,
 		avatar: teamImg2,
 		name: "Florence Long",
 	},
 	{
+		id: 3,
 		avatar: teamImg3,
 		name: "Melvin Castillo",
 	},
 	{
+		id: 4,
 		avatar: teamImg4,
 		name: "John Welsh",
 	},
@@ -1157,4 +1161,27 @@ export const allCategoryMenu = [
 	{ name: "High Price Package", key: "high-price-package" },
 	{ name: "Vip Package", key: "vip-package" },
 	{ name: "Regular Package", key: "regular-package" },
+];
+
+export const linksIconSingleTeam = [
+	{
+		link: "https://uk-ua.facebook.com/",
+		icon: "facebook f",
+	},
+	{
+		link: "https://twitter.com/",
+		icon: "twitter",
+	},
+	{
+		link: "https://www.behance.net/",
+		icon: "behance",
+	},
+	{
+		link: "https://www.pinterest.com/",
+		icon: "pinterest",
+	},
+	{
+		link: "https://www.linkedin.com/",
+		icon: "linkedin",
+	},
 ];

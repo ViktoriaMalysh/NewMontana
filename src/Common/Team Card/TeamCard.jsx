@@ -17,7 +17,7 @@ const TeamCard = ({ guide }) => {
 						<Icon name="linkedin" className={styles.tourGuidesIcon} />
 						<Icon name="youtube" className={styles.tourGuidesIcon} />
 					</div>
-					<Link to={"/"} className={styles.tourGuidesLink}>
+					<Link to={`/team/${guide.id}`} className={styles.tourGuidesLink}>
 						{guide.name}
 					</Link>
 					<span className={styles.tourGuidesSpan}>Tour Guide</span>

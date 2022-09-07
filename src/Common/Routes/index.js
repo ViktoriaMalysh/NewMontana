@@ -27,6 +27,7 @@ import TourPackage from "../../Pages/Tour Package/TourPackage";
 import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
 import TourSingle from "../../Pages/Tour Single/TourSingle";
 import DestinationSingle from "../../Pages/Destination Single/DestinationSingle";
+import TeamSingle from "../../Pages/Team Single/TeamSingle";
 
 export const links = [
 	{
@@ -140,6 +141,10 @@ export const routes = [
 	{
 		path: "/team",
 		component: <Team />,
+	},
+	{
+		path: "/team/:id",
+		component: <TeamSingle />,
 	},
 	{
 		path: "/testimonials",
