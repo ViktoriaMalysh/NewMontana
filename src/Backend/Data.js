@@ -38,6 +38,18 @@ import tourCart1 from "../assets/tourCart1.jpg";
 import tourCart2 from "../assets/tourCart2.jpg";
 import tourCart3 from "../assets/tourCart3.jpg";
 
+import single from "../assets/single.jpg";
+
+import gallerySingle1 from "../assets/single-tour1.jpg";
+import gallerySingle2 from "../assets/single-tour2.jpg";
+import gallerySingle3 from "../assets/single-tour3.jpg";
+import gallerySingle4 from "../assets/single-tour4.jpg";
+import gallerySingle5 from "../assets/single-tour5.jpg";
+
+import user1 from "../assets/user1.jpg";
+import user2 from "../assets/user2.jpg";
+import user3 from "../assets/user3.jpg";
+
 export const termsOfService = [
   {
     id: 1,
@@ -260,11 +272,11 @@ export const privacyPolicy = [
 ];
 
 export const itemsHeader = [
-  { id: "home", item: "Home", path: "/" },
-  { id: "tours", item: "Tours", path: "/tours" },
-  { id: "about", item: "About", path: "/about-us" },
-  { id: "blog", item: "Blog", path: "/blog" },
-  { id: "contact", item: "Contact", path: "/contact" },
+	{ id: "home", item: "Home", path: "/" },
+	{ id: "tours", item: "Tours", path: "/tour-package" },
+	{ id: "about", item: "About", path: "/about-us" },
+	{ id: "blog", item: "Blog", path: "/blog" },
+	{ id: "contact", item: "Contact", path: "/contact" },
 ];
 
 export const responsive = {
@@ -376,42 +388,48 @@ export const homeAbout = [
 ];
 
 export const destinations = [
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/1.jpg",
-    country: "New York",
-    price: "1500",
-    width: 8,
-  },
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/2.jpg",
-    country: "Paris",
-    price: "1500",
-    width: 4,
-  },
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/3.jpg",
-    country: "London",
-    price: "1500",
-    width: 4,
-  },
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/4.jpg",
-    country: "Grand Cayon",
-    price: "1500",
-    width: 4,
-  },
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/5.jpg",
-    country: "Sydney",
-    price: "1500",
-    width: 4,
-  },
-  {
-    imgUrl: "https://live.themewild.com/travelox/assets/img/destination/6.jpg",
-    country: "Glacier Park",
-    price: "1500",
-    width: 8,
-  },
+	{
+		key: "new-york",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/1.jpg",
+		country: "New York",
+		price: "1500",
+		width: 8,
+	},
+	{
+		key: "paris",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/2.jpg",
+		country: "Paris",
+		price: "1500",
+		width: 4,
+	},
+	{
+		key: "london",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/3.jpg",
+		country: "London",
+		price: "1500",
+		width: 4,
+	},
+	{
+		key: "grand-cayon",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/4.jpg",
+		country: "Grand Cayon",
+		price: "1500",
+		width: 4,
+	},
+	{
+		key: "sydney",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/5.jpg",
+		country: "Sydney",
+		price: "1500",
+		width: 4,
+	},
+	{
+		key: "glacier-park",
+		imgUrl: "https://live.themewild.com/travelox/assets/img/destination/6.jpg",
+		country: "Glacier Park",
+		price: "1500",
+		width: 8,
+	},
 ];
 
 export const topTour = [
@@ -450,6 +468,119 @@ export const topTour = [
   },
 ];
 
+export const topTours = [
+	{
+		imgUrl: imgTopTour1,
+		sale: true,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour1,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour1,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour2,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour3,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+	{
+		imgUrl: imgTopTour1,
+		sale: false,
+		name: "Paris - All Stunning",
+		rate: 5,
+		reviews: 25,
+		price: "1,500",
+		countOfDays: 7,
+		countOfPerson: 7,
+		country: "Paris",
+	},
+];
+
 export const counterItems = [
   {
     icon: "users",
@@ -474,22 +605,26 @@ export const counterItems = [
 ];
 
 export const tourGuides = [
-  {
-    avatar: teamImg1,
-    name: "Malissa Fierro",
-  },
-  {
-    avatar: teamImg2,
-    name: "Florence Long",
-  },
-  {
-    avatar: teamImg3,
-    name: "Melvin Castillo",
-  },
-  {
-    avatar: teamImg4,
-    name: "John Welsh",
-  },
+	{
+		id: 1,
+		avatar: teamImg1,
+		name: "Malissa Fierro",
+	},
+	{
+		id: 2,
+		avatar: teamImg2,
+		name: "Florence Long",
+	},
+	{
+		id: 3,
+		avatar: teamImg3,
+		name: "Melvin Castillo",
+	},
+	{
+		id: 4,
+		avatar: teamImg4,
+		name: "John Welsh",
+	},
 ];
 
 export const testimonials = [
@@ -821,10 +956,232 @@ export const tourCart = [
 ];
 
 export const tourBooking = {
-  packagesCost: 4500,
-  tourGuide: 25,
-  discount: 5,
-  vat: 20,
-  subTotal: 4540,
-  total: 4540,
+	"Packages Cost": 4500,
+	"Tour Guide": 25,
+	Discount: 5,
+	Vat: 20,
+	"Sub Total": 4540,
+	Total: 4540,
 };
+
+export const category = [
+	{ key: "adventure-tours", name: "adventure tours" },
+	{ key: "business-tours", name: "business tours" },
+	{ key: "group-tours", name: "group tours" },
+	{ key: "couple-tours", name: "couple tours" },
+	{ key: "city-tours", name: "city tours" },
+];
+
+export const durations = [
+	{ key: "0-24h", name: "0 - 24 Hours" },
+	{ key: "1-2d", name: "1 - 3 Days" },
+	{ key: "3-6d", name: "3 - 6 Days" },
+	{ key: "6-9d", name: "6 - 9 Days" },
+	{ key: "9-10d", name: "9 - 10 Days" },
+];
+
+export const rating = [
+	{ key: "5", rate: 5 },
+	{ key: "4", rate: 4 },
+	{ key: "3", rate: 3 },
+	{ key: "2", rate: 2 },
+	{ key: "1", rate: 1 },
+];
+
+export const sortOptions = [
+	{ key: "default", value: "default", text: "Sort By Default" },
+	{ key: "featured", value: "featured", text: "Sort By Featured" },
+	{ key: "latest", value: "latest", text: "Sort By Latest" },
+	{ key: "lowPrice", value: "lowPrice", text: "Sort By Low Price" },
+	{ key: "highPrice", value: "highPrice", text: "Sort By High Price" },
+];
+
+export const confirmData = {
+	bookingId: "TRSD-WEDV-ASE",
+	firstName: "Marvin",
+	lastName: "Pricel",
+	email: "info@example.com",
+	phone: "+2-123-4567-7894",
+	cardNumber: "521-8547-32-11",
+	city: "New York",
+	address: "45 Robson Lane, Saint Clairs, Ohio",
+	card: "master",
+	bookingLink: "https://www.example.com/booking-234",
+	packagesPost: 4500,
+	tourGuide: 25,
+	discount: 5,
+	vat: 20,
+};
+
+export const tourSingle = {
+	imgUrl: single,
+	name: "Norway Lake Tour",
+	rate: 4,
+	countReviews: 25,
+	price: 1500,
+	days: 3,
+	nights: 2,
+	persons: 15,
+	type: "Adventure",
+	city: "Norway Lake",
+	tourOverview:
+		"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+	includedAndExcluded:
+		"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+	tourPlan:
+		"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+	tourGallery: ["", "", "", "", ""],
+	included: [
+		{
+			type: true,
+		},
+		{
+			type: true,
+		},
+		{
+			type: false,
+		},
+		{
+			type: false,
+		},
+	],
+	mapLocation: "",
+	reviewsCount: 20,
+	reviews: [
+		{
+			avatar: user1,
+			user: "Kristin Alvarado",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 5,
+		},
+		{
+			avatar: user2,
+			user: "Dannie Wilcox",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 5,
+		},
+		{
+			avatar: user3,
+			user: "Roxanna Graham",
+			date: "20 August, 2021",
+			comment:
+				"There are many variations of passages the majority have suffered in some injected humour or randomised words which don't look even slightly believable.",
+			rate: 4,
+		},
+	],
+};
+
+export const tourPlans = [
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 01 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 02 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+	{
+		time: "09:00AM - 12:00PM",
+		title: "DAY 03 - Norway City Visit",
+		text: "	There are many variations of passages of Lorem Ipsum available, but	the majority have suffered alteration in some form, by injected	humour, or randomised words which don't look even slightly believable.",
+		ul: ["Sed Perspiciatis", "Totam Rem Aperiam", "Quasi Architecto Beatae"],
+	},
+];
+
+export const gallerySingleTour = [
+	[
+		{
+			id: 1,
+			url: gallerySingle1,
+		},
+		{
+			id: 4,
+			url: gallerySingle4,
+		},
+	],
+	[
+		{
+			id: 2,
+			url: gallerySingle4,
+		},
+		{
+			id: 6,
+			url: gallerySingle1,
+		},
+	],
+	[
+		{
+			id: 3,
+			url: gallerySingle1,
+		},
+		{
+			id: 5,
+			url: gallerySingle4,
+		},
+	],
+];
+
+export const additionalService = [
+	{
+		key: "tour-guide",
+		value: "tour guide",
+	},
+	{
+		key: "insurance",
+		value: "insurance",
+	},
+	{
+		key: "dinner",
+		value: "dinner",
+	},
+	{
+		key: "car-rent",
+		value: "car rent",
+	},
+];
+
+export const destinationImages = [
+	gallerySingle4,
+	gallerySingle5,
+	gallerySingle3,
+];
+
+export const allCategoryMenu = [
+	{ name: "Best Package", key: "best-package" },
+	{ name: "Discount Package", key: "discount-package" },
+	{ name: "Low Price Package", key: "low-price-package" },
+	{ name: "High Price Package", key: "high-price-package" },
+	{ name: "Vip Package", key: "vip-package" },
+	{ name: "Regular Package", key: "regular-package" },
+];
+
+export const linksIconSingleTeam = [
+	{
+		link: "https://uk-ua.facebook.com/",
+		icon: "facebook f",
+	},
+	{
+		link: "https://twitter.com/",
+		icon: "twitter",
+	},
+	{
+		link: "https://www.behance.net/",
+		icon: "behance",
+	},
+	{
+		link: "https://www.pinterest.com/",
+		icon: "pinterest",
+	},
+	{
+		link: "https://www.linkedin.com/",
+		icon: "linkedin",
+	},
+];

@@ -6,14 +6,12 @@ $primary-color: #fafe28;
 $primary-color-hover: #ffdd00;
 
 :global(#app) {
-  .destSingle{
-    margin-left: 40vh;
-    margin-right: 40vh;
-    background-color: red;
+	.tourPackage {
+		margin-left: 39.5vh;
+		margin-right: 39vh;
+		margin-top: 100px;
+		position: relative;
+		margin-bottom: 150px;
 
-    .destSingleImage{
-      border-radius: 15px;
-      // width: 100%;
-    }
   }
 }

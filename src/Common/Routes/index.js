@@ -2,7 +2,6 @@ import Login from "../../Pages/Login";
 import Home from "../../Pages/Home";
 import Register from "../../Pages/Register";
 import DestinationsPage from "../../Pages/Destinations/Destinations";
-import DestinationsSingle from "../../Pages/DestinationsSingle/DestinationsSingle";
 import AboutUsPage from "../../Pages/About Us/AboutUs";
 import Team from "../../Pages/Team/Team";
 import TestimonialsPage from "../../Pages/Testimonials Page/Testimonials";
@@ -18,10 +17,17 @@ import {
 	tourCartHeader,
 	tourOffer,
 	tourBooking,
+	confirmData,
+	tourSingle,
 } from "../../Backend/Data";
 import TourOffer from "../../Pages/Tour Offer/TourOffer";
 import TourCart from "../../Pages/Tour Cart/TourCart";
 import TourBooking from "../../Pages/Tour Booking/TourBooking";
+import TourPackage from "../../Pages/Tour Package/TourPackage";
+import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
+import TourSingle from "../../Pages/Tour Single/TourSingle";
+import DestinationSingle from "../../Pages/Destination Single/DestinationSingle";
+import TeamSingle from "../../Pages/Team Single/TeamSingle";
 
 export const links = [
 	{
@@ -88,8 +94,12 @@ export const routes = [
 		),
 	},
 	{
-		path: "/tours",
-		// component: <Rooms />,
+		path: "/tour-package",
+		component: <TourPackage />,
+	},
+	{
+		path: "/tour-package/:id",
+		component: <TourSingle data={tourSingle} />,
 	},
 	{
 		path: "/tour-offer",
@@ -102,6 +112,10 @@ export const routes = [
 	{
 		path: "/tour-booking",
 		component: <TourBooking data={tourBooking} />,
+	},
+	{
+		path: "/booking-confirm",
+		component: <BookingConfirm data={confirmData} />,
 	},
 	{
 		path: "/blog",
@@ -117,8 +131,8 @@ export const routes = [
 		component: <DestinationsPage />,
 	},
 	{
-		path: "/destinations/1",
-		component: <DestinationsSingle />,
+		path: "/destinations/:key",
+		component: <DestinationSingle />,
 	},
 	{
 		path: "/about-us",
@@ -127,6 +141,10 @@ export const routes = [
 	{
 		path: "/team",
 		component: <Team />,
+	},
+	{
+		path: "/team/:id",
+		component: <TeamSingle />,
 	},
 	{
 		path: "/testimonials",

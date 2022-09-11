@@ -1,9 +1,11 @@
 import { Button, Dropdown, Icon, Menu } from "semantic-ui-react";
-import { currency, itemsHeader, lang } from "../../Backend/Data";
+import { currency, lang } from "../../Backend/Data";
 import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TopHeader = () => {
+	let navigate = useNavigate();
 	const [headerShow, setHeaderShow] = useState(false);
 
 	useEffect(() => {
@@ -12,6 +14,10 @@ const TopHeader = () => {
 
 	const handleScroll = () => {
 		window.scrollY > 0 ? setHeaderShow(true) : setHeaderShow(false);
+	};
+
+	const handleClick = () => {
+		navigate("/login");
 	};
 
 	return (
@@ -97,7 +103,7 @@ const TopHeader = () => {
 				</Menu.Item>
 
 				<Menu.Item className={styles.headerItemsTop}>
-					<Button className={styles.headerTopButton}>
+					<Button className={styles.headerTopButton} onClick={handleClick}>
 						<Icon name="sign in" />
 						Login
 					</Button>

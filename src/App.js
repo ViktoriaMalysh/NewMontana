@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { routes } from "./Common/Routes";
 import Layout from "./Common/Layout";
 import "./App.css";
+import history from "./Common/history";
 
 const App = () => {
 	// if (!authStore.logined) {
@@ -12,7 +13,7 @@ const App = () => {
 	return (
 		<>
 			<Layout>
-				<Routes>
+				<Routes history={history}>
 					{routes.map((route, index) => (
 						<Route path={route.path} element={route.component} key={index} />
 					))}
