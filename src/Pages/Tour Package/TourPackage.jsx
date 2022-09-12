@@ -25,11 +25,20 @@ import TourCard from "../../Common/Tour Card/TourCard";
 import CustomPagination from "../../Common/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import Banner from "../../Common/Banner/Banner";
+import { useDispatch, useSelector } from "react-redux";
+import { getTours } from "../../redux/actions/actionApi";
 
 const TourPackage = () => {
 	const [pageCount, setPageCount] = useState(0);
 	const [currentItems, setCurrentItems] = useState(null);
 	const [itemOffset, setItemOffset] = useState(0);
+
+	const dispatch = useDispatch();
+  const store = useSelector((state) => state);
+
+	useEffect(()=>{
+		dispatch(getTours());
+	}, [])
 
 	const itemsPerPage = 8;
 
@@ -184,7 +193,7 @@ const TourPackage = () => {
 								</Grid.Column>
 							</Grid.Row>
 							<Grid.Row columns={2}>
-								{currentItems?.map((item) => (
+								{store.api.tours?.map((item) => (
 									<Grid.Column style={{ marginRight: "0px" }}>
 										<TourCard
 											item={item}

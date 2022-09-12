@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 const TourCard = ({ item, onChange, offer }) => {
-	console.log("item", item);
+	console.log("item", item.starRating);
 
 	return (
 		<>
@@ -26,21 +26,25 @@ const TourCard = ({ item, onChange, offer }) => {
 
 			<Segment raised className={styles.topTourSegment}>
 				<div className={styles.topTourSegmentDivImg}>
-					<img src={item.imgUrl} className={styles.topTourSegmentImg} />
+					<img
+						src={item.optimizedThumbUrls?.srpDesktop}
+						className={styles.topTourSegmentImg}
+					/>
 				</div>
 				<Grid className={styles.topTourSegmentBlock} divided>
 					<Grid.Row columns={3}>
 						<Grid.Column width={5}>
-							<Icon name="clock outline" /> {item.countOfDays}D/
-							{item.countOfDays - 1}N
+							<Icon name="clock outline" />{" "}
+							{item.countOfDays ? item.countOfDays : 1}D/
+							{item.countOfDays ? item.countOfDays - 1 : 1}N
 						</Grid.Column>
 
 						<Grid.Column width={6}>
-							<Icon name="users" /> {item.countOfPerson} Person
+							<Icon name="users" /> {item.countOfPerson ? item.countOfPerson : 1} Person
 						</Grid.Column>
 
 						<Grid.Column width={5}>
-							<Icon name="map marker alternate" /> {item.country}
+							<Icon name="map marker alternate" /> {item.address.countryName}
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
@@ -48,7 +52,7 @@ const TourCard = ({ item, onChange, offer }) => {
 					<>
 						<div className={styles.topTourSegmentDivOffer}>
 							<Rating
-								defaultRating={item.rate}
+								defaultRating={item.starRating}
 								maxRating={5}
 								size="small"
 								icon="star"
@@ -90,21 +94,21 @@ const TourCard = ({ item, onChange, offer }) => {
 						</Link>
 						<div className={styles.topTourSegmentDiv}>
 							<Rating
-								defaultRating={item.rate}
+								defaultRating={item.starRating}
 								maxRating={5}
 								size="small"
 								icon="star"
 								disabled
 								className={styles.topTourSegmentRating}
 							/>{" "}
-							<span>({item.reviews} Reviews)</span>
+							<span>({item.guestReviews.total} Reviews)</span>
 						</div>
 
 						<Divider className={styles.topTourSegmentDevider} />
 
 						<div className={styles.topTourSegmentDivButton}>
 							<div className={styles.topTourSegmentDiv}>
-								${item.price}
+								${Math.ceil(item.ratePlan.price.exactCurrent)}
 								<span>/per person</span>
 							</div>
 							<Button className={styles.topTourButton}>

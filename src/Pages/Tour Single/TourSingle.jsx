@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
 	Button,
@@ -20,18 +21,21 @@ import {
 import Banner from "../../Common/Banner/Banner";
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
+import { getTour } from "../../redux/actions/actionApi";
 import GalleryComponent from "../Gallery/Gallery Component/GalleryComponent";
 import styles from "./TourSingle.module.scss";
 
 const TourSingle = ({ data }) => {
 	const [prodId, setProdId] = useState(0);
 	const params = useParams();
-
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state);
 	console.log(data);
 
 	useEffect(() => {
 		setProdId(params.id);
 		console.log("prodId", params.id);
+		dispatch(getTour(params.id));
 
 		// const options = {
 		// 	method: "GET",
