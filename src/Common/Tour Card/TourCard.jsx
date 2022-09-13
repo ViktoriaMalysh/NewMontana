@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 const TourCard = ({ item, onChange, offer }) => {
-	console.log("item", item.starRating);
+	console.log("item", item.guestReviews);
 
 	return (
 		<>
@@ -40,7 +40,8 @@ const TourCard = ({ item, onChange, offer }) => {
 						</Grid.Column>
 
 						<Grid.Column width={6}>
-							<Icon name="users" /> {item.countOfPerson ? item.countOfPerson : 1} Person
+							<Icon name="users" />{" "}
+							{item.countOfPerson ? item.countOfPerson : 1} Person
 						</Grid.Column>
 
 						<Grid.Column width={5}>
@@ -101,7 +102,7 @@ const TourCard = ({ item, onChange, offer }) => {
 								disabled
 								className={styles.topTourSegmentRating}
 							/>{" "}
-							<span>({item.guestReviews.total} Reviews)</span>
+							<span>({item.guestReviews?.total} Reviews)</span>
 						</div>
 
 						<Divider className={styles.topTourSegmentDevider} />

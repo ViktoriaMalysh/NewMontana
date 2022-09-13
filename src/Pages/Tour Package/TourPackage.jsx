@@ -1,10 +1,12 @@
 import {
 	Button,
 	Checkbox,
+	Dimmer,
 	Dropdown,
 	Form,
 	Grid,
 	Icon,
+	Loader,
 	Rating,
 	Segment,
 	Select,
@@ -34,11 +36,13 @@ const TourPackage = () => {
 	const [itemOffset, setItemOffset] = useState(0);
 
 	const dispatch = useDispatch();
-  const store = useSelector((state) => state);
+	const store = useSelector((state) => state);
 
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(getTours());
-	}, [])
+	}, []);
+
+	console.log(store)
 
 	const itemsPerPage = 8;
 
@@ -193,15 +197,27 @@ const TourPackage = () => {
 								</Grid.Column>
 							</Grid.Row>
 							<Grid.Row columns={2}>
-								{store.api.tours?.map((item) => (
-									<Grid.Column style={{ marginRight: "0px" }}>
-										<TourCard
-											item={item}
-											// onChange={handleChange}
-											offer={false}
-										/>
-									</Grid.Column>
-								))}
+								{store.api.tours.length ? (
+									store.api.tours?.map((item) => (
+										<Grid.Column style={{ marginRight: "0px" }}>
+											<TourCard
+												item={item}
+												// onChange={handleChange}
+												offer={false}
+											/>
+										</Grid.Column>
+									))
+								) : (
+									<div className={styles.tourPackageDivLoader}>
+										<Dimmer active inverted>
+											<Loader
+												inverted
+												content="Loading"
+												className={styles.tourPackageLoader}
+											/>
+										</Dimmer>
+									</div>
+								)}
 							</Grid.Row>
 						</Grid>
 						<div className={styles.topToursPagination}>

@@ -6,6 +6,14 @@ $primary-color: #fafe28;
 $primary-color-hover: #fca702;
 
 :global(#app) {
+	.tourPackageSingleDivLoader {
+		padding: 100px;
+
+		.tourPackageSingleLoader {
+			color: #fca702;
+		}
+	}
+
 	.tourSingle {
 		margin-left: 39.5vh;
 		margin-right: 39vh;

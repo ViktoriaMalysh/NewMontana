@@ -1,12 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid, GridColumn } from "semantic-ui-react";
 import { topTour } from "../../../Backend/Data";
+import { getTopTours } from "../../../redux/actions/actionApi";
 import TourCard from "../../Tour Card/TourCard";
 import styles from "./TopTour.module.scss";
 
 const TopTour = () => {
-	const handleChange = () =>{
-		
-	}
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state);
+
+	useEffect(() => {
+		dispatch(getTopTours());
+	}, []);
+
+	const handleChange = () => {};
 
 	return (
 		<div className={styles.topTourDiv}>
@@ -18,7 +26,7 @@ const TopTour = () => {
 			</p>
 			<Grid>
 				<Grid.Row columns={3} className={styles.topTourRow}>
-					{topTour.map((item) => (
+					{store.api.topTours?.map((item) => (
 						<GridColumn>
 							<TourCard item={item} onChange={handleChange} offer={false} />
 						</GridColumn>

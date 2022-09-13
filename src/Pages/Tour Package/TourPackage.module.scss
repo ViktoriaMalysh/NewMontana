@@ -149,6 +149,15 @@ $primary-color-hover: #ffdd00;
 		.tourPackageSegmentRight {
 			// margin-top: 30px;
 
+			.tourPackageDivLoader {
+				padding: 50px;
+				min-width: 100%;
+
+				.tourPackageLoader {
+					color: #fca702;
+				}
+			}
+
 			.topToursH5 {
 				color: #1b1b1b;
 				margin: 0px;
