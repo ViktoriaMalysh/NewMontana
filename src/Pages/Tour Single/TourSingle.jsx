@@ -4,14 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import {
 	Button,
 	Checkbox,
-	Dimmer,
 	Divider,
 	Form,
 	Grid,
 	Icon,
 	Image,
-	Loader,
-	Placeholder,
 	Rating,
 	Segment,
 	Table,
@@ -30,7 +27,6 @@ import LoadingPage from "../Loading/Loading";
 import styles from "./TourSingle.module.scss";
 
 const TourSingle = () => {
-	const [prodId, setProdId] = useState(0);
 	const params = useParams();
 	const dispatch = useDispatch();
 	const tour = useSelector((state) => state.api.tour);

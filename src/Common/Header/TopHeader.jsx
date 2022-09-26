@@ -3,9 +3,14 @@ import { currency, lang } from "../../Backend/Data";
 import styles from "./Header.module.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { CLEAR_USER } from "../../redux/types";
 
 const TopHeader = () => {
 	let navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const userStore = useSelector((state) => state.user.user);
 	const [headerShow, setHeaderShow] = useState(false);
 
 	useEffect(() => {
@@ -16,8 +21,17 @@ const TopHeader = () => {
 		window.scrollY > 0 ? setHeaderShow(true) : setHeaderShow(false);
 	};
 
-	const handleClick = () => {
+	const handleLogin = () => {
 		navigate("/login");
+	};
+
+	const handleLogout = () => {
+		localStorage.removeItem("isUser");
+		localStorage.removeItem("token");
+		dispatch({ type: CLEAR_USER }).then(navigate("/"));
+		// setTimeout(() => {
+
+		// }, 1400);
 	};
 
 	return (
@@ -101,13 +115,28 @@ const TopHeader = () => {
 						</Dropdown.Menu>
 					</Dropdown>
 				</Menu.Item>
+				{console.log("h", localStorage["isUser"])}
 
-				<Menu.Item className={styles.headerItemsTop}>
-					<Button className={styles.headerTopButton} onClick={handleClick}>
-						<Icon name="sign in" />
-						Login
-					</Button>
-				</Menu.Item>
+				{!localStorage["isUser"] && !userStore.firstName ? (
+					<Menu.Item className={styles.headerItemsTop}>
+						<Button className={styles.headerTopButton} onClick={handleLogin}>
+							<Icon name="sign in" />
+							Login
+						</Button>
+					</Menu.Item>
+				) : (
+					<>
+						<Menu.Item className={styles.headerItemsTop}>
+							<span>{userStore.firstName}</span>
+						</Menu.Item>
+						<Menu.Item className={styles.headerItemsTop}>
+							<Button className={styles.headerTopButton} onClick={handleLogout}>
+								<Icon name="sign-out" />
+								Log out
+							</Button>
+						</Menu.Item>
+					</>
+				)}
 			</Menu.Menu>
 		</Menu>
 	);

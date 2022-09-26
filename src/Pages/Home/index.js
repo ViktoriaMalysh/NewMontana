@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../Common/Footer/Footer";
 import Counter from "../../Common/Home Components/Counter/Counter";
 import Destinations from "../../Common/Home Components/Destinations/Destinations";
@@ -12,8 +14,16 @@ import HomeBlock1 from "../../Common/HomeBlock1/HomeBlok1";
 import HomeBlock2 from "../../Common/HomeBlock2/HomeBlock2";
 import SearchArea from "../../Common/Search Area/SearchArea";
 import Slider from "../../Common/Slider/Slider";
+import { getMetaData } from "../../redux/actions/actionApi";
 
 const Home = () => {
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state);
+
+	useEffect(() => {
+		dispatch(getMetaData());
+	}, []);
+
 	return (
 		<div>
 			<Slider />

@@ -1,9 +1,10 @@
-import { TOP_TOURS, TOUR, TOURS } from "../types";
+import { LOCALE, TOP_TOURS, TOUR, TOURS } from "../types";
 
 const initialState = {
 	tours: [],
 	tour: {},
 	topTours: [],
+	locale: [],
 };
 
 export const reducerApi = (state = initialState, action) => {
@@ -14,6 +15,8 @@ export const reducerApi = (state = initialState, action) => {
 			return { ...state, tour: action.payload };
 		case TOP_TOURS:
 			return { ...state, topTours: action.payload };
+		case LOCALE:
+			return { ...state, locale: action.payload };
 
 		default:
 			return state;
