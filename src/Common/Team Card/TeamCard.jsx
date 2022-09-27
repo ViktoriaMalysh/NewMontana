@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const TeamCard = ({ guide }) => {
-  console.log(guide)
+  // console.log(guide)
 	return (
 		<>
 			<Grid.Column className={styles.tourGuidesGridColumn}>

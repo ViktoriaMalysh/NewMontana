@@ -2,28 +2,8 @@ import axios from "axios";
 import { API_URL, BACKEND_URL } from "../../config";
 import { TOURS, TOUR, TOP_TOURS, LOCALE } from "../types";
 
-export const getTours = () => {
+export const getTours = (options) => {
 	return async (dispatch) => {
-		const options = {
-			method: "get",
-			url: "https://hotels4.p.rapidapi.com/properties/list",
-			params: {
-				destinationId: "1506246",
-				pageNumber: "1",
-				pageSize: "25",
-				checkIn: "2022-09-20",
-				checkOut: "2022-09-25",
-				adults1: "1",
-				sortOrder: "PRICE",
-				locale: "en_US",
-				currency: "USD",
-			},
-			headers: {
-				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
-				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
-			},
-		};
-
 		try {
 			const result = await axios.post(`${BACKEND_URL}api/get-tours`, options);
 			if (result.status === 200) {
@@ -102,22 +82,22 @@ export const getTour = (id) => {
 	};
 };
 
-
 export const getMetaData = (id) => {
 	return async (dispatch) => {
-
 		const options = {
-			method: 'GET',
-			url: 'https://hotels4.p.rapidapi.com/get-meta-data',
+			method: "GET",
+			url: "https://hotels4.p.rapidapi.com/get-meta-data",
 			headers: {
-				'X-RapidAPI-Key': '41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5',
-				'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
-			}
+				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
+			},
 		};
-		
 
 		try {
-			const result = await axios.post(`${BACKEND_URL}api/get-meta-data`, options);
+			const result = await axios.post(
+				`${BACKEND_URL}api/get-meta-data`,
+				options
+			);
 			if (result.status === 200) {
 				dispatch({ type: LOCALE, payload: result.data.locale });
 			}
@@ -127,5 +107,3 @@ export const getMetaData = (id) => {
 		}
 	};
 };
-
-

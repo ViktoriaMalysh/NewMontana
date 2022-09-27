@@ -1,11 +1,34 @@
-import { Segment, Form, Icon, Select, Button } from "semantic-ui-react";
+import { Segment, Form, Icon, Button, Dropdown } from "semantic-ui-react";
 import styles from "./SearchArea.module.scss";
 import { useState } from "react";
 import CalendarContainer from "../Calendar/Calendar";
 import "../Calendar/Calendar.scss";
-import { calendarItems } from "../../Backend/Data";
+import { accommodationTypes, calendarItems } from "../../Backend/Data";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import dayjs from "dayjs";
+import { getTours } from "../../redux/actions/actionApi";
+import { useNavigate } from "react-router-dom";
 
 const SearchArea = () => {
+	// const store = useSelector((state) => state);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const locale = useSelector((state) => state.api.locale);
+	const [search, setSearch] = useState({
+		destination: "",
+		accommodationType: "",
+	});
+
+	useEffect(() => {
+		if (locale.length) {
+			setSearch({
+				destination: locale[0].key,
+				accommodationType: accommodationTypes[0].value,
+			});
+		}
+	}, [locale]);
+
 	const [openCalendar, setOpenCalendar] = useState([
 		{ key: "check-in", open: false, date: new Date() },
 		{ key: "check-out", open: false, date: new Date() },
@@ -23,15 +46,39 @@ const SearchArea = () => {
 	};
 
 	const handleSetDate = (key, date) => {
-		console.log(date);
 		setOpenCalendar(
 			openCalendar.map((item) => {
 				if (item.key === key) {
-					item.date = date;
+					item.date = dayjs(date).format("YYYY-MM-DD");
 				}
 				return item;
 			})
 		);
+	};
+
+	const handleSearch = () => {
+		const options = {
+			method: "get",
+			url: "https://hotels4.p.rapidapi.com/properties/list",
+			params: {
+				destinationId: "1506246",
+				pageNumber: "1",
+				pageSize: "26",
+				checkIn: openCalendar[0].date,
+				checkOut: openCalendar[1].date,
+				adults1: "1",
+				sortOrder: "PRICE",
+				locale: search.destination,
+				currency: "USD",
+				accommodationIds: search.accommodationType,
+			},
+			headers: {
+				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
+			},
+		};
+		dispatch(getTours(options));
+		navigate("/tour-package");
 	};
 
 	return (
@@ -45,10 +92,21 @@ const SearchArea = () => {
 								name="map marker alternate"
 								className={styles.searchAreaIcon}
 							/>
-							<input
-								placeholder="New York, USA"
-								type="text"
-								className={styles.searchAreaInput}
+							<Dropdown
+								selection
+								label="Travel Type"
+								placeholder={locale.length ? locale[0].value : null}
+								options={locale}
+								defaultValue={search.destination}
+								value={search.destination}
+								onChange={(e, data) => {
+									locale.map((item) => {
+										if (item.value === data.value) {
+											setSearch({ ...search, destination: item.key });
+										}
+									});
+								}}
+								className={styles.searchAreaSelect}
 							/>
 						</div>
 					</Form.Field>
@@ -68,6 +126,10 @@ const SearchArea = () => {
 													handleClose(item.key);
 												}}
 												calendarType="US"
+												setOpenCalendar={setOpenCalendar}
+												openCalendar={openCalendar}
+												key={item.key}
+												styles={styles}
 												// locale="uk"
 											/>
 										))
@@ -90,16 +152,26 @@ const SearchArea = () => {
 					<Form.Field>
 						<label>Travel Type</label>
 						<Icon name="globe" className={styles.searchAreaIcon} />
-						<Select
+
+						<Dropdown
+							selection
 							label="Travel Type"
-							// options={options}
-							placeholder="Travel Type"
+							placeholder={accommodationTypes[0].value}
+							options={accommodationTypes}
+							defaultValue={search.accommodationType}
+							value={search.accommodationType}
+							onChange={(e, data) => {
+								setSearch({ ...search, accommodationType: data.value });
+							}}
 							className={styles.searchAreaSelect}
 						/>
 					</Form.Field>
 
 					<Form.Field>
-						<Button className={styles.searchAreaButton}>
+						<Button
+							className={styles.searchAreaButton}
+							onClick={() => handleSearch()}
+						>
 							<Icon name="search" />
 							Find now
 						</Button>

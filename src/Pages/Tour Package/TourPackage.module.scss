@@ -6,6 +6,14 @@ $primary-color: #fafe28;
 $primary-color-hover: #ffdd00;
 
 :global(#app) {
+
+	.searchAreaCalendar {
+		margin-top: 50px;
+		position: absolute;
+		top: -280px;
+	}
+
+
 	.tourPackage {
 		margin-left: 39.5vh;
 		margin-right: 39vh;
@@ -64,6 +72,13 @@ $primary-color-hover: #ffdd00;
 			}
 
 			.tourPackageFormField {
+
+				.searchAreaCalendar {
+					margin-top: 50px;
+					position: absolute;
+					top: -280px;
+				}
+				
 				.inputDatePicker {
 					background-color: red;
 				}

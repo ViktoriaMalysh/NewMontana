@@ -37,7 +37,6 @@ export const signIn = (user) => {
 export const verifyToken = (token) => {
 	return async (dispatch) => {
 		try {
-			console.log('verify token')
 			const result = await axios.post(
 				`${BACKEND_URL}verify-token`,
 				{},
@@ -49,10 +48,9 @@ export const verifyToken = (token) => {
 				localStorage.setItem("isUser", true);
 			}
 		} catch (err) {
-			// dispatch(alert("The token has expired. Log in again"));
 			localStorage.removeItem("isUser");
 			localStorage.removeItem("token");
 			dispatch({ type: CLEAR_USER });
-		}
+		}     
 	};
 };

@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 
 const TourCard = ({ item, onChange, offer }) => {
-	console.log("item", item.guestReviews);
+	// console.log("item", item.guestReviews);
 
 	return (
 		<>

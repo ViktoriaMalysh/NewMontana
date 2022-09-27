@@ -14,8 +14,8 @@ const App = () => {
 
 	useEffect(() => {
 		if (localStorage.getItem("isUser")) {
-			navigate("/");
-		}
+			// navigate("/");
+		}  
 	}, [localStorage["isUser"]]);
 
 	return (

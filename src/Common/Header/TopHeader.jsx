@@ -115,7 +115,6 @@ const TopHeader = () => {
 						</Dropdown.Menu>
 					</Dropdown>
 				</Menu.Item>
-				{console.log("h", localStorage["isUser"])}
 
 				{!localStorage["isUser"] && !userStore.firstName ? (
 					<Menu.Item className={styles.headerItemsTop}>
