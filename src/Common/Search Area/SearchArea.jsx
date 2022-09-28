@@ -129,7 +129,7 @@ const SearchArea = () => {
 												setOpenCalendar={setOpenCalendar}
 												openCalendar={openCalendar}
 												key={item.key}
-												styles={styles}
+												className={styles.searchAreaCalendar}
 												// locale="uk"
 											/>
 										))

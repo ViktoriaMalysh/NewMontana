@@ -6,13 +6,13 @@ import {
 	Form,
 	Grid,
 	Icon,
+	Input,
 	Loader,
 	Rating,
 	Segment,
-	Select,
 } from "semantic-ui-react";
 import {
-	category,
+	accommodationTypes,
 	durations,
 	rating,
 	sortOptions,
@@ -28,25 +28,57 @@ import CustomPagination from "../../Common/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import Banner from "../../Common/Banner/Banner";
 import { useDispatch, useSelector } from "react-redux";
-import { getTours } from "../../redux/actions/actionApi";
+import { getMetaData, getTours } from "../../redux/actions/actionApi";
 import CalendarContainer from "../../Common/Calendar/Calendar";
-// import "../../Common/Calendar/Calendar.scss";
 import "../../Common/Calendar/Calendar.scss";
+import _ from "lodash";
 
 const TourPackage = () => {
-	const [pageCount, setPageCount] = useState(0);
-	const [currentItems, setCurrentItems] = useState(null);
-	const [itemOffset, setItemOffset] = useState(0);
-	const [openCalendar, setOpenCalendar] = useState([
-		{ key: "check-in", open: false, date: new Date() },
-		{ key: "check-out", open: false, date: new Date() },
-	]);
-
-	console.log("[openCalendar]:", openCalendar);
-
 	const dispatch = useDispatch();
 	const store = useSelector((state) => state);
 	const tours = useSelector((state) => state.api.tours);
+	const locale = useSelector((state) => state.api.locale);
+
+	const [pageCount, setPageCount] = useState(0);
+
+	const [selectedTypes, setSelectedType] = useState({});
+
+	const [currentItems, setCurrentItems] = useState(null);
+	const [itemOffset, setItemOffset] = useState(0);
+	const [openCalendar, setOpenCalendar] = useState([
+		{
+			key: "check-in",
+			open: false,
+			date: dayjs(new Date()).format("YYYY-MM-DD"),
+		},
+		{
+			key: "check-out",
+			open: false,
+			date: dayjs(new Date()).format("YYYY-MM-DD"),
+		},
+	]);
+
+	const [search, setSearch] = useState({
+		destination: "",
+		adults: 1,
+		accommodationType: [],
+	});
+
+	useEffect(() => {
+		dispatch(getMetaData());
+	}, []);
+
+	useEffect(() => {
+		if (locale.length) {
+			setSearch({
+				adults: 1,
+				destination: locale[0].key,
+				accommodationType: [accommodationTypes[0].value],
+			});
+		}
+	}, [locale]);
+
+	console.log("[search]:", selectedTypes);
 
 	useEffect(() => {
 		if (!tours.length) {
@@ -70,10 +102,44 @@ const TourPackage = () => {
 					"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
 				},
 			};
-			dispatch(getTours(options));
+			// dispatch(getTours(options));
 			console.log("not search");
 		} else console.log("search");
 	}, []);
+
+	const handleSearch = () => {
+		const accommodationIds = _.chain(selectedTypes).filter("checked").mapValues("value").value();
+		// _.mapValues(selectedTypes, (typeValues) => {
+		// 	console.log(typeValues)
+		// 	return _.chain(typeValues).filter("checked").value();
+		// 	// .mapValues("value")
+		// });
+
+console.log('[accommodationIds]:', accommodationIds)
+
+		const options = {
+			method: "get",
+			url: "https://hotels4.p.rapidapi.com/properties/list",
+			params: {
+				destinationId: "1506246",
+				pageNumber: "1",
+				pageSize: "26",
+				checkIn: openCalendar[0].date,
+				checkOut: openCalendar[1].date,
+				adults1: "1",
+				sortOrder: "PRICE",
+				locale: search.destination,
+				currency: "USD",
+				accommodationIds: search,
+			},
+			headers: {
+				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
+			},
+		};
+		// dispatch(getTours(options));
+		// navigate("/tour-package");
+	};
 
 	const handleClose = (key) => {
 		setOpenCalendar(
@@ -95,6 +161,21 @@ const TourPackage = () => {
 				return item;
 			})
 		);
+	};
+
+	const myHandleChangeCheck = (data, type) => {
+		const formattedType = _.snakeCase(type);
+		setSelectedType((prevSeletedType) => {
+			return {
+				...prevSeletedType,
+				[formattedType]: {
+					...prevSeletedType[formattedType],
+
+					checked: data.checked,
+					value: data.value.value,
+				},
+			};
+		});
 	};
 
 	const itemsPerPage = 8;
@@ -122,74 +203,136 @@ const TourPackage = () => {
 								<Grid.Column width={16}>
 									<Segment raised className={styles.tourPackageSegmentLeft}>
 										<h4>Search tours</h4>
-										<Form>
-											<Form.Field className={styles.tourPackageFormField}>
-												<label>Destination</label>
-												<input placeholder="New York, USA" />
-											</Form.Field>
-											<Form.Field className={styles.tourPackageFormField}>
-												<div>
-													<div>
-														<label>Check In</label>
-														<input
-															onClick={() => handleClose("check-in")}
-															// className={styles.searchAreaInputCalendar}
-															placeholder="MM / DD / YY"
-														/>
-													</div>
+										{/* <Form> */}
+										<Form.Field className={styles.tourPackageFormField}>
+											<label>Destination</label>
 
-													{openCalendar.map(
-														(block) =>
-															block.key === "check-in" &&
-															block.open && (
-																<CalendarContainer
-																	onClickDay={(value, event) => {
-																		handleSetDate("check-in", value);
-																		handleClose("check-in");
-																	}}
-																	calendarType="US"
-																	setOpenCalendar={setOpenCalendar}
-																	openCalendar={openCalendar}
-																	key={"check-in"}
-																	styles={styles}
-																	// locale="uk"
-																/>
-															)
-													)}
+											<Dropdown
+												selection
+												label="Travel Type"
+												placeholder={locale.length ? locale[0].value : null}
+												options={locale}
+												defaultValue={search.destination}
+												value={search.destination}
+												onChange={(e, data) => {
+													locale.map((item) => {
+														if (item.value === data.value) {
+															setSearch({
+																...search,
+																destination: item.key,
+															});
+														}
+													});
+												}}
+												className={styles.tourPackageAreaSelect}
+											/>
+										</Form.Field>
+										<Form.Field className={styles.tourPackageFormField}>
+											<div>
+												<div>
+													<label>Check In</label>
+													<input
+														onClick={() => handleClose("check-in")}
+														placeholder="YYYY - MM - DD"
+													/>
 												</div>
-											</Form.Field>
-											<Form.Field className={styles.tourPackageFormField}>
-												<label>Check Out</label>
-												<input placeholder="MM / DD / YY" type="date" />
-											</Form.Field>
-											<Form.Field className={styles.tourPackageFormField}>
-												<label>Travel Type</label>
-												<Select
-													label="Travel Type"
-													// options={options}
-													placeholder="Travel Type"
-													className={styles.searchAreaSelect}
-												/>
-											</Form.Field>
-											<Form.Field className={styles.tourPackageFormField}>
-												<Button className={styles.tourPackageButton}>
-													<Icon name="" />
-													Find now
-												</Button>
-											</Form.Field>
-										</Form>
+
+												{openCalendar.map(
+													(block) =>
+														block.key === "check-in" &&
+														block.open && (
+															<CalendarContainer
+																onClickDay={(value, event) => {
+																	handleSetDate("check-in", value);
+																	handleClose("check-in");
+																}}
+																calendarType="US"
+																setOpenCalendar={setOpenCalendar}
+																openCalendar={openCalendar}
+																key={"check-in"}
+																className={styles.tourPackageAreaCalendar}
+																// locale="uk"
+															/>
+														)
+												)}
+											</div>
+										</Form.Field>
+										<Form.Field className={styles.tourPackageFormField}>
+											<div>
+												<div>
+													<label>Check Out</label>
+													<input
+														onClick={() => handleClose("check-out")}
+														placeholder="YYYY - MM - DD"
+													/>
+												</div>
+
+												{openCalendar.map(
+													(block) =>
+														block.key === "check-out" &&
+														block.open && (
+															<CalendarContainer
+																onClickDay={(value, event) => {
+																	handleSetDate("check-out", value);
+																	handleClose("check-out");
+																}}
+																calendarType="US"
+																setOpenCalendar={setOpenCalendar}
+																openCalendar={openCalendar}
+																key={"check-out"}
+																className={styles.tourPackageAreaCalendar}
+																// locale="uk"
+															/>
+														)
+												)}
+											</div>
+										</Form.Field>
+										<Form.Field className={styles.tourPackageFormField}>
+											<label>Number Of Adults</label>
+
+											<Input
+												type="number"
+												style={{ minWidth: "250px" }}
+												value={search.adults}
+												onChange={(e) =>
+													setSearch({ ...search, adults: e.target.value })
+												}
+											/>
+										</Form.Field>
+										<Form.Field className={styles.tourPackageFormField}>
+											<Button
+												className={styles.tourPackageButtonSearch}
+												onClick={() => handleSearch()}
+											>
+												<Icon name="search" />
+												Find now
+											</Button>
+										</Form.Field>
+										{/* </Form> */}
 									</Segment>
 								</Grid.Column>
 							</Grid.Row>
 							<Grid.Row>
 								<Grid.Column width={16}>
 									<Segment raised className={styles.tourPackageSegmentLeft}>
-										<h4>Category</h4>
-										{category.map((item) => (
+										<h4>Accommodation types</h4>
+
+										{accommodationTypes.map((option, option_index) => (
 											<Checkbox
-												label={item.name}
+												label={option.value}
 												className={styles.tourPackageCheckbox}
 												type="checkbox"
+												checked={_.get(
+													selectedTypes,
+													[_.snakeCase(option.value), "checked"],
+													false
+												)}
+												key={`${option_index}`}
+												name={`${option_index}`}
+												value={option}
+												onChange={(e, data) =>
+													myHandleChangeCheck(data, option.value)
+												}
 											/>
 										))}
 									</Segment>

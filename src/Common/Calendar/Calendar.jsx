@@ -31,7 +31,7 @@ const CalendarContainer = ({
 	setOpenCalendar,
 	key,
 	openCalendar,
-	styles
+	className
 }) => {
 	const formatShortWeekday = (locale, date) =>
 		["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"][date.getDay()];
@@ -40,7 +40,7 @@ const CalendarContainer = ({
 	useOutsideAlerter(wrapperRef, setOpenCalendar, openCalendar, key);
 
 	return (
-		<div className={styles.searchAreaCalendar} ref={wrapperRef}>
+		<div className={className} ref={wrapperRef}>
 			<Calendar
 				formatShortWeekday={formatShortWeekday}
 				next2Label={<Icon name="angle double right" />}
