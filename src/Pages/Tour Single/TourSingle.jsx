@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
 	Button,
 	Checkbox,
@@ -29,11 +29,29 @@ import styles from "./TourSingle.module.scss";
 const TourSingle = () => {
 	const params = useParams();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const tour = useSelector((state) => state.api.tour);
+	const [bookDetail, setBookDetail] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		phone: "",
+		dateArrival: "",
+		dateDeparture: "",
+	});
 
 	useEffect(() => {
 		// dispatch(getTour(params.id));
 	}, []);
+
+	const handleBook = () => {
+		navigate("/tour-booking");
+	};
+
+	const handleSetDetailsBook = (e) => {
+		const { name, value } = e.target;
+		setBookDetail({ ...bookDetail, [name]: value });
+	};
 
 	// console.log("state", tour.photos[0]);
 
@@ -292,23 +310,57 @@ const TourSingle = () => {
 												<Form>
 													<Form.Field className={styles.tourPackageFormField}>
 														<label>First Name</label>
-														<input placeholder="First Name" />
+														<input
+															placeholder="First Name"
+															name="firstName"
+															value={bookDetail.firstName}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
 													</Form.Field>
 													<Form.Field className={styles.tourPackageFormField}>
 														<label>Last Name</label>
-														<input placeholder="Last Name" />
+														<input
+															placeholder="Last Name"
+															name="lastName"
+															value={bookDetail.lastName}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
 													</Form.Field>
 													<Form.Field className={styles.tourPackageFormField}>
 														<label>Email</label>
-														<input placeholder="Your Email" />
+														<input
+															placeholder="Your Email"
+															name="email"
+															value={bookDetail.email}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
 													</Form.Field>
 													<Form.Field className={styles.tourPackageFormField}>
 														<label>Phone</label>
-														<input placeholder="Your Phone" />
+														<input
+															placeholder="Your Phone"
+															name="phone"
+															value={bookDetail.phone}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
 													</Form.Field>
 													<Form.Field className={styles.tourPackageFormField}>
-														<label>Date</label>
-														<input placeholder="MM / DD / YY" />
+														<label>Day Of Arrival</label>
+														<input
+															placeholder="MM / DD / YY"
+															name="dateArrival"
+															value={bookDetail.dateArrival}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
+													</Form.Field>
+													<Form.Field className={styles.tourPackageFormField}>
+														<label>Day Of Departure</label>
+														<input
+															placeholder="MM / DD / YY"
+															name="dateDeparture"
+															value={bookDetail.dateDeparture}
+															onChange={(e) => handleSetDetailsBook(e)}
+														/>
 													</Form.Field>
 
 													<h5>Additional Service</h5>
@@ -320,7 +372,10 @@ const TourSingle = () => {
 													))}
 
 													<Form.Field className={styles.tourPackageFormField}>
-														<Button className={styles.tourPackageButton}>
+														<Button
+															className={styles.tourPackageButton}
+															onClick={() => handleBook()}
+														>
 															<Icon name="check circle outline" />
 															Book now
 														</Button>

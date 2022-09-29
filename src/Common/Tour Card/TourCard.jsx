@@ -64,7 +64,7 @@ const TourCard = ({ item, onChange, offer }) => {
 								({item.reviews} Reviews)
 							</span>
 						</div>
-						<Link to={"/tour-package/1"}>
+						<Link to={`/tour-package/${item.id}`}>
 							<h5>{item.name}</h5>
 						</Link>
 
@@ -90,7 +90,7 @@ const TourCard = ({ item, onChange, offer }) => {
 					</>
 				) : (
 					<>
-						<Link to={"/tour-package/1"}>
+						<Link to={`/tour-package/${item.id}`}>
 							<h5>{item.name}</h5>
 						</Link>
 						<div className={styles.topTourSegmentDiv}>

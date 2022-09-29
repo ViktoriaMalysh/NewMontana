@@ -8,11 +8,11 @@ $primary-color-hover: #fca702;
 :global(#app) {
 	.divLoader {
 		padding: 100px;
-    background: red;
+    background: transparent !important;
 
 		.loader {
 			color: #fca702;
-      background: red;
+      background: transparent !important;
 		}
 	}
 }

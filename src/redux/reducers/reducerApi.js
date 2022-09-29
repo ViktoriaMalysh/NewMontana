@@ -1,4 +1,4 @@
-import { LOCALE, TOP_TOURS, TOUR, TOURS } from "../types";
+import { CLEAR_TOURS, LOCALE, TOP_TOURS, TOUR, TOURS } from "../types";
 
 const initialState = {
 	tours: [],
@@ -17,6 +17,8 @@ export const reducerApi = (state = initialState, action) => {
 			return { ...state, topTours: action.payload };
 		case LOCALE:
 			return { ...state, locale: action.payload };
+		case CLEAR_TOURS:
+			return initialState;
 
 		default:
 			return state;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, BACKEND_URL } from "../../config";
+import { API_URL, BACKEND_URL, X_RapidAPI_Key } from "../../config";
 import { TOURS, TOUR, TOP_TOURS, LOCALE } from "../types";
 
 export const getTours = (options) => {
@@ -33,7 +33,7 @@ export const getTopTours = () => {
 				currency: "USD",
 			},
 			headers: {
-				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Key": X_RapidAPI_Key,
 				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
 			},
 		};
@@ -65,7 +65,7 @@ export const getTour = (id) => {
 				locale: "en_US",
 			},
 			headers: {
-				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Key": X_RapidAPI_Key,
 				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
 			},
 		};
@@ -77,7 +77,7 @@ export const getTour = (id) => {
 			}
 		} catch (err) {
 			console.log("Error", err);
-			dispatch(alert("Hotel room not booked"));
+			dispatch(alert("404 status"));
 		}
 	};
 };
@@ -88,7 +88,7 @@ export const getMetaData = (id) => {
 			method: "GET",
 			url: "https://hotels4.p.rapidapi.com/get-meta-data",
 			headers: {
-				"X-RapidAPI-Key": "41c8a73cc0msh36005253ddf9396p1a020ajsn71ab7eb472c5",
+				"X-RapidAPI-Key": X_RapidAPI_Key,
 				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
 			},
 		};

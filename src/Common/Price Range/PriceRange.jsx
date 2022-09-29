@@ -3,10 +3,8 @@ import "./PriceRange.css";
 
 var thumbsize = 14;
 
-const PriceRange = ({ min, max }) => {
+const PriceRange = ({ min, max, minVal, maxVal, setMinVal, setMaxVal }) => {
 	const [avg, setAvg] = useState((min + max) / 2);
-	const [minVal, setMinVal] = useState(min);
-	const [maxVal, setMaxVal] = useState(max);
 
 	const width = 300;
 	const minWidth =

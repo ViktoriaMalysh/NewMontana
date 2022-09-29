@@ -3,6 +3,7 @@ export const TOURS = "API/TOURS";
 export const TOUR = "API/TOUR";
 export const TOP_TOURS = "API/TOP_TOURS";
 export const LOCALE = "API/LOCALE";
+export const CLEAR_TOURS = "USER/CLEAR_TOURS";
 
 //user
 export const USER = "USER/USER";
