@@ -1129,7 +1129,7 @@ export const gallerySingleTour = [
 	],
 ];
 
-export const additionalService = [
+export const additionalServiceData = [
 	{
 		key: "tour-guide",
 		value: "tour guide",

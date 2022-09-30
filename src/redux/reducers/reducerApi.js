@@ -1,10 +1,11 @@
-import { CLEAR_TOURS, LOCALE, TOP_TOURS, TOUR, TOURS } from "../types";
+import { CLEAR_TOURS, LOCALE, REVIEWS, TOP_TOURS, TOUR, TOURS } from "../types";
 
 const initialState = {
 	tours: [],
 	tour: {},
 	topTours: [],
 	locale: [],
+	reviews: [],
 };
 
 export const reducerApi = (state = initialState, action) => {
@@ -17,6 +18,9 @@ export const reducerApi = (state = initialState, action) => {
 			return { ...state, topTours: action.payload };
 		case LOCALE:
 			return { ...state, locale: action.payload };
+		case REVIEWS:
+			return { ...state, reviews: action.payload };
+
 		case CLEAR_TOURS:
 			return initialState;
 

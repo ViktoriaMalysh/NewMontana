@@ -1,36 +1,31 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import {
-	Button,
-	Checkbox,
-	Divider,
-	Form,
-	Grid,
-	Icon,
-	Image,
-	Rating,
-	Segment,
-	Table,
-} from "semantic-ui-react";
-import {
-	additionalService,
-	gallerySingleTour,
-	tourPlans,
-} from "../../Backend/Data";
+import { useNavigate, useParams } from "react-router-dom";
+import { Grid, Image } from "semantic-ui-react";
+import styles from "./TourSingle.module.scss";
 import Banner from "../../Common/Banner/Banner";
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
-import { getTour } from "../../redux/actions/actionApi";
-import GalleryComponent from "../Gallery/Gallery Component/GalleryComponent";
+import GuestReviewsSingle from "../../Common/Tour Single Components/GuestReviewsSingle";
+import HeaderSingle from "../../Common/Tour Single Components/Header";
+import TableSingle from "../../Common/Tour Single Components/TableSingle";
+import TextSingle from "../../Common/Tour Single Components/TextSingle";
+import TourPlanSingle from "../../Common/Tour Single Components/TourPlanSingle";
+import { getReviews, getTour } from "../../redux/actions/actionApi";
+import GallerySingle from "../../Common/Tour Single Components/GallerySingle";
+import TourMapSingle from "../../Common/Tour Single Components/TourMapSingle";
+import FormReviewSingle from "../../Common/Tour Single Components/FormReviewSingle";
+import BookBlock from "../../Common/Tour Single Components/BookBlock";
 import LoadingPage from "../Loading/Loading";
-import styles from "./TourSingle.module.scss";
+import _ from "lodash";
 
 const TourSingle = () => {
 	const params = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
 	const tour = useSelector((state) => state.api.tour);
+
 	const [bookDetail, setBookDetail] = useState({
 		firstName: "",
 		lastName: "",
@@ -38,14 +33,54 @@ const TourSingle = () => {
 		phone: "",
 		dateArrival: "",
 		dateDeparture: "",
+		additionalService: [],
 	});
 
+	const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+		{}
+	);
+
+	console.log("[bookDetail]:", bookDetail);
+
 	useEffect(() => {
-		// dispatch(getTour(params.id));
+		dispatch(getTour(params.id));
+		dispatch(getReviews(params.id));
 	}, []);
 
 	const handleBook = () => {
-		navigate("/tour-booking");
+		let additionalService = _.chain(selectedAdditionalService)
+			.filter("checked")
+			.mapValues("value")
+			.values()
+			.join(", ")
+			.value();
+
+		setBookDetail({ ...bookDetail, additionalService: additionalService });
+		// navigate("/tour-booking");
+
+		//add
+		// history.push("/search?" + new URLSearchParams(form).toString())
+	
+		// history.push(
+		// 	`/checkout/${id}?startDate=${startDate}&endDate=${endDate}&price=${price}&checkoutUrl=${res.data}`
+		// )
+
+		// createReservation({
+		// 	accommodation: id,
+		// 	dayOfArrival,
+		// 	dayOfDeparture,
+		// 	travellers: personCount ? Number(personCount) : 1,
+		// 	cancelUrl: window.location.href,
+		// 	successUrl: window.location.origin + "/confirmation",
+		// })
+
+		// const [startDate, setStartDate] = useState(
+		// 	new URLSearchParams(window.location.search).get("startDate")
+		// );
+		// const personCount = new URLSearchParams(window.location.search).get(
+		// 	"personCount"
+		// );
+
 	};
 
 	const handleSetDetailsBook = (e) => {
@@ -53,7 +88,22 @@ const TourSingle = () => {
 		setBookDetail({ ...bookDetail, [name]: value });
 	};
 
-	// console.log("state", tour.photos[0]);
+	const myHandleChangeCheck = (data, type) => {
+		const formattedType = _.snakeCase(type);
+		setSelectedAdditionalService((prevSeletedType) => {
+			return {
+				...prevSeletedType,
+				[formattedType]: {
+					...prevSeletedType[formattedType],
+
+					checked: data.checked,
+					value: data.value.value,
+				},
+			};
+		});
+	};
+
+	console.log("[selectedAdditionalService]:", selectedAdditionalService);
 
 	return (
 		<>
@@ -63,9 +113,6 @@ const TourSingle = () => {
 						title={tour.nameHotel}
 						link={tour.nameHotel ? tour.nameHotel : 5}
 					/>
-					{/* // hotelId, photos, nameHotel, guestReviews: {(starRating, reviews)},
-					price: {(currentPrice, oldPrice)}, // countryName, countryCode,
-					cityName, fullAddress, currencyCode, roomTypes, postalCode, */}
 					<Grid className={styles.tourSingle}>
 						<Grid.Row>
 							<Grid.Column width={11} style={{ width: "700px" }}>
@@ -75,313 +122,37 @@ const TourSingle = () => {
 										className={styles.tourSingleAvatar}
 									/>
 								)}
-								<div className={styles.tourSingleDiv}>
-									<div className={styles.tourSingleDiv1Left}>
-										<h3>{tour.nameHotel}</h3>
-										{tour.guestReviews?.starRating && (
-											<Rating
-												size="large"
-												icon="star"
-												maxRating={5}
-												defaultRating={tour.guestReviews?.starRating}
-												disabled
-											/>
-										)}{" "}
-										({tour.guestReviews?.reviewsCount} Reviews)
-									</div>
 
-									<div className={styles.tourSingleDiv1Right}>
-										<span className={styles.tourSingleSpanPrice}>
-											{tour.price?.currentPrice}
-										</span>
-										<p style={{ marginTop: "0px" }}>Per person</p>
-									</div>
-								</div>
-								<Divider className={styles.tourSingleDivider} />
+								<HeaderSingle tour={tour && tour} />
 
-								<ul>
-									<li>
-										<Icon
-											name="clock outline"
-											className={styles.tourSingleIcon}
-										/>
-										1 Days/1 Nights{" "}
-									</li>
-									<li>
-										<Icon
-											name="user outline"
-											className={styles.tourSingleIcon}
-										/>
-										5+ Persons
-									</li>
-									<li>
-										<Icon
-											name="bookmark outline"
-											className={styles.tourSingleIcon}
-										/>
-										{/* {tour.type} */} Type*
-									</li>
-									<li>
-										<Icon
-											name="map marker alternate"
-											className={styles.tourSingleIcon}
-										/>
-										{tour.cityName}
-									</li>
-								</ul>
+								<TextSingle />
 
-								<h3>Tour Overview</h3>
+								<TableSingle />
 
-								<p>
-									Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-									accusantium doloremque laudantium, totam rem aperiam, eaque
-									ipsa quae ab illo inventore veritatis et quasi architecto
-									beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-									quia voluptas sit aspernatur aut odit aut fugit, sed quia
-									consequuntur magni dolores eos qui ratione voluptatem sequi
-									nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-									dolor sit amet, consectetur, adipisci velit, sed quia non
-									numquam eius modi tempora incidunt ut labore et dolore magnam
-									aliquam quaerat voluptatem.
-								</p>
+								<TourPlanSingle />
 
-								<h3>Included And Excluded</h3>
-								<p>
-									At vero eos et accusamus et iusto odio dignissimos ducimus qui
-									blanditiis praesentium voluptatum deleniti atque corrupti quos
-									dolores et quas molestias excepturi sint occaecati cupiditate
-									non provident, similique sunt in culpa qui officia deserunt
-									mollitia animi, id est laborum et dolorum fuga.
-								</p>
+								<GallerySingle />
 
-								<Table celled as="table">
-									<Table.Body>
-										{/* {tour.included.map((item) => (
-										<Table.Row>
-											<Table.Cell className={styles.tourSingleTableCellLeft}>
-												<Icon
-													name={item.type ? "check circle" : "times circle"}
-													className={
-														item.type
-															? styles.tourSingleIconTrue
-															: styles.tourSingleIconFalse
-													}
-												/>
-												Unknown
-											</Table.Cell>
-											<Table.Cell className={styles.tourSingleTableCellRight}>
-												{item.type ? "Yes" : "No"}
-											</Table.Cell>
-										</Table.Row>
-									))} */}
-									</Table.Body>
-								</Table>
+								<TourMapSingle />
 
-								<h3>Tour Plan</h3>
-								<p>
-									At vero eos et accusamus et iusto odio dignissimos ducimus qui
-									blanditiis praesentium voluptatum deleniti atque corrupti quos
-									dolores et quas molestias excepturi sint occaecati cupiditate
-									non provident, similique sunt in culpa qui officia deserunt
-									mollitia animi, id est laborum et dolorum fuga.
-								</p>
+								<GuestReviewsSingle tour={tour && tour} />
 
-								<div className={styles.tourSingleDiv2}>
-									{tourPlans.map((item, index) => (
-										<div
-											className={
-												!(index + 1 === tourPlans.length)
-													? styles.tourSingleDiv2Block
-													: styles.tourSingleDiv2BlockEnd
-											}
-										>
-											<span className={styles.tourSingleSpanBlock}>
-												0{index + 1}
-											</span>
-											<h4>{item.time}</h4>
-											<h3>{item.title}</h3>
-											<p>{item.text}</p>
-											<ul>
-												{item.ul.map((el) => (
-													<li>
-														<Icon
-															name="check"
-															className={styles.tourPlansIconBlock}
-														/>
-														{el}
-													</li>
-												))}
-											</ul>
-										</div>
-									))}
-								</div>
-
-								<h3>Tour Gallery</h3>
-								<p>
-									Accusamus et iusto odio dignissimos ducimus qui blanditiis
-									praesentium voluptatum deleniti atque corrupti quos dolores et
-									quas molestias excepturi sint occaecati cupiditate non
-									provident, similique sunt in culpa qui officia deserunt
-									mollitia animi, id est laborum et dolorum fuga.
-								</p>
-
-								<Grid>
-									<Grid.Row columns={3}>
-										<GalleryComponent data={gallerySingleTour} />
-									</Grid.Row>
-								</Grid>
-
-								<h3>Tour Map</h3>
-								<p>
-									On the other hand, we denounce with righteous indignation and
-									dislike men who are so beguiled and demoralized by the charms
-									of pleasure of the moment, so blinded by desire, that they
-									cannot foresee the pain and trouble that are bound to ensue;
-									and equal blame belongs to those who fail in their duty
-									through weakness of will, which is the same as saying through
-									shrinking from toil and pain.
-								</p>
-
-								{/* there should be a map (iframe)  */}
-
-								<h4 style={{ marginBottom: "60px" }}>
-									Reviews ({tour.guestReviews?.reviewsCount})
-								</h4>
-
-								{/* <Grid className={styles.tourSingleGrid}>
-								{tour.guestReviews.reviews.map((item, index) => (
-									<Grid.Row
-										columns={2}
-										className={styles.tourSingleGridRowReviews}
-										style={{ marginLeft: index % 2 !== 0 && "70px" }}
-									>
-										<Grid.Column width={3} floated="left">
-											<Image src={item.avatar} />
-										</Grid.Column>
-										<Grid.Column width={13}>
-											<h5>{item.user}</h5>
-											<span>{item.date}</span>
-											<p>{item.comment}</p>
-											<Rating
-												size="large"
-												icon="star"
-												defaultRating={item.rate}
-												maxRating={5}
-												disabled
-											/>
-											<Link to={"/"} className={styles.tourSingleButtonComment}>
-												<Icon name="reply" />
-												Reply
-											</Link>
-										</Grid.Column>
-									</Grid.Row>
-								))}
-							</Grid> */}
-
-								<h4 style={{ marginBottom: "60px" }}>Leave Your Review</h4>
-
-								<Form className={styles.tourSingleForm}>
-									<Form.Field>
-										<span>Your Rate : </span>
-										<Rating size="large" icon="star" maxRating={5} />
-									</Form.Field>
-									<Form.Group widths="equal">
-										<Form.Field>
-											<input placeholder="Your Name*" />
-										</Form.Field>
-										<Form.Field>
-											<input placeholder="Your Email*" />
-										</Form.Field>
-									</Form.Group>
-									<Form.TextArea placeholder="Your Review*" />
-
-									<Button type="submit">
-										<Icon name="paper plane outline" />
-										Submit Review
-									</Button>
-								</Form>
+								<FormReviewSingle />
 							</Grid.Column>
 							<Grid.Column width={5} floated="right">
 								<Grid>
 									<Grid.Row>
 										<Grid.Column>
-											<Segment raised className={styles.tourSingleSegment}>
-												<h4 style={{ marginBottom: "10px" }}>Book This Tour</h4>
-												<Form>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>First Name</label>
-														<input
-															placeholder="First Name"
-															name="firstName"
-															value={bookDetail.firstName}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>Last Name</label>
-														<input
-															placeholder="Last Name"
-															name="lastName"
-															value={bookDetail.lastName}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>Email</label>
-														<input
-															placeholder="Your Email"
-															name="email"
-															value={bookDetail.email}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>Phone</label>
-														<input
-															placeholder="Your Phone"
-															name="phone"
-															value={bookDetail.phone}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>Day Of Arrival</label>
-														<input
-															placeholder="MM / DD / YY"
-															name="dateArrival"
-															value={bookDetail.dateArrival}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-													<Form.Field className={styles.tourPackageFormField}>
-														<label>Day Of Departure</label>
-														<input
-															placeholder="MM / DD / YY"
-															name="dateDeparture"
-															value={bookDetail.dateDeparture}
-															onChange={(e) => handleSetDetailsBook(e)}
-														/>
-													</Form.Field>
-
-													<h5>Additional Service</h5>
-													{additionalService.map((item) => (
-														<Checkbox
-															label={item.value}
-															className={styles.tourSingleCheckbox}
-														/>
-													))}
-
-													<Form.Field className={styles.tourPackageFormField}>
-														<Button
-															className={styles.tourPackageButton}
-															onClick={() => handleBook()}
-														>
-															<Icon name="check circle outline" />
-															Book now
-														</Button>
-													</Form.Field>
-												</Form>
-											</Segment>
+											<BookBlock
+												bookDetail={bookDetail}
+												handleSetDetailsBook={handleSetDetailsBook}
+												handleBook={handleBook}
+												myHandleChangeCheck={myHandleChangeCheck}
+												selectedAdditionalService={selectedAdditionalService}
+												setSelectedAdditionalService={
+													setSelectedAdditionalService
+												}
+											/>
 										</Grid.Column>
 									</Grid.Row>
 									<Grid.Row>

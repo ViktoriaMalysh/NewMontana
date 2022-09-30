@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_URL, BACKEND_URL, X_RapidAPI_Key } from "../../config";
-import { TOURS, TOUR, TOP_TOURS, LOCALE } from "../types";
+import { TOURS, TOUR, TOP_TOURS, LOCALE, REVIEWS } from "../types";
 
 export const getTours = (options) => {
 	return async (dispatch) => {
@@ -11,7 +11,7 @@ export const getTours = (options) => {
 			}
 		} catch (err) {
 			console.log("Error", err);
-			dispatch(alert("Hotel room not booked"));
+			dispatch(alert("404 status (can not get tours)"));
 		}
 	};
 };
@@ -45,7 +45,7 @@ export const getTopTours = () => {
 			}
 		} catch (err) {
 			console.log("Error", err);
-			dispatch(alert("Hotel room not booked"));
+			dispatch(alert("404 status (can not get top tours)"));
 		}
 	};
 };
@@ -77,7 +77,7 @@ export const getTour = (id) => {
 			}
 		} catch (err) {
 			console.log("Error", err);
-			dispatch(alert("404 status"));
+			dispatch(alert("404 status (can not get tour details)"));
 		}
 	};
 };
@@ -103,7 +103,31 @@ export const getMetaData = (id) => {
 			}
 		} catch (err) {
 			console.log("Error", err);
-			dispatch(alert("Hotel room not booked"));
+			dispatch(alert("404 status (can not get meta data)"));
+		}
+	};
+};
+
+export const getReviews = (id) => {
+	return async (dispatch) => {
+		const options = {
+			method: "get",
+			url: "https://hotels4.p.rapidapi.com/reviews/list",
+			params: { id: id, page: "1", loc: "en_US" },
+			headers: {
+				"X-RapidAPI-Key": X_RapidAPI_Key,
+				"X-RapidAPI-Host": "hotels4.p.rapidapi.com",
+			},
+		};
+
+		try {
+			const result = await axios.post(`${BACKEND_URL}api/get-reviews`, options);
+			if (result.status === 200) {
+				dispatch({ type: REVIEWS, payload: result.data.reviews });
+			}
+		} catch (err) {
+			console.log("Error", err);
+			dispatch(alert("404 status (can not get reviews)"));
 		}
 	};
 };

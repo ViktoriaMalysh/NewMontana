@@ -370,6 +370,7 @@ $primary-color-hover: #fca702;
 
 				img {
 					border-radius: 50%;
+					width: 100px;
 				}
 
 				h5 {
@@ -407,14 +408,16 @@ $primary-color-hover: #fca702;
 				font-weight: 600;
 				margin-top: 5px;
 				transition: all 0.3s ease-in-out;
-				color: #14212b;
+				color: #fca702;
 				display: block;
 				font-size: 17px;
 				width: max-content;
 				text-align: left;
+				text-transform: capitalize;
 
 				&:hover {
-					color: #fca702;
+					color: #14212b;
+
 				}
 			}
 
