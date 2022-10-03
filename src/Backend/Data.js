@@ -926,6 +926,8 @@ export const tourCartHeader = [
 	"Thumb",
 	"Tour Name",
 	"Price",
+	"Date Arrival",
+	"Date Departure",
 	"Quantity",
 	"Sub Total",
 	"",
@@ -1236,3 +1238,16 @@ export const accommodationTypes = [
 		text: "Villas",
 	},
 ];
+
+export const discounts = {
+	t254jxc3: 5,
+	pl578ca7: 10,
+	uj584ls4: 15,
+	w485oly6: 20,
+	b214lfy5: 25,
+	nq854oo7: 30,
+	vrg247q4: 35,
+	c733dbq7: 40,
+	tt495edh1: 45,
+	n184fes8: 40,
+};

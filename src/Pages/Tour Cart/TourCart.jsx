@@ -3,6 +3,9 @@ import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
 import { Button, Divider, Icon, Image, Input, Table } from "semantic-ui-react";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import CalendarContainer from "../../Common/Calendar/Calendar";
+import "../../Common/Calendar/Calendar.scss";
 
 const vat = 25;
 
@@ -11,6 +14,18 @@ const TourCart = ({ tourCartHeader, data }) => {
 	const [sum, setSum] = useState(0);
 	const [totalSum, setTotalSum] = useState(0);
 	const [discount, setDiscount] = useState(0);
+	const [openCalendar, setOpenCalendar] = useState([
+		{
+			key: "check-in",
+			open: false,
+			date: dayjs(new Date()).format("YYYY-MM-DD"),
+		},
+		{
+			key: "check-out",
+			open: false,
+			date: dayjs(new Date()).format("YYYY-MM-DD"),
+		},
+	]);
 
 	useEffect(() => {
 		setItems(data);
@@ -32,6 +47,28 @@ const TourCart = ({ tourCartHeader, data }) => {
 			setTotalSum(sum - discount + vat);
 		}
 	}, [sum]);
+
+	const handleClose = (key) => {
+		setOpenCalendar(
+			openCalendar.map((item) => {
+				if (item.key === key) {
+					item.open = !item.open;
+				}
+				return item;
+			})
+		);
+	};
+
+	const handleSetDate = (key, date) => {
+		setOpenCalendar(
+			openCalendar.map((item) => {
+				if (item.key === key) {
+					item.date = dayjs(date).format("YYYY-MM-DD");
+				}
+				return item;
+			})
+		);
+	};
 
 	return (
 		<>
@@ -61,6 +98,39 @@ const TourCart = ({ tourCartHeader, data }) => {
 								</Table.Cell>
 								<Table.Cell>
 									<span>${item.price}</span>
+								</Table.Cell>
+								<Table.Cell>
+									<span>${item.price * item.count}</span>
+								</Table.Cell>
+								<Table.Cell>
+									<div>
+										<div>
+											<input
+												onClick={() => handleClose("check-out")}
+												placeholder="YYYY - MM - DD"
+												value={openCalendar[1].date}
+											/>
+										</div>
+
+										{openCalendar.map(
+											(block) =>
+												block.key === "check-out" &&
+												block.open && (
+													<CalendarContainer
+														onClickDay={(value, event) => {
+															handleSetDate("check-out", value);
+															handleClose("check-out");
+														}}
+														calendarType="US"
+														setOpenCalendar={setOpenCalendar}
+														openCalendar={openCalendar}
+														key={"check-out"}
+														className={styles.tourPackageAreaCalendar}
+														// locale="uk"
+													/>
+												)
+										)}
+									</div>
 								</Table.Cell>
 								<Table.Cell>
 									<div>
@@ -101,6 +171,7 @@ const TourCart = ({ tourCartHeader, data }) => {
 								<Table.Cell>
 									<span>${item.price * item.count}</span>
 								</Table.Cell>
+
 								<Table.Cell>
 									<Button className={styles.tourCartCancel}>
 										<Icon name="times" />
@@ -121,7 +192,7 @@ const TourCart = ({ tourCartHeader, data }) => {
 						style={{
 							float: "right",
 							marginTop: "-15px",
-              marginBottom: "80px"
+							marginBottom: "80px",
 						}}
 					>
 						<Table basic="very" singleLine>
@@ -152,7 +223,7 @@ const TourCart = ({ tourCartHeader, data }) => {
 								</Table.Row>
 							</Table.Body>
 						</Table>
-            <Button className={styles.tourCartCheckout}>Checkout</Button>
+						<Button className={styles.tourCartCheckout}>Checkout</Button>
 					</div>
 				</div>
 			</div>

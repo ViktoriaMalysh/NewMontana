@@ -43,8 +43,20 @@ const TourSingle = () => {
 	console.log("[bookDetail]:", bookDetail);
 
 	useEffect(() => {
-		dispatch(getTour(params.id));
-		dispatch(getReviews(params.id));
+		// dispatch(getTour(params.id));
+		// dispatch(getReviews(params.id));
+
+		const option = {
+			firstName: "my name",
+			lastName: "my surname",
+			email: "myemail@gmail.com",
+			phone: "0676683643",
+			dateArrival: "2022-10-01",
+			dateDeparture: "2022-10-10",
+			additionalService: ["car rent", "dinner"],
+			packagesCost: 1500,
+		};
+		navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
 	}, []);
 
 	const handleBook = () => {
@@ -60,7 +72,7 @@ const TourSingle = () => {
 
 		//add
 		// history.push("/search?" + new URLSearchParams(form).toString())
-	
+
 		// history.push(
 		// 	`/checkout/${id}?startDate=${startDate}&endDate=${endDate}&price=${price}&checkoutUrl=${res.data}`
 		// )
@@ -80,7 +92,6 @@ const TourSingle = () => {
 		// const personCount = new URLSearchParams(window.location.search).get(
 		// 	"personCount"
 		// );
-
 	};
 
 	const handleSetDetailsBook = (e) => {
@@ -102,8 +113,6 @@ const TourSingle = () => {
 			};
 		});
 	};
-
-	console.log("[selectedAdditionalService]:", selectedAdditionalService);
 
 	return (
 		<>

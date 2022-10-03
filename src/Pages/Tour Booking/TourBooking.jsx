@@ -1,246 +1,147 @@
-import { Divider, Grid, Segment, Form, Button, Icon } from "semantic-ui-react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Grid, Segment, Form } from "semantic-ui-react";
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
 import styles from "./TourBooking.module.scss";
+import "../../Common/Calendar/Calendar.scss";
+import dayjs from "dayjs";
+import _ from "lodash";
+import BookingSummary from "../../Common/Tour Booking Components/BookingSummary";
+import YourDetails from "../../Common/Tour Booking Components/YourDetails";
+import TourDetails from "../../Common/Tour Booking Components/TourDetails";
+
+import PaymentInfo from "../../Common/Tour Booking Components/PaymentInfo";
 
 const TourBooking = ({ data }) => {
-  console.log(data);
-  return (
-    <>
-      <Breadcrumb title="Tour booking" link="tour booking" />
+	const [details, setDetails] = useState({
+		firstName: new URLSearchParams(window.location.search).get("firstName"),
+		lastName: new URLSearchParams(window.location.search).get("lastName"),
+		email: new URLSearchParams(window.location.search).get("email"),
+		phone: new URLSearchParams(window.location.search).get("phone"),
+		address: "",
+		dateArrival: new URLSearchParams(window.location.search).get("dateArrival"),
+		dateDeparture: new URLSearchParams(window.location.search).get(
+			"dateDeparture"
+		),
+		packagesCost: new URLSearchParams(window.location.search).get(
+			"packagesCost"
+		),
+		additionalService: [],
+		payment: {
+			cardHolderName: "",
+			cardNamber: "",
+			expire: "",
+			CCV: 0,
+		},
+	});
 
-      <Grid className={styles.tourBooking}>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment raised className={styles.tourBookingSegmentLeft}>
-              <h4>Your Details</h4>
+	const [discount, setDiscount] = useState(0);
 
-              <Form className={styles.tourBookingSegmentLeftForm}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="First name"
-                    placeholder="Your First Name"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="Last name"
-                    placeholder="Your Last Name"
-                  />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="Email"
-                    placeholder="Your Email"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="Phone"
-                    placeholder="Your Phone"
-                  />
-                </Form.Group>
-                <Form.Input
-                  className={styles.tourBookingSegmentLeftInput}
-                  fluid
-                  id="form-subcomponent-shorthand-input-last-name"
-                  label="Address"
-                  placeholder="Your Address"
-                />
-              </Form>
-            </Segment>
+	const [openCalendar, setOpenCalendar] = useState([
+		{
+			key: "check-in",
+			open: false,
+			date: new URLSearchParams(window.location.search).get("dateArrival"),
+		},
+		{
+			key: "check-out",
+			open: false,
+			date: new URLSearchParams(window.location.search).get("dateDeparture"),
+		},
+	]);
 
-            <Segment raised className={styles.tourBookingSegmentRight}>
-              <h4>Booking Summary</h4>
-              <ul>
-                <br />
+	const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+		new URLSearchParams(window.location.search).get("additionalService")
+	);
 
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Packages Cost
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.packagesCost}
-                  </span>
-                </li>
-                <br />
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Tour Guide
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.tourGuide}
-                  </span>
-                </li>
-                <br />
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Discount
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.discount}
-                  </span>
-                </li>
-                <br />
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Vat:
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.vat}
-                  </span>
-                </li>
-                <br />
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Sub Total:
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.subTotal}
-                  </span>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <Divider className={styles.tourBookingRightDivider} />
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <strong className={styles.tourBookingRightStrong}>
-                    Total:
-                  </strong>
-                  <span className={styles.tourBookingRightSpan}>
-                    ${data.total}
-                  </span>
-                  <Button className={styles.tourBookingRightButton}>
-                    Book now
-                    <Icon name="arrow right" />
-                  </Button>
-                </li>
-              </ul>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment raised className={styles.tourBookingSegmentLeft}>
-              <h4>Payment Info</h4>
+	useEffect(() => {
+		const arrAdditionalService = selectedAdditionalService.split(/\s*,\s*/);
+		setDetails({ ...details, additionalService: arrAdditionalService });
+	}, []);
 
-              <Form className={styles.tourBookingSegmentLeftForm}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="Card Holder Name"
-                    placeholder="Name On Card"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="Card Number"
-                    placeholder="Your Card Number"
-                  />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="Expire"
-                    placeholder="Expire Date"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="CCV"
-                    placeholder="CCV"
-                  />
-                </Form.Group>
-              </Form>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <Segment raised className={styles.tourBookingSegmentLeft}>
-              <h4>Billing Address</h4>
+	const myHandleChangeCheck = (data, type) => {
+		const formattedType = _.snakeCase(type);
+		setSelectedAdditionalService((prevSeletedType) => {
+			return {
+				...prevSeletedType,
+				[formattedType]: {
+					...prevSeletedType[formattedType],
 
-              <Form className={styles.tourBookingSegmentLeftForm}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="First Name"
-                    placeholder="Your First Name"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="Last Name"
-                    placeholder="Your Last Name"
-                  />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="Email"
-                    placeholder="Your Email"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="phone"
-                    placeholder="Your Phone"
-                  />
-                </Form.Group>
+					checked: data.checked,
+					value: data.value.value,
+				},
+			};
+		});
+	};
 
-                <Form.Group widths="equal">
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-first-name"
-                    label="Address 1"
-                    placeholder="Your Address 1"
-                  />
-                  <Form.Input
-                    className={styles.tourBookingSegmentLeftInput}
-                    fluid
-                    id="form-subcomponent-shorthand-input-last-name"
-                    label="Address 2"
-                    placeholder="Your Address 2"
-                  />
-                </Form.Group>
-                <Form.TextArea
-                  className={styles.tourBookingSegmentLeftTextArea}
-                  label="Additional Info"
-                  placeholder="Additional Info"
-                />
-              </Form>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+	const handleSetDetails = (e) => {
+		const { name, value } = e.target;
+		setDetails({ ...details, [name]: value });
+	};
 
-      <Footer />
-    </>
-  );
+	const handleClose = (key) => {
+		setOpenCalendar(
+			openCalendar.map((item) => {
+				if (item.key === key) {
+					item.open = !item.open;
+				}
+				return item;
+			})
+		);
+	};
+
+	const handleSetDate = (key, date) => {
+		setOpenCalendar(
+			openCalendar.map((item) => {
+				if (item.key === key) {
+					item.date = dayjs(date).format("YYYY-MM-DD");
+				}
+				return item;
+			})
+		);
+	};
+
+	return (
+		<>
+			<Breadcrumb title="Tour booking" link="tour booking" />
+
+			<Grid className={styles.tourBooking}>
+				<Grid.Row>
+					<Grid.Column>
+						<YourDetails
+							handleSetDetails={handleSetDetails}
+							details={details}
+						/>
+
+						<BookingSummary data={data} details={details} discount={discount} />
+					</Grid.Column>
+				</Grid.Row>
+				<Grid.Row>
+					<Grid.Column>
+						<TourDetails
+							handleClose={handleClose}
+							handleSetDate={handleSetDate}
+							openCalendar={openCalendar}
+							myHandleChangeCheck={myHandleChangeCheck}
+							setOpenCalendar={setOpenCalendar}
+							selectedAdditionalService={selectedAdditionalService}
+							discount={discount}
+							setDiscount={setDiscount}
+						/>
+					</Grid.Column>
+				</Grid.Row>
+				<Grid.Row>
+					<Grid.Column>
+						<PaymentInfo />
+					</Grid.Column>
+				</Grid.Row>
+			</Grid>
+
+			<Footer />
+		</>
+	);
 };
 
 export default TourBooking;
