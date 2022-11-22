@@ -37,6 +37,7 @@ const TourBooking = ({ data }) => {
 		},
 	});
 
+	
 	const [discount, setDiscount] = useState(0);
 
 	const [openCalendar, setOpenCalendar] = useState([

@@ -92,7 +92,6 @@ const TourCart = ({ tourCartHeader, data }) => {
 								<Table.Cell>
 									<Image src={item.imgUrl} className={styles.tourCartImage} />
 								</Table.Cell>
-
 								<Table.Cell>
 									<h5>{item.tourName}</h5>
 								</Table.Cell>

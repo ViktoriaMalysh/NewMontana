@@ -46,17 +46,17 @@ const TourSingle = () => {
 		// dispatch(getTour(params.id));
 		// dispatch(getReviews(params.id));
 
-		const option = {
-			firstName: "my name",
-			lastName: "my surname",
-			email: "myemail@gmail.com",
-			phone: "0676683643",
-			dateArrival: "2022-10-01",
-			dateDeparture: "2022-10-10",
-			additionalService: ["car rent", "dinner"],
-			packagesCost: 1500,
-		};
-		navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
+		// const option = {
+		// 	firstName: "my name",
+		// 	lastName: "my surname",
+		// 	email: "myemail@gmail.com",
+		// 	phone: "0676683643",
+		// 	dateArrival: "2022-10-01",
+		// 	dateDeparture: "2022-10-10",
+		// 	additionalService: ["car rent", "dinner"],
+		// 	packagesCost: 1500,
+		// };
+		// navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
 	}, []);
 
 	const handleBook = () => {
@@ -106,7 +106,6 @@ const TourSingle = () => {
 				...prevSeletedType,
 				[formattedType]: {
 					...prevSeletedType[formattedType],
-
 					checked: data.checked,
 					value: data.value.value,
 				},
