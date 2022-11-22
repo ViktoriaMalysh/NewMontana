@@ -1,6 +1,6 @@
 import Breadcrumb from "../../Common/Breadcrumb/Breadcrumb";
 import Footer from "../../Common/Footer/Footer";
-import "react-image-lightbox/style.css";
+import "react-18-image-lightbox/style.css";
 import GalleryComponent from "./Gallery Component/GalleryComponent";
 import { gallery } from "../../Backend/Data";
 import { Button, Grid, Icon } from "semantic-ui-react";

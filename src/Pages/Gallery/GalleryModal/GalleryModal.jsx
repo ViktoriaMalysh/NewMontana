@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Lightbox from "react-image-lightbox";
+import Lightbox from "react-18-image-lightbox";
 import { Button, Icon } from "semantic-ui-react";
 import { imagesGallery } from "../../../Backend/Data";
 import styles from "./GalleryModal.module.scss";
