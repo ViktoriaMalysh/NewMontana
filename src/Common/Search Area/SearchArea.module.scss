@@ -118,8 +118,8 @@ $primary-color-hover: #ffdd00;
 			}
 
 			.searchAreaSelect {
-				width: 257px;
-				height: 45px;
+				min-width: 257px;
+				height: 46px;
 				line-height: 20px;
 				border-radius: 8px;
 				border-color: #6c7592;
@@ -127,12 +127,10 @@ $primary-color-hover: #ffdd00;
 				font-size: 1rem;
 				font-weight: 400;
 				color: #6c7592;
-				background-color: #fff;
 				float: left;
 				padding-right: 30px;
 				text-align: left !important;
 				transition: all 0.2s ease-in-out;
-				margin-right: 10px;
 			}
 		}
 	}

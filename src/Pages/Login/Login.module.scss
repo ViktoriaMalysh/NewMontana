@@ -31,6 +31,17 @@ $primary-color-hover: #ffdd00;
 		}
 
 		.loginForm {
+			.loginLinkForgotPassword {
+				color: #fca702;
+				transition: color 0.5s linear;
+				font-size: 16px;
+				float: right;
+
+				&:hover {
+					color: #14212b;
+				}
+			}
+
 			label {
 				font-weight: 400;
 				font-family: "Roboto";

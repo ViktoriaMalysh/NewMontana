@@ -1,11 +1,18 @@
 import { Button, Checkbox, Form, Icon, Segment } from "semantic-ui-react";
 import styles from "./Register.module.scss";
 import logo from "../../assets/logo-login.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validate } from "../../Helpers/validation";
+import { signUp } from "../../redux/actions/actionUser";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const RegisterContainer = ({}) => {
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state);
+	const navigate = useNavigate();
+
 	const [candidateValid, setCandidateValid] = useState({
 		firstName: true,
 		lastName: true,
@@ -24,6 +31,11 @@ const RegisterContainer = ({}) => {
 		const { name, value } = e.target;
 		setCandidateValid({ ...candidateValid, [name]: validate(value, name) });
 		setCandidate({ ...candidate, [name]: value });
+	};
+
+	const handleSubmit = () => {
+		console.log("save");
+		dispatch(signUp(candidate)).then(navigate("/"));
 	};
 
 	return (
@@ -130,7 +142,7 @@ const RegisterContainer = ({}) => {
 						</Link>
 					</div>
 				</Form.Field>
-				<Button type="submit" as="button">
+				<Button as="button" onClick={() => handleSubmit()}>
 					<Icon className={styles.registerIcon} name="paper plane outline" />{" "}
 					Register
 				</Button>

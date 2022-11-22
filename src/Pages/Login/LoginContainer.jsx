@@ -1,12 +1,18 @@
 import { Button, Checkbox, Form, Icon, Segment } from "semantic-ui-react";
 import styles from "./Login.module.scss";
 import logo from "../../assets/logo-login.png";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { validate } from "../../Helpers/validation";
+import { signIn } from "../../redux/actions/actionUser";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginContainer = ({}) => {
-	const [candidateValid, setCandidateValid] = useState({
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const store = useSelector((state) => state);
+
+  const [candidateValid, setCandidateValid] = useState({
 		email: true,
 		password: true,
 	});
@@ -18,6 +24,10 @@ const LoginContainer = ({}) => {
 		setCandidateValid({ ...candidateValid, [name]: validate(value, name) });
 		setCandidate({ ...candidate, [name]: value });
 	};
+
+  const handleLogin = () =>{
+    dispatch(signIn(candidate)).then(navigate("/"));
+  }
 
 	return (
 		<Segment className={styles.loginSegment} raised>
@@ -71,16 +81,22 @@ const LoginContainer = ({}) => {
 					/>
 				</Form.Field>
 				<Form.Field>
-					<Checkbox label="I agree to the Terms and Conditions" />
+					<Checkbox label="Remember Me" />
+					<Link
+						to={"/forgot-password"}
+						className={styles.loginLinkForgotPassword}
+					>
+						Forgot Password?
+					</Link>
 				</Form.Field>
-				<Button type="submit" as="button">
+				<Button type="submit" as="button" onClick={handleLogin}>
 					<Icon className={styles.loginIcon} name="sign in alternate" /> Login
 				</Button>
 			</Form>
 
 			<div className={styles.loginFooter}>
 				Don't have an account?{" "}
-				<Link to="/" className={styles.loginLink}>
+				<Link to="/register" className={styles.loginLink}>
 					Register.
 				</Link>
 			</div>
