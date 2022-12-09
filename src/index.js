@@ -14,13 +14,13 @@ const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href =
 	"https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
-document.head.appendChild(styleLink);
+document.head.appendChild(styleLink);    
 
 const store = createStore(
 	rootReducers,
 	compose(
 		applyMiddleware(thunk),
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+		// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 	)
 );
 
