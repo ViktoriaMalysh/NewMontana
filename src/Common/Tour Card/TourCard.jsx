@@ -12,6 +12,8 @@ import {
 const TourCard = ({ item, onChange, offer }) => {
 	// console.log("item", item.guestReviews);
 
+// console.log("[score]:", typeof item?.reviews?.score)
+
 	return (
 		<>
 			{offer && (
@@ -27,7 +29,7 @@ const TourCard = ({ item, onChange, offer }) => {
 			<Segment raised className={styles.topTourSegment}>
 				<div className={styles.topTourSegmentDivImg}>
 					<img
-						src={item.optimizedThumbUrls?.srpDesktop}
+						src={item.propertyImage.image.url}
 						className={styles.topTourSegmentImg}
 					/>
 				</div>
@@ -45,7 +47,7 @@ const TourCard = ({ item, onChange, offer }) => {
 						</Grid.Column>
 
 						<Grid.Column width={5}>
-							<Icon name="map marker alternate" /> {item.address.countryName}
+							{/* <Icon name="map marker alternate" /> {item.address.countryName} */}
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
@@ -95,21 +97,21 @@ const TourCard = ({ item, onChange, offer }) => {
 						</Link>
 						<div className={styles.topTourSegmentDiv}>
 							<Rating
-								defaultRating={item.starRating}
+								defaultRating={item?.reviews?.score/2}
 								maxRating={5}
 								size="small"
 								icon="star"
 								disabled
 								className={styles.topTourSegmentRating}
 							/>{" "}
-							<span>({item.guestReviews?.total} Reviews)</span>
+							<span>({item?.reviews?.total} Reviews)</span>
 						</div>
 
 						<Divider className={styles.topTourSegmentDevider} />
 
 						<div className={styles.topTourSegmentDivButton}>
 							<div className={styles.topTourSegmentDiv}>
-								${Math.ceil(item.ratePlan.price.exactCurrent)}
+								${Math.ceil(item?.price?.lead?.amount)}
 								<span>/per person</span>
 							</div>
 							<Button className={styles.topTourButton}>

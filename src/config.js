@@ -1,4 +1,5 @@
 export const BACKEND_URL = `http://localhost:8000/`;
+// export const BACKEND_URL = `https://travelox-backend-firebase.onrender.com/`
 
 export const API_URL = `https://hotels4.p.rapidapi.com/`;
 

@@ -20,165 +20,164 @@ import LoadingPage from "../Loading/Loading";
 import _ from "lodash";
 
 const TourSingle = () => {
-	const params = useParams();
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  const params = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-	const tour = useSelector((state) => state.api.tour);
+  const tour = useSelector((state) => state.api.tour);
 
-	const [bookDetail, setBookDetail] = useState({
-		firstName: "",
-		lastName: "",
-		email: "",
-		phone: "",
-		dateArrival: "",
-		dateDeparture: "",
-		additionalService: [],
-	});
+  const [bookDetail, setBookDetail] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    dateArrival: "",
+    dateDeparture: "",
+    additionalService: [],
+  });
 
-	const [selectedAdditionalService, setSelectedAdditionalService] = useState(
-		{}
-	);
+  const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+    {}
+  );
 
-	console.log("[bookDetail]:", bookDetail);
+  console.log("[bookDetail]:", bookDetail);
 
-	useEffect(() => {
-		// dispatch(getTour(params.id));
-		// dispatch(getReviews(params.id));
+  useEffect(() => {
+    // dispatch(getTour(params.id));
+    // dispatch(getReviews(params.id));
+    // const option = {
+    // 	firstName: "my name",
+    // 	lastName: "my surname",
+    // 	email: "myemail@gmail.com",
+    // 	phone: "0676683643",
+    // 	dateArrival: "2022-10-01",
+    // 	dateDeparture: "2022-10-10",
+    // 	additionalService: ["car rent", "dinner"],
+    // 	packagesCost: 1500,
+    // };
+    // navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
+  }, []);
 
-		// const option = {
-		// 	firstName: "my name",
-		// 	lastName: "my surname",
-		// 	email: "myemail@gmail.com",
-		// 	phone: "0676683643",
-		// 	dateArrival: "2022-10-01",
-		// 	dateDeparture: "2022-10-10",
-		// 	additionalService: ["car rent", "dinner"],
-		// 	packagesCost: 1500,
-		// };
-		// navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
-	}, []);
+  const handleBook = () => {
+    let additionalService = _.chain(selectedAdditionalService)
+      .filter("checked")
+      .mapValues("value")
+      .values()
+      .join(", ")
+      .value();
 
-	const handleBook = () => {
-		let additionalService = _.chain(selectedAdditionalService)
-			.filter("checked")
-			.mapValues("value")
-			.values()
-			.join(", ")
-			.value();
+    setBookDetail({ ...bookDetail, additionalService: additionalService });
+    // navigate("/tour-booking");
 
-		setBookDetail({ ...bookDetail, additionalService: additionalService });
-		// navigate("/tour-booking");
+    //add
+    // history.push("/search?" + new URLSearchParams(form).toString())
 
-		//add
-		// history.push("/search?" + new URLSearchParams(form).toString())
+    // history.push(
+    // 	`/checkout/${id}?startDate=${startDate}&endDate=${endDate}&price=${price}&checkoutUrl=${res.data}`
+    // )
 
-		// history.push(
-		// 	`/checkout/${id}?startDate=${startDate}&endDate=${endDate}&price=${price}&checkoutUrl=${res.data}`
-		// )
+    // createReservation({
+    // 	accommodation: id,
+    // 	dayOfArrival,
+    // 	dayOfDeparture,
+    // 	travellers: personCount ? Number(personCount) : 1,
+    // 	cancelUrl: window.location.href,
+    // 	successUrl: window.location.origin + "/confirmation",
+    // })
 
-		// createReservation({
-		// 	accommodation: id,
-		// 	dayOfArrival,
-		// 	dayOfDeparture,
-		// 	travellers: personCount ? Number(personCount) : 1,
-		// 	cancelUrl: window.location.href,
-		// 	successUrl: window.location.origin + "/confirmation",
-		// })
+    // const [startDate, setStartDate] = useState(
+    // 	new URLSearchParams(window.location.search).get("startDate")
+    // );
+    // const personCount = new URLSearchParams(window.location.search).get(
+    // 	"personCount"
+    // );
+  };
 
-		// const [startDate, setStartDate] = useState(
-		// 	new URLSearchParams(window.location.search).get("startDate")
-		// );
-		// const personCount = new URLSearchParams(window.location.search).get(
-		// 	"personCount"
-		// );
-	};
+  const handleSetDetailsBook = (e) => {
+    const { name, value } = e.target;
+    setBookDetail({ ...bookDetail, [name]: value });
+  };
 
-	const handleSetDetailsBook = (e) => {
-		const { name, value } = e.target;
-		setBookDetail({ ...bookDetail, [name]: value });
-	};
+  const myHandleChangeCheck = (data, type) => {
+    const formattedType = _.snakeCase(type);
+    setSelectedAdditionalService((prevSeletedType) => {
+      return {
+        ...prevSeletedType,
+        [formattedType]: {
+          ...prevSeletedType[formattedType],
+          checked: data.checked,
+          value: data.value.value,
+        },
+      };
+    });
+  };
 
-	const myHandleChangeCheck = (data, type) => {
-		const formattedType = _.snakeCase(type);
-		setSelectedAdditionalService((prevSeletedType) => {
-			return {
-				...prevSeletedType,
-				[formattedType]: {
-					...prevSeletedType[formattedType],
-					checked: data.checked,
-					value: data.value.value,
-				},
-			};
-		});
-	};
+  return (
+    <>
+      {tour.nameHotel ? (
+        <>
+          <Breadcrumb
+            title={tour.nameHotel}
+            link={tour.nameHotel ? tour.nameHotel : 5}
+          />
+          <Grid className={styles.tourSingle}>
+            <Grid.Row>
+              <Grid.Column width={11} style={{ width: "700px" }}>
+                {tour.photos?.length && (
+                  <Image
+                    src={tour?.photos[0]}
+                    className={styles.tourSingleAvatar}
+                  />
+                )}
 
-	return (
-		<>
-			{tour.nameHotel ? (
-				<>
-					<Breadcrumb
-						title={tour.nameHotel}
-						link={tour.nameHotel ? tour.nameHotel : 5}
-					/>
-					<Grid className={styles.tourSingle}>
-						<Grid.Row>
-							<Grid.Column width={11} style={{ width: "700px" }}>
-								{tour.photos?.length && (
-									<Image
-										src={tour?.photos[0]}
-										className={styles.tourSingleAvatar}
-									/>
-								)}
+                <HeaderSingle tour={tour && tour} />
 
-								<HeaderSingle tour={tour && tour} />
+                <TextSingle />
 
-								<TextSingle />
+                <TableSingle />
 
-								<TableSingle />
+                <TourPlanSingle />
 
-								<TourPlanSingle />
+                <GallerySingle />
 
-								<GallerySingle />
+                <TourMapSingle />
 
-								<TourMapSingle />
+                <GuestReviewsSingle tour={tour && tour} />
 
-								<GuestReviewsSingle tour={tour && tour} />
-
-								<FormReviewSingle />
-							</Grid.Column>
-							<Grid.Column width={5} floated="right">
-								<Grid>
-									<Grid.Row>
-										<Grid.Column>
-											<BookBlock
-												bookDetail={bookDetail}
-												handleSetDetailsBook={handleSetDetailsBook}
-												handleBook={handleBook}
-												myHandleChangeCheck={myHandleChangeCheck}
-												selectedAdditionalService={selectedAdditionalService}
-												setSelectedAdditionalService={
-													setSelectedAdditionalService
-												}
-											/>
-										</Grid.Column>
-									</Grid.Row>
-									<Grid.Row>
-										<Grid.Column>
-											<Banner />
-										</Grid.Column>
-									</Grid.Row>
-								</Grid>
-							</Grid.Column>
-						</Grid.Row>
-					</Grid>
-					<Footer />
-				</>
-			) : (
-				<LoadingPage />
-			)}
-		</>
-	);
+                <FormReviewSingle />
+              </Grid.Column>
+              <Grid.Column width={5} floated="right">
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <BookBlock
+                        bookDetail={bookDetail}
+                        handleSetDetailsBook={handleSetDetailsBook}
+                        handleBook={handleBook}
+                        myHandleChangeCheck={myHandleChangeCheck}
+                        selectedAdditionalService={selectedAdditionalService}
+                        setSelectedAdditionalService={
+                          setSelectedAdditionalService
+                        }
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Banner />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <Footer />
+        </>
+      ) : (
+        <LoadingPage />
+      )}
+    </>
+  );
 };
 
 export default TourSingle;

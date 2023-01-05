@@ -1,30 +1,38 @@
-import { CLEAR_TOURS, LOCALE, REVIEWS, TOP_TOURS, TOUR, TOURS } from "../types";
+import { locale } from "../../Backend/Data";
+import {
+  CLEAR_TOURS,
+  DESTINATIONS,
+  REVIEWS,
+  TOP_TOURS,
+  TOUR,
+  TOURS,
+} from "../types";
 
 const initialState = {
-	tours: [],
-	tour: {},
-	topTours: [],
-	locale: [],
-	reviews: [],
+  tours: [],
+  tour: {},
+  topTours: [],
+  destinations: locale,
+  reviews: [],
 };
 
 export const reducerApi = (state = initialState, action) => {
-	switch (action.type) {
-		case TOURS:
-			return { ...state, tours: action.payload };
-		case TOUR:
-			return { ...state, tour: action.payload };
-		case TOP_TOURS:
-			return { ...state, topTours: action.payload };
-		case LOCALE:
-			return { ...state, locale: action.payload };
-		case REVIEWS:
-			return { ...state, reviews: action.payload };
+  switch (action.type) {
+    case TOURS:
+      return { ...state, tours: action.payload };
+    case TOUR:
+      return { ...state, tour: action.payload };
+    case TOP_TOURS:
+      return { ...state, topTours: action.payload };
+    case DESTINATIONS:
+      return { ...state, destinations: action.payload };
+    case REVIEWS:
+      return { ...state, reviews: action.payload };
 
-		case CLEAR_TOURS:
-			return initialState;
+    case CLEAR_TOURS:
+      return initialState;
 
-		default:
-			return state;
-	}
+    default:
+      return state;
+  }
 };

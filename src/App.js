@@ -5,18 +5,26 @@ import { routes } from "./Common/Routes";
 import Layout from "./Common/Layout";
 import "./App.css";
 import history from "./Common/history";
+import { getCurrentUser, isLoggedIn } from "./Backend/firebase_db";
 
 const App = () => {
 	const navigate = useNavigate();
+
 	// if (!authStore.logined) {
 	// 	return <Login />;
 	// }
 
-	useEffect(() => {
-		if (localStorage.getItem("isUser")) {
-			// navigate("/");
-		}  
-	}, [localStorage["isUser"]]);
+	// useEffect(() => {
+	// 	if (localStorage.getItem("isUser")) {
+	// 		// navigate("/");
+	// 	}
+	
+	// }, [localStorage["isUser"]]);
+	
+	// useEffect(() => {
+	// 	console.log(getCurrentUser())
+		
+	// }, []);
 
 	return (
 		<>

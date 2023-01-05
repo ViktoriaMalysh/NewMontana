@@ -11,7 +11,7 @@ const TopTour = () => {
 	const store = useSelector((state) => state);
 
 	useEffect(() => {
-		dispatch(getTopTours());
+		// dispatch(getTopTours());
 	}, []);
 
 	const handleChange = () => {};

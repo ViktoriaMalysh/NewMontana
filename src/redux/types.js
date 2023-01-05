@@ -2,7 +2,7 @@
 export const TOURS = "API/TOURS";
 export const TOUR = "API/TOUR";
 export const TOP_TOURS = "API/TOP_TOURS";
-export const LOCALE = "API/LOCALE";
+export const DESTINATIONS = "API/DESTINATIONS";
 export const REVIEWS = "API/REVIEWS";
 export const CLEAR_TOURS = "USER/CLEAR_TOURS";
 

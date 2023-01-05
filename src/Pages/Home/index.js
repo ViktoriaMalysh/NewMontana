@@ -21,7 +21,7 @@ const Home = () => {
 	const store = useSelector((state) => state);
 
 	useEffect(() => {
-		dispatch(getMetaData());
+		// dispatch(getMetaData());
 	}, []);
 
 	return (
