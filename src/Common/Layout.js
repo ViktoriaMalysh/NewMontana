@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { verifyToken } from "../redux/actions/actionUser";
+// import { verifyToken } from "../redux/actions/actionUser";
 import Header from "./Header/Header";
 
 const Layout = ({ children }) => {
@@ -12,11 +12,11 @@ const Layout = ({ children }) => {
 	const store = useSelector((state) => state);
 	const token = localStorage.getItem("token");
 
-	useEffect(() => {
-		dispatch(verifyToken(token));
+	// useEffect(() => {
+		// dispatch(verifyToken(token)); // not used
 		// const isUser = localStorage.getItem("isUser");
 		// if (!isUser) navigate("/login");
-	}, [token]);
+	// }, [token]);
 
 	useEffect(() => {
 		const { pathname } = location;

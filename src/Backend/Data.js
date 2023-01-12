@@ -1190,52 +1190,36 @@ export const linksIconSingleTeam = [
 
 export const accommodationTypes = [
   {
-    value: "Agritourism",
+    value: "VILLA",
+    text: "Villa",
+  },
+  {
+    value: "CONDO_RESORT",
+    text: "Condo Resort",
+  },
+  {
+    value: "PENSION",
+    text: "Pension",
+  },
+  {
+    value: "TOWNHOUSE",
+    text: "Townhouse",
+  },
+  {
+    value: "AGRITOURISM",
     text: "Agritourism",
   },
   {
-    value: "Apart-hotels",
-    text: "Apart-hotels",
+    value: "HOTEL_RESORT",
+    text: "Hotel Resort",
   },
   {
-    value: "Apartments",
-    text: "Apartments",
+    value: "HOLIDAY_PARK",
+    text: "Holiday Park",
   },
   {
-    value: "B&Bs",
-    text: "B&Bs",
-  },
-  {
-    value: "Cottages",
-    text: "Cottages",
-  },
-  {
-    value: "Guest houses",
-    text: "Guest houses",
-  },
-  {
-    value: "Hostels",
-    text: "Hostels",
-  },
-  {
-    value: "Hotels",
-    text: "Hotels",
-  },
-  {
-    value: "Motels",
-    text: "Motels",
-  },
-  {
-    value: "Resorts",
-    text: "Resorts",
-  },
-  {
-    value: "Vacation homes",
-    text: "Vacation homes",
-  },
-  {
-    value: "Villas",
-    text: "Villas",
+    value: "CONDO",
+    text: "Condo",
   },
 ];
 

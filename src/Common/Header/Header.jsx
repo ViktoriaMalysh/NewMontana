@@ -39,8 +39,8 @@ const Header = () => {
         </Menu.Item>
 
         <Menu.Menu position="right">
-          {itemsHeader.map((item) => (
-            <Link to={item.path}>
+          {itemsHeader.map((item, key) => (
+            <Link to={item.path} key={key}>
               <Menu.Item
                 className={
                   headerShow ? styles.headerItems : styles.headerItemsWhite

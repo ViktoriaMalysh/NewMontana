@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CLEAR_USER } from "../../redux/types";
 
 const TopHeader = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const userStore = useSelector((state) => state.user.user);
@@ -98,8 +98,8 @@ const TopHeader = () => {
             }}
           >
             <Dropdown.Menu className={styles.headerDropdownMenu}>
-              {lang.map((item) => (
-                <div>
+              {lang.map((item, key) => (
+                <div key={key}>
                   <Dropdown.Item className={styles.headerDropdownItem}>
                     {item.key}
                   </Dropdown.Item>
@@ -122,8 +122,8 @@ const TopHeader = () => {
             }}
           >
             <Dropdown.Menu className={styles.headerDropdownMenu}>
-              {currency.map((item) => (
-                <div>
+              {currency.map((item, key) => (
+                <div key={key}>
                   <Dropdown.Item className={styles.headerDropdownItem}>
                     {item.key}
                   </Dropdown.Item>

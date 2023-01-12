@@ -27,7 +27,7 @@ const IntroVideo = () => {
 			<Modal open={open} onClose={() => setOpen(false)}>
 				<ReactPlayer
 					url="https://www.youtube.com/watch?v=LdsTydS4eww"
-					width
+					// width
 					height="500px"
 					playing={true}
 				/>

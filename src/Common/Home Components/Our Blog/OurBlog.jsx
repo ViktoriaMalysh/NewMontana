@@ -15,8 +15,8 @@ const OurBlog = () => {
 			</p>
 			<Grid className={styles.ourBlogGrid}>
 				<Grid.Row columns={3}>
-					{ourBlog.map((item) => (
-						<Grid.Column className={styles.ourBlogGridColumn}>
+					{ourBlog.map((item, key) => (
+						<Grid.Column key={key} className={styles.ourBlogGridColumn}>
 							<div className={styles.ourBlogGridDivImg}>
 								<Image src={item.imgUrl} />
 							</div>

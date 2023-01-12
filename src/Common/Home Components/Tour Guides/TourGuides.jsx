@@ -15,8 +15,8 @@ const TourGuides = ({ title, text }) => {
 
 			<Grid className={styles.tourGuidesGrid}>
 				<Grid.Row columns={4}>
-					{tourGuides.map((guide) => (
-						<TeamCard guide={guide} />
+					{tourGuides.map((guide, key) => (
+						<TeamCard key={key} guide={guide} />
 					))}
 				</Grid.Row>
 			</Grid>
