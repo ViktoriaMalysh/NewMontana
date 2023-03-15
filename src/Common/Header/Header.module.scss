@@ -8,7 +8,7 @@ $primary-color-hover: #ffdd00;
 :global(#app) {
   .headerDiv {
     position: fixed;
-    z-index: 500;
+    z-index: 1100;
     width: 100%;
 
     .headerMenuTop {

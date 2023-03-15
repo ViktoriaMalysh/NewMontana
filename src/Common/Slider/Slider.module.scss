@@ -19,7 +19,7 @@ $primary-color-hover: #ffdd00;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		z-index: 1;
+		z-index: 1 !important;
 
 		&::after {
 			content: "";
@@ -79,7 +79,7 @@ $primary-color-hover: #ffdd00;
 				border-radius: 8px;
 				text-align: center;
 				overflow: hidden;
-				z-index: 1;
+				z-index: 1 !important;
 				box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
 				font-family: "Roboto", sans-serif;
 				font-style: normal;

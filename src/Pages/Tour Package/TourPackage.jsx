@@ -32,42 +32,60 @@ import CalendarContainer from "../../Common/Calendar/Calendar";
 import "../../Common/Calendar/Calendar.scss";
 import _ from "lodash";
 import { CLEAR_TOURS } from "../../redux/types";
+import { useNavigate } from "react-router-dom";
 
 const TourPackage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //store
   const store = useSelector((state) => state);
   const tours = useSelector((state) => state.api.tours);
   const destinations = useSelector((state) => state.api.destinations);
 
+  const type = new URLSearchParams(window.location.search).get("type")
+
   //useState
   const [pageCount, setPageCount] = useState(8);
-  const [minVal, setMinVal] = useState(1);
-  const [maxVal, setMaxVal] = useState(500);
-  const [selectedTypes, setSelectedType] = useState({});
-
-  const [currentItems, setCurrentItems] = useState(null);
+  const [minVal, setMinVal] = useState(100);
+  const [maxVal, setMaxVal] = useState(150);
+  const [selectedTypes, setSelectedType] = useState({ type: { checked: true, value: type }}); //
+console.log("[pageCount]",pageCount)
+  const [currentItems, setCurrentItems] = useState([]);
   const [itemOffset, setItemOffset] = useState(0);
   const [openCalendar, setOpenCalendar] = useState([
     {
       key: "check-in",
       open: false,
-      date: dayjs(new Date()).format("YYYY-MM-DD"), // will be given from props or url params
+      date: new URLSearchParams(window.location.search).get("checkIn")
+        ? new URLSearchParams(window.location.search).get("checkIn")
+        : dayjs(new Date()).format("YYYY-MM-DD"),
     },
     {
       key: "check-out",
       open: false,
-      date: dayjs(new Date()).format("YYYY-MM-DD"),
+      date: new URLSearchParams(window.location.search).get("checkOut")
+        ? new URLSearchParams(window.location.search).get("checkOut")
+        : dayjs(new Date("2023-01-25")).format("YYYY-MM-DD"),
     },
   ]);
+const   destinationName =  new URLSearchParams(window.location.search).get("destination")
+? new URLSearchParams(window.location.search).get("destination")
+: "country"
 
   const [search, setSearch] = useState({
-    // will be given from props or url params
-    destination: "en_US",
-    adults: 1,
-    accommodationType: [],
-    starRating: 5,
+    destination: new URLSearchParams(window.location.search).get("destinationCode")
+      ? new URLSearchParams(window.location.search).get("destinationCode")
+      : "en_US",
+    adults: new URLSearchParams(window.location.search).get("adults")
+      ? new URLSearchParams(window.location.search).get("type")
+      : 1,
+    accommodationType: new URLSearchParams(window.location.search).get("type")
+      ? new URLSearchParams(window.location.search).get("type")
+      : "",
+    starRating: new URLSearchParams(window.location.search).get("starRating")
+      ? new URLSearchParams(window.location.search).get("starRating")
+      : 5,
   });
 
   // useEffect(() => {
@@ -80,94 +98,72 @@ const TourPackage = () => {
   // }
   // }, [destinations]);
 
-  console.log("[search]:", search);
-  console.log("[min]", String(minVal), "[max]", String(Math.round(maxVal)));
+  console.log("[search]:", search, search.accommodationType);
 
   useEffect(() => {
     if (!tours.length) {
       const options = {
         currency: localStorage.getItem("currency"),
         eapid: 1,
-        destinations: search.destination,
+        locale: search.destination,
         siteId: 300000001, //
         destination: {
           regionId: "6054439", //
         },
         checkInDate: {
-          day: dayjs(openCalendar[0].date).format("DD"),
-          month: dayjs(openCalendar[0].date).format("MM"),
-          year: dayjs(openCalendar[0].date).format("YYYY"),
+          day: Number(dayjs(openCalendar[0].date).format("DD")),
+          month: Number(dayjs(openCalendar[0].date).format("M")),
+          year: Number(dayjs(openCalendar[0].date).format("YYYY")),
         },
         checkOutDate: {
-          day: dayjs(openCalendar[1].date).format("DD"),
-          month: dayjs(openCalendar[1].date).format("MM"),
-          year: dayjs(openCalendar[1].date).format("YYYY"),
+          day: Number(dayjs(openCalendar[1].date).format("DD")),
+          month: Number(dayjs(openCalendar[1].date).format("M")),
+          year: Number(dayjs(openCalendar[1].date).format("YYYY")),
         },
         rooms: [
           {
-            adults: search.adults,
+            adults: Number(search.adults),
           },
         ],
         resultsStartingIndex: 0,
         resultsSize: 200,
         sort: "PRICE_LOW_TO_HIGH",
+        filters: {
+          price: {
+            min: minVal,
+            max: Math.round(maxVal),
+          },
+          star: [String(search.starRating * 10)],
+          // lodging: search.accommodationType,
+        },
       };
-
-      // dispatch(getTours(options));
-
-      console.log("not search");
+      JSON.stringify(options)
+      dispatch(getTours(options)).then(console.log("[Success!]"));
     } else console.log("search");
   }, []);
 
   const handleSearch = () => {
     dispatch({ type: CLEAR_TOURS });
 
-    // let accommodationIds = _.chain(selectedTypes)
-    //   .filter("checked")
-    //   .mapValues("value")
-    //   .values()
-    //   .join(", ")
-    //   .value();
+    let accommodationIds = _.chain(selectedTypes)
+      .filter("checked")
+      .mapValues("value")
+      .values()
+      .value();
 
-    // console.log("[accommodationIds]:", accommodationIds);
+      console.log(accommodationIds)
 
-    const options = {
-      currency: localStorage.getItem("currency"),
-      eapid: 1,//
-      destinations: search.destination,
-      siteId: 300000001, //
-      destination: {
-        regionId: "6054439", // .../locations/v3/search endpoint
-      },
-      checkInDate: {
-        day: dayjs(openCalendar[0].date).format("DD"),
-        month: dayjs(openCalendar[0].date).format("MM"),
-        year: dayjs(openCalendar[0].date).format("YYYY"),
-      },
-      checkOutDate: {
-        day: dayjs(openCalendar[1].date).format("DD"),
-        month: dayjs(openCalendar[1].date).format("MM"),
-        year: dayjs(openCalendar[1].date).format("YYYY"),
-      },
-      rooms: [
-        {
-          adults: search.adults,
-        },
-      ],
-      resultsStartingIndex: 0,
-      resultsSize: 200,
-      sort: "PRICE_LOW_TO_HIGH",
-      filters: {
-        star: [String(search.starRating * 10)],
-        price: {
-          min: String(minVal),
-          max: String(Math.round(maxVal)),
-        },
-      },
+    const option = {
+      destination: search.destination,
+      checkIn: openCalendar[0].date,
+      checkOut: openCalendar[1].date,
+      type: accommodationIds,
+      adults: search.adults,
+      starRating: search.starRating,
     };
+    navigate("/tour-package?" + new URLSearchParams(option).toString());
+
     console.log("search!!!    ");
-    // dispatch(getTours(options));
-    // navigate("/tour-package");
   };
 
   const handleClose = (key) => {
@@ -207,18 +203,22 @@ const TourPackage = () => {
     });
   };
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 6;
 
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(topTours.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(topTours.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+    if(tours.length){
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(tours?.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(tours?.length / itemsPerPage));
+    }
+  }, [itemOffset, itemsPerPage, tours]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % topTours.length;
+    const newOffset = (event.selected * itemsPerPage) % tours?.length;
     setItemOffset(newOffset);
   };
+
+  console.log("[itemOffset]",currentItems, Math.ceil(tours?.length / itemsPerPage), tours?.length)
 
   return (
     <>
@@ -374,8 +374,8 @@ const TourPackage = () => {
                   <Segment raised className={styles.tourPackageSegmentLeft}>
                     <h4>Price Range</h4>
                     <PriceRange
-                      min={1}
-                      max={500}
+                      min={100}
+                      max={150}
                       minVal={minVal}
                       maxVal={maxVal}
                       setMinVal={setMinVal}
@@ -451,11 +451,14 @@ const TourPackage = () => {
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
-                {store.api.tours.length ? (
-                  store.api.tours?.map((item) => (
+                {currentItems?.length ? (
+                  // store.api.tours?.map((item) => (
+                    currentItems?.map((item)=>(
                     <Grid.Column style={{ marginRight: "0px" }}>
                       <TourCard
                         item={item}
+                        locale={search.destination}
+                        destination={destinationName}
                         // onChange={handleChange}
                         offer={false}
                       />

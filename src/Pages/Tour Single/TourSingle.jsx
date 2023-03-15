@@ -43,7 +43,14 @@ const TourSingle = () => {
   console.log("[bookDetail]:", bookDetail);
 
   useEffect(() => {
-    // dispatch(getTour(params.id));
+    const options = {
+      currency: localStorage.getItem("currency"),
+      eapid: 1,
+      locale: new URLSearchParams(window.location.search).get("locale"),
+      siteId: 300000001,
+      propertyId: params.id,
+    };
+    dispatch(getTour(options));
     // dispatch(getReviews(params.id));
     // const option = {
     // 	firstName: "my name",
@@ -55,6 +62,12 @@ const TourSingle = () => {
     // 	additionalService: ["car rent", "dinner"],
     // 	packagesCost: 1500,
     // };
+
+    // "currency": "USD",
+    // "eapid": 1,
+    // "locale": "en_US",
+    // "siteId": 300000001,
+    // "propertyId": "9209612"
     // navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
   }, []);
 
