@@ -42,10 +42,10 @@ export const links = [
     title: "header-about",
     link: "/about",
   },
-  {
-    title: "header-blog",
-    link: "/blog",
-  },
+  // {
+  //   title: "header-blog",
+  //   link: "/blog",
+  // },
   {
     title: "header-contact",
     link: "/contact",
@@ -117,10 +117,10 @@ export const routes = [
     path: "/booking-confirm",
     component: <BookingConfirm data={confirmData} />,
   },
-  {
-    path: "/blog",
-    // component: <Blog />,
-  },
+  // {
+  //   path: "/blog",
+  //   // component: <Blog />,
+  // },
   {
     path: "/contact",
     // component: <Contact />,

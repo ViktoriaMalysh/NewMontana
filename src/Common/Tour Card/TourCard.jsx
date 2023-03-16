@@ -18,6 +18,8 @@ const TourCard = ({ item, destination, onChange, locale, offer }) => {
   const handleClick = (id) => {
     const option = {
       locale: locale,
+      price: item?.price?.lead?.amount,
+      rating: item?.reviews?.score / 2
     };
 
     navigate(`/tour-package/${id}?` + new URLSearchParams(option).toString());
@@ -65,7 +67,7 @@ const TourCard = ({ item, destination, onChange, locale, offer }) => {
           <>
             <div className={styles.topTourSegmentDivOffer}>
               <Rating
-                defaultRating={item.starRating}
+                defaultRating={item?.reviews?.score / 2}
                 maxRating={5}
                 size="small"
                 icon="star"

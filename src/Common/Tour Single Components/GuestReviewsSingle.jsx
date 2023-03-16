@@ -8,9 +8,9 @@ import defAvatar from "../../assets/def.png";
 import { useState } from "react";
 
 const GuestReviewsSingle = ({ tour }) => {
-	const reviewsAll = useSelector((state) => _.slice(state.api.reviews, 5, 20));
-	const reviewsSlice = useSelector((state) => _.slice(state.api.reviews, 5, 8));
 
+	const reviewsAll = useSelector((state) => state.api.tour?.reviews);
+	const reviewsSlice = useSelector((state) => _.slice(state.api.tour?.reviews, 0, 3));
 	const [reviews, setReviews] = useState(reviewsSlice);
 
 	return (
@@ -28,31 +28,31 @@ const GuestReviewsSingle = ({ tour }) => {
 							style={{ marginLeft: index % 2 !== 0 && "70px" }}
 						>
 							<Grid.Column width={3} floated="left">
-								<Image src={item.recommendedBy ? avatar : defAvatar} />
+								<Image src={item.reviewer.name ? avatar : defAvatar} />
 							</Grid.Column>
 							<Grid.Column width={13}>
-								<h5>{item.recommendedBy ? item.recommendedBy : "anonym"}</h5>
+								<h5>{item.reviewer.name ? item.reviewer.name : "anonym"}</h5>
 
 								<h5
 									style={{
 										color:
-											item.qualitativeBadgeText === "Exceptional"
+											item.badge === "Exceptional"
 												? "#155f06"
-												: item.qualitativeBadgeText === "Very Good"
+												: item.badge === "Very Good"
 												? "#26b40a"
-												: item.qualitativeBadgeText === "Good"
+												: item.badge === "Good"
 												? "#f3e302"
-												: item.qualitativeBadgeText === "Fair"
+												: item.badge === "Fair"
 												? "#fca702"
 												: "#990808",
 									}}
 								>
-									{item.qualitativeBadgeText}
+									{item.badge}
 								</h5>
 								<span>
-									{dayjs(Number(item.postedOn)).format("DD MMMM, YYYY")}
+									{dayjs(Number(item.reviewDbDate)).format("DD MMMM, YYYY")}
 								</span>
-								<p>{item.summary}</p>
+								<p>{item.description}</p>
 								<Rating
 									size="large"
 									icon="star"

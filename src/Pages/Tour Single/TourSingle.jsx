@@ -26,6 +26,9 @@ const TourSingle = () => {
 
   const tour = useSelector((state) => state.api.tour);
 
+  const rating = new URLSearchParams(window.location.search).get("rating")
+  const price = new URLSearchParams(window.location.search).get("price")
+
   const [bookDetail, setBookDetail] = useState({
     firstName: "",
     lastName: "",
@@ -50,8 +53,9 @@ const TourSingle = () => {
       siteId: 300000001,
       propertyId: params.id,
     };
+
     dispatch(getTour(options));
-    // dispatch(getReviews(params.id));
+    
     // const option = {
     // 	firstName: "my name",
     // 	lastName: "my surname",
@@ -63,11 +67,6 @@ const TourSingle = () => {
     // 	packagesCost: 1500,
     // };
 
-    // "currency": "USD",
-    // "eapid": 1,
-    // "locale": "en_US",
-    // "siteId": 300000001,
-    // "propertyId": "9209612"
     // navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
   }, []);
 
@@ -127,23 +126,23 @@ const TourSingle = () => {
 
   return (
     <>
-      {tour.nameHotel ? (
+      {tour.name ? (
         <>
           <Breadcrumb
-            title={tour.nameHotel}
-            link={tour.nameHotel ? tour.nameHotel : 5}
+            title={tour.name}
+            link={tour.name ? tour.name : 5}
           />
           <Grid className={styles.tourSingle}>
             <Grid.Row>
               <Grid.Column width={11} style={{ width: "700px" }}>
-                {tour.photos?.length && (
+                {tour.images.length && (
                   <Image
-                    src={tour?.photos[0]}
+                    src={tour?.images[0].url}
                     className={styles.tourSingleAvatar}
                   />
                 )}
 
-                <HeaderSingle tour={tour && tour} />
+                <HeaderSingle tour={tour && tour} rating={rating} price={price} />
 
                 <TextSingle />
 
@@ -153,7 +152,7 @@ const TourSingle = () => {
 
                 <GallerySingle />
 
-                <TourMapSingle />
+                <TourMapSingle image={tour?.imageMap}/>
 
                 <GuestReviewsSingle tour={tour && tour} />
 

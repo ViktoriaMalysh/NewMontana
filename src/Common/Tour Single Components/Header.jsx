@@ -1,27 +1,27 @@
 import { Divider, Icon, Rating } from "semantic-ui-react";
 import styles from "../../Pages/Tour Single/TourSingle.module.scss";
 
-const HeaderSingle = ({ tour }) => {
+const HeaderSingle = ({ tour, price, rating }) => {
 	return (
 		<>
 			<div className={styles.tourSingleDiv}>
 				<div className={styles.tourSingleDiv1Left}>
-					<h3>{tour.nameHotel}</h3>
-					{tour.guestReviews?.starRating && (
+					<h3>{tour.name}</h3>
+					{tour.rating && (
 						<Rating
 							size="large"
 							icon="star"
 							maxRating={5}
-							defaultRating={tour.guestReviews?.starRating}
+							defaultRating={rating}
 							disabled
 						/>
 					)}{" "}
-					({tour.guestReviews?.reviewsCount} Reviews)
+					({tour.totalCount} Reviews)
 				</div>
 
 				<div className={styles.tourSingleDiv1Right}>
 					<span className={styles.tourSingleSpanPrice}>
-						{tour.price?.currentPrice}
+						{price}
 					</span>
 					<p style={{ marginTop: "0px" }}>Per person</p>
 				</div>
@@ -44,7 +44,7 @@ const HeaderSingle = ({ tour }) => {
 				</li>
 				<li>
 					<Icon name="map marker alternate" className={styles.tourSingleIcon} />
-					{tour.cityName}
+					{tour.city}
 				</li>
 			</ul>
 		</>

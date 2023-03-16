@@ -1,7 +1,8 @@
+import { Image } from "semantic-ui-react";
 import OpenStreetMap from "../../Helpers/OpenStreetMap";
-import styles from "../../Pages/Tour Single/TourSingle.module.scss";
+import styles from "../../Pages/Team Single/TeamSingle.module.scss" //"../../Pages/Tour Single/TourSingle.module.scss";
 
-const TourMapSingle = () => {
+const TourMapSingle = ({image}) => {
   return (
     <>
       <h3>Tour Map</h3>
@@ -15,11 +16,17 @@ const TourMapSingle = () => {
       </p>
 
       <div style={{ width: "1300px", marginLeft: "-15px" }}>
-        <OpenStreetMap
+        {/* <OpenStreetMap
           // coordinates={accommodation.coordinates}
 					coordinates="42.5121, -12.5154"
           type="one-accomm"
-        />
+        /> */}
+          {image && (
+                  <Image
+                    src={image}
+                    className={styles.tourSingleAvatar}
+                  />
+                )}
       </div>
       {/* there should be a map (iframe)  */}
     </>

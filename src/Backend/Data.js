@@ -275,7 +275,7 @@ export const itemsHeader = [
   { id: "home", item: "Home", path: "/" },
   { id: "tours", item: "Tours", path: "/tour-package" },
   { id: "about", item: "About", path: "/about-us" },
-  { id: "blog", item: "Blog", path: "/blog" },
+  // { id: "blog", item: "Blog", path: "/blog" },
   { id: "contact", item: "Contact", path: "/contact" },
 ];
 
