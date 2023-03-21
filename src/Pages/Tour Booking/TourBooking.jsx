@@ -15,136 +15,182 @@ import TourDetails from "../../Common/Tour Booking Components/TourDetails";
 import PaymentInfo from "../../Common/Tour Booking Components/PaymentInfo";
 
 const TourBooking = ({ data }) => {
-  const [details, setDetails] = useState({
-    firstName: new URLSearchParams(window.location.search).get("firstName"),
-    lastName: new URLSearchParams(window.location.search).get("lastName"),
-    email: new URLSearchParams(window.location.search).get("email"),
-    phone: new URLSearchParams(window.location.search).get("phone"),
-    address: "",
-    dateArrival: new URLSearchParams(window.location.search).get("dateArrival"),
-    dateDeparture: new URLSearchParams(window.location.search).get(
-      "dateDeparture"
-    ),
-    packagesCost: new URLSearchParams(window.location.search).get(
-      "packagesCost"
-    ),
-    additionalService: [],
-  });
-
-  const [discount, setDiscount] = useState(0);
-
-  const [openCalendar, setOpenCalendar] = useState([
-    {
-      key: "check-in",
-      open: false,
-      date: new URLSearchParams(window.location.search).get("dateArrival"),
-    },
-    {
-      key: "check-out",
-      open: false,
-      date: new URLSearchParams(window.location.search).get("dateDeparture"),
-    },
-  ]);
-
-  // const [selectedAdditionalService, setSelectedAdditionalService] = useState(
-  // 	new URLSearchParams(window.location.search).get("additionalService")
-  // );
-
-  // useEffect(() => {
-  // 	const arrAdditionalService = selectedAdditionalService.split(/\s*,\s*/);
-  // 	setDetails({ ...details, additionalService: arrAdditionalService });
-  // }, []);
-
-  const myHandleChangeCheck = (data, type) => {
-    // const formattedType = _.snakeCase(type);
-    // setSelectedAdditionalService((prevSeletedType) => {
-    // 	return {
-    // 		...prevSeletedType,
-    // 		[formattedType]: {
-    // 			...prevSeletedType[formattedType],
-    // 			checked: data.checked,
-    // 			value: data.value.value,
-    // 		},
-    // 	};
-    // });
-  };
-
-	const handleClick = () => {
-		
-		// details
-	};
-
-  const handleSetDetails = (e) => {
-    const { name, value } = e.target;
-    setDetails({ ...details, [name]: value });
-  };
-
-  const handleClose = (key) => {
-    setOpenCalendar(
-      openCalendar.map((item) => {
-        if (item.key === key) {
-          item.open = !item.open;
-        }
-        return item;
-      })
+    const [details, setDetails] = useState({
+        firstName: new URLSearchParams(window.location.search).get("firstName"),
+        lastName: new URLSearchParams(window.location.search).get("lastName"),
+        email: new URLSearchParams(window.location.search).get("email"),
+        phone: new URLSearchParams(window.location.search).get("phone"),
+        address: "",
+        dateArrival: new URLSearchParams(window.location.search).get(
+            "dateArrival"
+        ),
+        dateDeparture: new URLSearchParams(window.location.search).get(
+            "dateDeparture"
+        ),
+        packagesCost: new URLSearchParams(window.location.search).get(
+            "packagesCost"
+        ),
+        additionalService: new URLSearchParams(window.location.search).get(
+            "additionalService"
+        ),
+    });
+    const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+        {}
     );
-  };
 
-  const handleSetDate = (key, date) => {
-    setOpenCalendar(
-      openCalendar.map((item) => {
-        if (item.key === key) {
-          item.date = dayjs(date).format("YYYY-MM-DD");
+    const [discount, setDiscount] = useState(0);
+
+    const [openCalendar, setOpenCalendar] = useState([
+        {
+            key: "check-in",
+            open: false,
+            date: new URLSearchParams(window.location.search).get(
+                "dateArrival"
+            ),
+        },
+        {
+            key: "check-out",
+            open: false,
+            date: new URLSearchParams(window.location.search).get(
+                "dateDeparture"
+            ),
+        },
+    ]);
+
+    useEffect(() => {
+        if (details.additionalService !== "") {
+            // details.additionalService _.split('a-b-c', '-', 2);
+            let additionalService = _.split(details.additionalService, ", ");
+
+            // .map(function (n) {
+            //     return {
+            //         [n]: {
+            //             checked: true,
+            //             value: n,
+            //         },
+            //     };
+            // })
+            // .value();
+            let test = {};
+
+            additionalService.map((item) => {
+                test = {
+                    ...test,
+                    [_.snakeCase(item)]: {
+                        checked: true,
+                        value: _.snakeCase(item),
+                    },
+                };
+            });
+
+            console.log("[additionalService]:", test);
+
+            setSelectedAdditionalService(test);
         }
-        return item;
-      })
-    );
-  };
+    }, []);
 
-  return (
-    <>
-      <Breadcrumb title="Tour booking" link="tour booking" />
+    console.log("[selectedAdditionalService]", selectedAdditionalService);
+    // const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+    // 	new URLSearchParams(window.location.search).get("additionalService")
+    // );
 
-      <Grid className={styles.tourBooking}>
-        <Grid.Row>
-          <Grid.Column>
-            <YourDetails
-              handleSetDetails={handleSetDetails}
-              details={details}
-            />
+    // useEffect(() => {
+    // 	const arrAdditionalService = selectedAdditionalService.split(/\s*,\s*/);
+    // 	setDetails({ ...details, additionalService: arrAdditionalService });
+    // }, []);
 
-            <BookingSummary
-              data={data}
-              details={details}
-              discount={discount}
-              handleClick={handleClick}
-            />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <TourDetails
-              handleClose={handleClose}
-              handleSetDate={handleSetDate}
-              openCalendar={openCalendar}
-              myHandleChangeCheck={myHandleChangeCheck}
-              setOpenCalendar={setOpenCalendar}
-              // selectedAdditionalService={selectedAdditionalService}
-              discount={discount}
-              setDiscount={setDiscount}
-            />
-          </Grid.Column>
-        </Grid.Row>
-        {/* // <Grid.Row>
+    const myHandleChangeCheck = (data, type) => {
+        const formattedType = _.snakeCase(type);
+        setSelectedAdditionalService((prevSeletedType) => {
+            return {
+                ...prevSeletedType,
+                [formattedType]: {
+                    ...prevSeletedType[formattedType],
+                    checked: data.checked,
+                    value: data.value.value,
+                },
+            };
+        });
+    };
+
+    const handleClick = () => {
+        // details
+    };
+
+    const handleSetDetails = (e) => {
+        const { name, value } = e.target;
+        setDetails({ ...details, [name]: value });
+    };
+
+    const handleClose = (key) => {
+        setOpenCalendar(
+            openCalendar.map((item) => {
+                if (item.key === key) {
+                    item.open = !item.open;
+                }
+                return item;
+            })
+        );
+    };
+
+    const handleSetDate = (key, date) => {
+        setOpenCalendar(
+            openCalendar.map((item) => {
+                if (item.key === key) {
+                    item.date = dayjs(date).format("YYYY-MM-DD");
+                }
+                return item;
+            })
+        );
+    };
+
+    return (
+        <>
+            <Breadcrumb title="Tour booking" link="tour booking" />
+
+            <Grid className={styles.tourBooking}>
+                <Grid.Row>
+                    <Grid.Column>
+                        <YourDetails
+                            handleSetDetails={handleSetDetails}
+                            details={details}
+                        />
+
+                        {/* <BookingSummary
+                            data={data}
+                            details={details}
+                            discount={discount}
+                            handleClick={handleClick}
+                        /> */}
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <TourDetails
+                            handleClose={handleClose}
+                            handleSetDate={handleSetDate}
+                            openCalendar={openCalendar}
+                            myHandleChangeCheck={myHandleChangeCheck}
+                            setOpenCalendar={setOpenCalendar}
+                            selectedAdditionalService={
+                                selectedAdditionalService
+                            }
+                            // detail={details}
+                            discount={discount}
+                            setDiscount={setDiscount}
+                        />
+                    </Grid.Column>
+                </Grid.Row>
+                {/* // <Grid.Row>
 				// 	<Grid.Column>
 				// 		<PaymentInfo />
 				// 	</Grid.Column>
 				// </Grid.Row> */}
-      </Grid>
+            </Grid>
 
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 };
 
 export default TourBooking;

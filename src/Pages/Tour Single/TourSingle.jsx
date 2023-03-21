@@ -37,6 +37,7 @@ const TourSingle = () => {
     dateArrival: "",
     dateDeparture: "",
     additionalService: [],
+    packagesCost: price
   });
 
   const [selectedAdditionalService, setSelectedAdditionalService] = useState(
@@ -69,6 +70,7 @@ const TourSingle = () => {
 
     // navigate("/tour-booking?" + new URLSearchParams(option).toString()); //option -> bookDetail
   }, []);
+  console.log(selectedAdditionalService)
 
   const handleBook = () => {
     let additionalService = _.chain(selectedAdditionalService)
@@ -78,15 +80,10 @@ const TourSingle = () => {
       .join(", ")
       .value();
 
-    setBookDetail({ ...bookDetail, additionalService: additionalService });
-    // navigate("/tour-booking");
+    // setBookDetail({ ...bookDetail, additionalService: additionalService });
+    const option = {...bookDetail, additionalService: additionalService }
 
-    //add
-    // history.push("/search?" + new URLSearchParams(form).toString())
-
-    // history.push(
-    // 	`/checkout/${id}?startDate=${startDate}&endDate=${endDate}&price=${price}&checkoutUrl=${res.data}`
-    // )
+    navigate("/tour-booking?" + new URLSearchParams(option).toString());
 
     // createReservation({
     // 	accommodation: id,

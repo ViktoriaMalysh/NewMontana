@@ -99,7 +99,7 @@ export const routes = [
   },
   {
     path: "/tour-package/:id",
-    component: <TourSingle data={tourSingle} />,
+    component: <TourSingle  />,
   },
   {
     path: "/tour-offer",
