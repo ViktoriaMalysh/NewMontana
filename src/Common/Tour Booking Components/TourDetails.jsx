@@ -12,7 +12,7 @@ const TourDetails = ({
     myHandleChangeCheck,
     setOpenCalendar,
     selectedAdditionalService,
-	// detail,
+    // detail,
     discount,
     setDiscount,
 }) => {
@@ -24,6 +24,8 @@ const TourDetails = ({
         setDiscount(_.get(discounts, coupon));
         // console.log('[test]:', test)
     };
+
+    
 
     return (
         <Segment raised className={styles.tourBookingSegmentLeft}>

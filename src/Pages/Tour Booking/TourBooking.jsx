@@ -13,6 +13,8 @@ import YourDetails from "../../Common/Tour Booking Components/YourDetails";
 import TourDetails from "../../Common/Tour Booking Components/TourDetails";
 
 import PaymentInfo from "../../Common/Tour Booking Components/PaymentInfo";
+import axios from "axios";
+import { BACKEND_URL } from "../../config";
 
 const TourBooking = ({ data }) => {
     const [details, setDetails] = useState({
@@ -34,9 +36,22 @@ const TourBooking = ({ data }) => {
             "additionalService"
         ),
     });
+
+    const [payment, setPayment] = useState(
+        new URLSearchParams(window.location.search).get("payment")
+    );
+
+    console.log("[payment]:", payment);
+
     const [selectedAdditionalService, setSelectedAdditionalService] = useState(
         {}
     );
+
+    const [totalCount, setTotalCount] = useState(
+        Math.round(details.packagesCost)
+    );
+
+    const [subTotal, setSubTotal] = useState(totalCount);
 
     const [discount, setDiscount] = useState(0);
 
@@ -89,15 +104,36 @@ const TourBooking = ({ data }) => {
         }
     }, []);
 
-    console.log("[selectedAdditionalService]", selectedAdditionalService);
-    // const [selectedAdditionalService, setSelectedAdditionalService] = useState(
-    // 	new URLSearchParams(window.location.search).get("additionalService")
-    // );
+    useEffect(() => {
+        if (payment === null) {
+            return;
+        } else if (payment) {
+            alert("Success!");
+        } else if (!payment) {
+            alert("Cancel");
+        }
+    }, [payment]);
 
-    // useEffect(() => {
-    // 	const arrAdditionalService = selectedAdditionalService.split(/\s*,\s*/);
-    // 	setDetails({ ...details, additionalService: arrAdditionalService });
-    // }, []);
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        // Check to see if this is a redirect back from Checkout
+        const query = new URLSearchParams(window.location.search);
+
+        if (query.get("success")) {
+            alert("Success!");
+            // setMessage("Order placed! You will receive an email confirmation.");
+        }
+
+        if (query.get("canceled")) {
+            alert("canceled");
+            // setMessage(
+            //   "Order canceled -- continue to shop around and checkout when you're ready."
+            // );
+        }
+    }, []);
+
+    console.log("[selectedAdditionalService]", selectedAdditionalService);
 
     const myHandleChangeCheck = (data, type) => {
         const formattedType = _.snakeCase(type);
@@ -114,7 +150,15 @@ const TourBooking = ({ data }) => {
     };
 
     const handleClick = () => {
-        // details
+        axios
+            .post(`${BACKEND_URL}create-checkout-session`, {
+                id: 54215,
+                successUrl: window.location.href + "&payment=true",
+                cancelUrl: window.location.href + "&payment=false",
+            })
+            .then((res) => {
+                window.location.href = res.data.url;
+            });
     };
 
     const handleSetDetails = (e) => {
@@ -156,12 +200,20 @@ const TourBooking = ({ data }) => {
                             details={details}
                         />
 
-                        {/* <BookingSummary
+                        <BookingSummary
                             data={data}
                             details={details}
+                            totalCount={totalCount}
+                            setTotalCount={setTotalCount}
+                            selectedAdditionalService={
+                                selectedAdditionalService
+                            }
                             discount={discount}
                             handleClick={handleClick}
-                        /> */}
+                            packagesCost={Math.round(details.packagesCost)}
+                            subTotal={subTotal}
+                            setSubTotal={setSubTotal}
+                        />
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>

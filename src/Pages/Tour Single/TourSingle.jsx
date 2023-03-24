@@ -27,7 +27,7 @@ const TourSingle = () => {
   const tour = useSelector((state) => state.api.tour);
 
   const rating = new URLSearchParams(window.location.search).get("rating")
-  const price = new URLSearchParams(window.location.search).get("price")
+  const price = Math.round(new URLSearchParams(window.location.search).get("price"))
 
   const [bookDetail, setBookDetail] = useState({
     firstName: "",

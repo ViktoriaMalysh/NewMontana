@@ -9,4 +9,5 @@ export const ADDITIONAL_SERVICE = {
   insurance: 100,
   dinner: 30,
   carRent: 120,
+  vat: 5
 }
