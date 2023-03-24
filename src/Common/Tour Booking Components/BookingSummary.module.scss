@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* COLORS */
+$primary-color: #fafe28;
+$primary-color-hover: #ffdd00;
+
+:global(#app) {
+    .tourBookingSegmentRight {
+        text-align: start ;
+        float: right;
+        width: 360px;
+        background: #fff;
+        padding: 30px;
+        border: none;
+        border-radius: 12px;
+        margin-bottom: 0px;
+        box-shadow: 0 0 40px 5px rgb(0 0 0 / 5%);
+        margin-top: 0px;
+
+        h4 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #1b1b1b;
+            margin: 0px;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+            line-height: 1.2;
+            text-transform: capitalize;
+        }
+
+        ul {
+            display: block;
+            text-transform: capitalize;
+
+            li {
+                margin-left: -40px;
+                margin-bottom: 10px;
+                list-style: none;
+                display: block;
+
+                .tourBookingRightStrong {
+                    float: left;
+                    font-weight: bolder;
+                    font-family: "Roboto", sans-serif;
+                    font-style: normal;
+                    font-size: 16px;
+                    color: #14212b;
+                    line-height: 1.8;
+                }
+
+                .tourBookingRightSpan {
+                    float: right;
+                    font-family: "Roboto", sans-serif;
+                    font-style: normal;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #14212b;
+                    line-height: 1.8;
+                }
+            }
+
+            .tourBookingRightDivider {
+                margin-top: 40px;
+                margin-bottom: -15px;
+            }
+
+            .tourBookingRightButton {
+                font-size: 16px;
+                float: right;
+                display: block;
+                color: #ffffff;
+                padding: 15px 25px;
+                line-height: 1;
+                transition: all 0.5s;
+                text-transform: capitalize;
+                position: relative;
+                border-radius: 8px;
+                text-align: center;
+                overflow: hidden;
+                z-index: 1;
+                background-color: #fca702;
+                border: 2px solid transparent;
+                box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
+                margin-top: 22%;
+                margin-right: -40px;
+
+                &:hover {
+                    color: #fff;
+                    background: #061847;
+                }
+            }
+        }
+    }
+}

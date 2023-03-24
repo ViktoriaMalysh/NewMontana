@@ -18,6 +18,7 @@ import { BACKEND_URL } from "../../config";
 
 const TourBooking = ({ data }) => {
     const [details, setDetails] = useState({
+        id: new URLSearchParams(window.location.search).get("id"),
         firstName: new URLSearchParams(window.location.search).get("firstName"),
         lastName: new URLSearchParams(window.location.search).get("lastName"),
         email: new URLSearchParams(window.location.search).get("email"),
@@ -36,12 +37,6 @@ const TourBooking = ({ data }) => {
             "additionalService"
         ),
     });
-
-    const [payment, setPayment] = useState(
-        new URLSearchParams(window.location.search).get("payment")
-    );
-
-    console.log("[payment]:", payment);
 
     const [selectedAdditionalService, setSelectedAdditionalService] = useState(
         {}
@@ -74,18 +69,7 @@ const TourBooking = ({ data }) => {
 
     useEffect(() => {
         if (details.additionalService !== "") {
-            // details.additionalService _.split('a-b-c', '-', 2);
             let additionalService = _.split(details.additionalService, ", ");
-
-            // .map(function (n) {
-            //     return {
-            //         [n]: {
-            //             checked: true,
-            //             value: n,
-            //         },
-            //     };
-            // })
-            // .value();
             let test = {};
 
             additionalService.map((item) => {
@@ -97,22 +81,9 @@ const TourBooking = ({ data }) => {
                     },
                 };
             });
-
-            console.log("[additionalService]:", test);
-
             setSelectedAdditionalService(test);
         }
     }, []);
-
-    useEffect(() => {
-        if (payment === null) {
-            return;
-        } else if (payment) {
-            alert("Success!");
-        } else if (!payment) {
-            alert("Cancel");
-        }
-    }, [payment]);
 
     const [message, setMessage] = useState("");
 
@@ -121,15 +92,21 @@ const TourBooking = ({ data }) => {
         const query = new URLSearchParams(window.location.search);
 
         if (query.get("success")) {
-            alert("Success!");
-            // setMessage("Order placed! You will receive an email confirmation.");
+            // alert("Success!");
+            setMessage({
+                title: "YOUR BOOKING CONFIRMED",
+                message:
+                    "Thank you for your booking! your payment has been successful done and your booking is now confirmed.",
+                //  A confirmation email has been sent to your email - info@example.com.
+            });
         }
 
         if (query.get("canceled")) {
-            alert("canceled");
-            // setMessage(
-            //   "Order canceled -- continue to shop around and checkout when you're ready."
-            // );
+            // alert("canceled");
+            setMessage({
+                title: "",
+                message: "",
+            });
         }
     }, []);
 
@@ -149,12 +126,18 @@ const TourBooking = ({ data }) => {
         });
     };
 
+    console.log(window.location.origin);
+
     const handleClick = () => {
         axios
-            .post(`${BACKEND_URL}create-checkout-session`, {
-                id: 54215,
-                successUrl: window.location.href + "&payment=true",
-                cancelUrl: window.location.href + "&payment=false",
+            .post(`${BACKEND_URL}reservation/create-checkout-session`, {
+                id: details.id,
+                successUrl:
+                    window.location.origin +
+                    "/booking-confirm" +
+                    window.location.search +
+                    `&discount=${discount}`,
+                cancelUrl: window.location.href,
             })
             .then((res) => {
                 window.location.href = res.data.url;

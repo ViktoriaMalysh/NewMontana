@@ -6,12 +6,77 @@ $primary-color: #fafe28;
 $primary-color-hover: #ffdd00;
 
 :global(#app) {
-	.tourPackage {
-		margin-left: 39.5vh;
-		margin-right: 39vh;
-		margin-top: 100px;
-		position: relative;
-		margin-bottom: 150px;
+    .tourPackage {
+        margin-left: 39.5vh;
+        margin-right: 39vh;
+        margin-top: 100px;
+        margin-bottom: 150px;
 
-  }
+        .confirmMessage {
+            width: 100%;
+            background: #0dd0a0;
+            padding: 50px;
+            color: #fff;
+            border-radius: 15px;
+            margin-bottom: 40px;
+
+            .confirmMessageContent {
+                color: #fff;
+                font-size: 16px;
+            }
+
+            .confirmMessageHeader {
+                color: #fff;
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
+        }
+
+        .tourConfirmDownloadReceipt {
+            background-color: transparent;
+            margin-top: 25px;
+            transition: all 0.5s;
+            font-size: 16px;
+
+            &:hover {
+                color: #0dd0a0;
+            }
+        }
+
+        .tourConfirmSegment {
+            width: 98%;
+            background: #fff;
+            padding: 30px;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 0px;
+            box-shadow: 0 0 40px 5px rgb(0 0 0 / 5%);
+            margin-top: 0px;
+
+            h4 {
+                font-size: 24px;
+                color: #1b1b1b;
+                margin: 0;
+                font-weight: 600;
+                font-family: "Poppins", sans-serif;
+                line-height: 1.2;
+                text-transform: capitalize;
+            }
+
+            div {
+                background-color: #f1f1f1;
+                padding: 15px 15px;
+                margin: 20px 0;
+
+                p {
+                    font-family: "Roboto", sans-serif;
+                    font-style: normal;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #14212b;
+                    line-height: 1.8;
+                }
+            }
+        }
+    }
 }

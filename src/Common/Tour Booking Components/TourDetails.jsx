@@ -25,8 +25,6 @@ const TourDetails = ({
         // console.log('[test]:', test)
     };
 
-    
-
     return (
         <Segment raised className={styles.tourBookingSegmentLeft}>
             <h4>Tour Details</h4>
@@ -130,6 +128,10 @@ const TourDetails = ({
                         Apply
                     </Button>
                 </div>
+                <p>
+                    10% discount for the first tour booking. To activate, enter
+                    the coupon code: <span>pl578ca7</span>
+                </p>
             </Form>
         </Segment>
     );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Divider, Icon, Segment } from "semantic-ui-react";
 import { ADDITIONAL_SERVICE } from "../../Constants/magicNumbersValid";
-import styles from "../../Pages/Tour Booking/TourBooking.module.scss";
+import styles from "./BookingSummary.module.scss";
 
 const BookingSummary = ({
     totalCount,
@@ -13,12 +13,11 @@ const BookingSummary = ({
     discount,
     handleClick,
     packagesCost,
+    confirm,
 }) => {
     const [vat, setVat] = useState(
         Math.round((totalCount / 100) * ADDITIONAL_SERVICE.vat)
     );
-
-    console.log("[discount]", discount);
 
     useEffect(() => {
         let count = 0;
@@ -100,7 +99,7 @@ const BookingSummary = ({
                                         $ {ADDITIONAL_SERVICE.tourGuide}
                                     </span>
                                 </li>
-                                <br />{" "}
+                                <br />
                             </>
                         ) : item === "insurance" &&
                           selectedAdditionalService[item].checked ? (
@@ -190,7 +189,7 @@ const BookingSummary = ({
                                     Discount
                                 </strong>
                                 <span className={styles.tourBookingRightSpan}>
-                                    ${discount}
+                                    {discount} %
                                 </span>
                             </li>
                         </>
@@ -212,23 +211,18 @@ const BookingSummary = ({
                         </span>
                     </li>
                 </ul>
-                <ul
-                // style={{ border: "1px solid red" }}
-                >
-                    <li>
-                        <Button
-                            className={styles.tourBookingRightButton}
-                            onClick={handleClick}
-                            // onClick={() =>
-                            // 	navigate(
-                            // 		"/tour-cart?" + new URLSearchParams(option).toString()
-                            // 	)
-                            // }
-                        >
-                            Checkout
-                            <Icon name="arrow right" />
-                        </Button>
-                    </li>
+                <ul>
+                    {!confirm && (
+                        <li>
+                            <Button
+                                className={styles.tourBookingRightButton}
+                                onClick={handleClick}
+                            >
+                                Checkout
+                                <Icon name="arrow right" />
+                            </Button>
+                        </li>
+                    )}
                 </ul>
             </Segment>
         </>
