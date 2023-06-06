@@ -28,7 +28,7 @@ import BookingConfirm from "../../Pages/Booking Confirm/BookingConfirm";
 import TourSingle from "../../Pages/Tour Single/TourSingle";
 import DestinationSingle from "../../Pages/Destination Single/DestinationSingle";
 import TeamSingle from "../../Pages/Team Single/TeamSingle";
-import PaymentProvider from "../../services/payment/payment";
+// import PaymentProvider from "../../services/payment/payment";
 
 export const links = [
     {
@@ -160,10 +160,10 @@ export const routes = [
         path: "/gallery",
         component: <Gallery />,
     },
-    {
-        path: "/faq",
-        component: <Faq />,
-    },
+    // {
+    //     path: "/faq",
+    //     component: <Faq />,
+    // },
     {
         path: "/",
         component: <Home />,

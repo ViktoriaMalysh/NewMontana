@@ -1,11 +1,12 @@
 import RegisterContainer from "./RegisterContainer";
+import styles from "./Register.module.scss"
 
 const Register = () => {
-  
-  console.log('Register Page')
-	return (
-    <RegisterContainer/>
-	);
+  return (
+    <div className={styles.register}>
+      <RegisterContainer />
+    </div>
+  );
 };
 
 export default Register;

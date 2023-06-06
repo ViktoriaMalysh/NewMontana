@@ -77,7 +77,7 @@ export const signUp = (user) => {
           console.log("Profile updated!");
 
           sendEmailVerification(user, actionCodeSettings).then(() => {
-            // Email verification sent!
+            // Email verification send!
             // ...
             return user;
           });

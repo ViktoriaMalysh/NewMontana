@@ -37,10 +37,10 @@ const RegisterContainer = ({}) => {
   const handleSubmit = () => {
     // dispatch(signUp(candidate)).then(navigate("/"));
     signUp(candidate)
-      .then(
-        // console.log("res")
-        // modifyProfile(candidate).then(navigate("/"))
-      )
+      .then
+      // console.log("res")
+      // modifyProfile(candidate).then(navigate("/"))
+      ()
       .then((err) => {
         console.log("[err]:", err);
       });
@@ -146,7 +146,7 @@ const RegisterContainer = ({}) => {
         <Form.Field>
           <div className={styles.registerCheckbox}>
             <Checkbox /> I agree to the{" "}
-            <Link to="/" className={styles.registerLink}>
+            <Link to="/terms-of-service" className={styles.registerLink}>
               Terms Of Service
             </Link>
           </div>

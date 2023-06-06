@@ -29,9 +29,7 @@ const LoginContainer = ({}) => {
   const handleLogin = () => {
     // dispatch(signIn(candidate)).then(navigate("/"));
     signIn(candidate)
-      .then(
-        localStorage.setItem("isLoggedIn", true),
-        navigate("/"))
+      .then(localStorage.setItem("isLoggedIn", true), navigate("/"))
       .catch((error) => {
         alert(error);
       });

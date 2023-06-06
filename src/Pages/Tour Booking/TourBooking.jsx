@@ -15,8 +15,12 @@ import TourDetails from "../../Common/Tour Booking Components/TourDetails";
 import PaymentInfo from "../../Common/Tour Booking Components/PaymentInfo";
 import axios from "axios";
 import { BACKEND_URL } from "../../config";
+import { useSelector } from "react-redux";
 
 const TourBooking = ({ data }) => {
+    const tour = useSelector((state) => state.api.tour);
+
+
     const [details, setDetails] = useState({
         id: new URLSearchParams(window.location.search).get("id"),
         firstName: new URLSearchParams(window.location.search).get("firstName"),
@@ -126,12 +130,14 @@ const TourBooking = ({ data }) => {
         });
     };
 
-    console.log(window.location.origin);
+    console.log(tour?.images[0].url);
 
     const handleClick = () => {
         axios
-            .post(`${BACKEND_URL}reservation/create-checkout-session`, {
+            .post(`${BACKEND_URL}checkout/create-checkout-session`, {
                 id: details.id,
+                amount: totalCount,
+                images: tour?.images[0].url,
                 successUrl:
                     window.location.origin +
                     "/booking-confirm" +

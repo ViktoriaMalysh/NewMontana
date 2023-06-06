@@ -599,7 +599,7 @@ export const counterItems = [
         title: "Tour Guides",
     },
     {
-        icon: "",
+        icon: "thumbs up outline",
         count: 600,
         title: "Tour Completed",
     },
@@ -609,7 +609,7 @@ export const counterItems = [
         title: "Travel Experience",
     },
     {
-        icon: "",
+        icon: "winner",
         count: 50,
         title: "Win Awards",
     },
