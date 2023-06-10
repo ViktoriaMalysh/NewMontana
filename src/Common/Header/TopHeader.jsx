@@ -12,6 +12,8 @@ const TopHeader = () => {
 
   const userStore = useSelector((state) => state.user.user);
   const [headerShow, setHeaderShow] = useState(false);
+  const [userName, setUserName] = useState("");
+
   const [language, setLanguage] = useState("");
   const [curr, setCurrency] = useState("");
 
@@ -20,6 +22,7 @@ const TopHeader = () => {
     setCurrency(localStorage.getItem("currency"));
     localStorage.setItem("language", "eng");
     setLanguage(localStorage.getItem("language"));
+    setUserName(localStorage.getItem("username"));
   }, []);
 
   useEffect(() => {
@@ -143,7 +146,7 @@ const TopHeader = () => {
         ) : (
           <>
             <Menu.Item className={styles.headerItemsTop}>
-              <span>{userStore.firstName}</span>
+              <span>{userName}</span>
             </Menu.Item>
             <Menu.Item className={styles.headerItemsTop}>
               <Button className={styles.headerTopButton} onClick={handleLogout}>

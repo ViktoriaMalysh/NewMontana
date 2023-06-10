@@ -20,156 +20,151 @@ import LoadingPage from "../Loading/Loading";
 import _ from "lodash";
 
 const TourSingle = () => {
-    const params = useParams();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const params = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const tour = useSelector((state) => state.api.tour);
+  const tour = useSelector((state) => state.api.tour);
 
-    const rating = new URLSearchParams(window.location.search).get("rating");
-    const price = Math.round(
-        new URLSearchParams(window.location.search).get("price")
-    );
+  const rating = new URLSearchParams(window.location.search).get("rating");
+  const price = Math.round(
+    new URLSearchParams(window.location.search).get("price")
+  );
 
-    const [bookDetail, setBookDetail] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        dateArrival: "",
-        dateDeparture: "",
-        additionalService: [],
-        packagesCost: price,
+  const [bookDetail, setBookDetail] = useState({
+    firstName: localStorage.getItem("firstName")
+      ? localStorage.getItem("firstName")
+      : "",
+    lastName: localStorage.getItem("lastName")
+      ? localStorage.getItem("lastName")
+      : "",
+    email: localStorage.getItem("email") ? localStorage.getItem("email") : "",
+    phone: localStorage.getItem("phone") ? localStorage.getItem("phone") : "",
+    dateArrival: "",
+    dateDeparture: "",
+    additionalService: [],
+    packagesCost: price,
+  });
+
+  const [selectedAdditionalService, setSelectedAdditionalService] = useState(
+    {}
+  );
+
+  useEffect(() => {
+    const options = {
+      currency: localStorage.getItem("currency"),
+      eapid: 1,
+      locale: new URLSearchParams(window.location.search).get("locale"),
+      siteId: 300000001,
+      propertyId: params.id,
+    };
+
+    dispatch(getTour(options));
+  }, []);
+
+  const handleBook = () => {
+    let additionalService = _.chain(selectedAdditionalService)
+      .filter("checked")
+      .mapValues("value")
+      .values()
+      .join(", ")
+      .value();
+
+    const option = {
+      ...bookDetail,
+      additionalService: additionalService,
+      id: params.id,
+    };
+
+    navigate("/tour-booking?" + new URLSearchParams(option).toString());
+  };
+
+  const handleSetDetailsBook = (e) => {
+    const { name, value } = e.target;
+    setBookDetail({ ...bookDetail, [name]: value });
+  };
+
+  const myHandleChangeCheck = (data, type) => {
+    const formattedType = _.snakeCase(type);
+    setSelectedAdditionalService((prevSeletedType) => {
+      return {
+        ...prevSeletedType,
+        [formattedType]: {
+          ...prevSeletedType[formattedType],
+          checked: data.checked,
+          value: data.value.value,
+        },
+      };
     });
+  };
 
-    const [selectedAdditionalService, setSelectedAdditionalService] = useState(
-        {}
-    );
-
-    useEffect(() => {
-        const options = {
-            currency: localStorage.getItem("currency"),
-            eapid: 1,
-            locale: new URLSearchParams(window.location.search).get("locale"),
-            siteId: 300000001,
-            propertyId: params.id,
-        };
-
-        dispatch(getTour(options));
-    }, []);
-
-    const handleBook = () => {
-        let additionalService = _.chain(selectedAdditionalService)
-            .filter("checked")
-            .mapValues("value")
-            .values()
-            .join(", ")
-            .value();
-
-        const option = {
-            ...bookDetail,
-            additionalService: additionalService,
-            id: params.id,
-        };
-
-        navigate("/tour-booking?" + new URLSearchParams(option).toString());
-    };
-
-    const handleSetDetailsBook = (e) => {
-        const { name, value } = e.target;
-        setBookDetail({ ...bookDetail, [name]: value });
-    };
-
-    const myHandleChangeCheck = (data, type) => {
-        const formattedType = _.snakeCase(type);
-        setSelectedAdditionalService((prevSeletedType) => {
-            return {
-                ...prevSeletedType,
-                [formattedType]: {
-                    ...prevSeletedType[formattedType],
-                    checked: data.checked,
-                    value: data.value.value,
-                },
-            };
-        });
-    };
-
-    return (
+  return (
+    <>
+      {tour.name ? (
         <>
-            {tour.name ? (
-                <>
-                    <Breadcrumb
-                        title={tour.name}
-                        link={tour.name ? tour.name : 5}
-                    />
-                    <Grid className={styles.tourSingle}>
-                        <Grid.Row>
-                            <Grid.Column width={11} style={{ width: "700px" }}>
-                                {tour.images.length && (
-                                    <Image
-                                        src={tour?.images[0].url}
-                                        className={styles.tourSingleAvatar}
-                                    />
-                                )}
+          <Breadcrumb title={tour.name} link={tour.name ? tour.name : 5} />
+          <Grid className={styles.tourSingle}>
+            <Grid.Row>
+              <Grid.Column width={11} style={{ width: "700px" }}>
+                {tour.images.length && (
+                  <Image
+                    src={tour?.images[0].url}
+                    className={styles.tourSingleAvatar}
+                  />
+                )}
 
-                                <HeaderSingle
-                                    tour={tour && tour}
-                                    rating={rating}
-                                    price={price}
-                                />
+                <HeaderSingle
+                  tour={tour && tour}
+                  rating={rating}
+                  price={price}
+                />
 
-                                <TextSingle />
+                <TextSingle />
 
-                                <TableSingle />
+                <TableSingle />
 
-                                <TourPlanSingle />
+                <TourPlanSingle />
 
-                                <GallerySingle />
+                <GallerySingle />
 
-                                <TourMapSingle image={tour?.imageMap} />
+                <TourMapSingle image={tour?.imageMap} />
 
-                                <GuestReviewsSingle tour={tour && tour} />
+                <GuestReviewsSingle tour={tour && tour} />
 
-                                <FormReviewSingle />
-                            </Grid.Column>
-                            <Grid.Column width={5} floated="right">
-                                <Grid>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <BookBlock
-                                                bookDetail={bookDetail}
-                                                handleSetDetailsBook={
-                                                    handleSetDetailsBook
-                                                }
-                                                handleBook={handleBook}
-                                                myHandleChangeCheck={
-                                                    myHandleChangeCheck
-                                                }
-                                                selectedAdditionalService={
-                                                    selectedAdditionalService
-                                                }
-                                                setSelectedAdditionalService={
-                                                    setSelectedAdditionalService
-                                                }
-                                            />
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Banner />
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                </Grid>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                    <Footer />
-                </>
-            ) : (
-                <LoadingPage />
-            )}
+                <FormReviewSingle />
+              </Grid.Column>
+              <Grid.Column width={5} floated="right">
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <BookBlock
+                        bookDetail={bookDetail}
+                        handleSetDetailsBook={handleSetDetailsBook}
+                        handleBook={handleBook}
+                        myHandleChangeCheck={myHandleChangeCheck}
+                        selectedAdditionalService={selectedAdditionalService}
+                        setSelectedAdditionalService={
+                          setSelectedAdditionalService
+                        }
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Banner />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <Footer />
         </>
-    );
+      ) : (
+        <LoadingPage />
+      )}
+    </>
+  );
 };
 
 export default TourSingle;

@@ -4,9 +4,9 @@ import logo from "../../assets/logo-login.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { validate } from "../../Helpers/validation";
-// import { signIn } from "../../redux/actions/actionUser";
+import { signIn } from "../../redux/actions/actionUser";
 import { useDispatch, useSelector } from "react-redux";
-import { signIn } from "../../Backend/firebase_db";
+// import { signIn } from "../../Backend/firebase_db";
 
 const LoginContainer = ({}) => {
   const navigate = useNavigate();
@@ -27,12 +27,7 @@ const LoginContainer = ({}) => {
   };
 
   const handleLogin = () => {
-    // dispatch(signIn(candidate)).then(navigate("/"));
-    signIn(candidate)
-      .then(localStorage.setItem("isLoggedIn", true), navigate("/"))
-      .catch((error) => {
-        alert(error);
-      });
+    dispatch(signIn(candidate)).then(navigate("/"));
   };
 
   return (

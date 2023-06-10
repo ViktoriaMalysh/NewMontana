@@ -4,10 +4,10 @@ import logo from "../../assets/logo-login.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validate } from "../../Helpers/validation";
-// import { signUp } from "../../redux/actions/actionUser";
+import { signUp } from "../../redux/actions/actionUser";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { modifyProfile, signUp } from "../../Backend/firebase_db";
+// import { modifyProfile, signUp } from "../../Backend/firebase_db";
 
 const RegisterContainer = ({}) => {
   const dispatch = useDispatch();
@@ -35,16 +35,7 @@ const RegisterContainer = ({}) => {
   };
 
   const handleSubmit = () => {
-    // dispatch(signUp(candidate)).then(navigate("/"));
-    signUp(candidate)
-      .then
-      // console.log("res")
-      // modifyProfile(candidate).then(navigate("/"))
-      ()
-      .then((err) => {
-        console.log("[err]:", err);
-      });
-    console.log("true");
+    dispatch(signUp(candidate)).then(navigate("/"));
   };
 
   return (
